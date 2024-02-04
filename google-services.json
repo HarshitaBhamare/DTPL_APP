@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124923317053",
+    "project_id": "dtpl-1076c",
+    "storage_bucket": "dtpl-1076c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124923317053:android:ac5cf7fee17cae12a8d354",
+        "android_client_info": {
+          "package_name": "com.example.dtpl_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9KVIiPN40iN_uNsDg9hbSWGEP-OA-ZHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,8 @@
-import 'package:dtpl_app/Components/customAuthButton.dart';
-import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Pages/loadingPage.dart';
+import 'package:dtpl_app/Pages/loginPage.dart';
+import 'package:dtpl_app/Pages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
+import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,6 +11,25 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = context.watch<LoadingProvider>().isLoading;
+
+    void OnClickLoginPage() {
+      print("Chaning the Page");
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginPage(),
+          ));
+    }
+
+    void OnClickRegisterPage() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RegisterPage(),
+          ));
+    }
+
     Size size = MediaQuery.of(context).size;
     return Stack(children: [
       Scaffold(
@@ -34,16 +54,16 @@ class LandingPage extends StatelessWidget {
               height: size.height / 25,
             ),
             Provider.of<buttonManager>(context, listen: false)
-                .getWidget('h_login'),
+                .getWidget('h_login', OnClickLoginPage),
             SizedBox(
               height: size.height / 60,
             ),
             Provider.of<buttonManager>(context, listen: false)
-                .getWidget('h_register'),
+                .getWidget('h_register', OnClickRegisterPage),
           ],
         ),
       ),
-      // LoadingPage()
+      isLoading ? LoadingPage() : SizedBox()
     ]);
   }
 }
