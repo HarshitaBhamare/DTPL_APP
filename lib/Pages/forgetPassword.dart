@@ -1,4 +1,3 @@
-import 'package:dtpl_app/Components/customAuthButton.dart';
 import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Pages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
@@ -13,9 +12,13 @@ class ForgetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
+  TextEditingController emailIDController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    void OnClickResetPassword() {}
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -48,12 +51,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             SizedBox(
               height: size.height / 30,
             ),
-            MyTextField(hint: 'Email', show: true),
+            MyTextField(
+                hint: 'Email',
+                show: true,
+                textEditingController: emailIDController),
             SizedBox(
               height: size.height / 30,
             ),
             Provider.of<buttonManager>(context, listen: false)
-                .getWidget('sendcode'),
+                .getWidget('sendcode', OnClickResetPassword),
             SizedBox(height: size.height / 2.1),
             Container(
               child: Row(

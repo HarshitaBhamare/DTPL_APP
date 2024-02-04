@@ -1,8 +1,9 @@
-import 'package:dtpl_app/Components/customAuthButton.dart';
+import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
 import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Components/tile.dart';
 import 'package:dtpl_app/Pages/loginPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
+import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -15,9 +16,30 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailIDController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmpasswordController = TextEditingController();
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailIDController.dispose();
+    passwordController.dispose();
+    confirmpasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    void OnClickRegsiter() {
+      Provider.of<LoadingProvider>(context, listen: false).showLoading();
+      FirebaseAuthService().registerWithEmailAndPassword(
+          emailIDController.text, passwordController.text, context);
+    }
+
     return Scaffold(
       appBar: AppBar(
           // automaticallyImplyLeading: false,
@@ -34,18 +56,37 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             SizedBox(height: size.height / 120),
-            MyTextField(hint: 'First Name', show: true),
+            MyTextField(
+                hint: 'First Name',
+                show: true,
+                textEditingController: firstNameController),
             SizedBox(height: size.height / 60),
-            MyTextField(hint: 'Last Name', show: true),
+            MyTextField(
+              hint: 'Last Name',
+              show: true,
+              textEditingController: lastNameController,
+            ),
             SizedBox(height: size.height / 60),
-            MyTextField(hint: 'E-mail', show: true),
+            MyTextField(
+              hint: 'E-mail',
+              show: true,
+              textEditingController: emailIDController,
+            ),
             SizedBox(height: size.height / 60),
-            MyTextField(hint: 'Password', show: true),
+            MyTextField(
+              hint: 'Password',
+              show: false,
+              textEditingController: passwordController,
+            ),
             SizedBox(height: size.height / 60),
-            MyTextField(hint: 'Confirm Password', show: true),
+            MyTextField(
+              hint: 'Confirm Password',
+              show: false,
+              textEditingController: confirmpasswordController,
+            ),
             SizedBox(height: size.height / 25),
             Provider.of<buttonManager>(context, listen: false)
-                .getWidget('register'),
+                .getWidget('register', OnClickRegsiter),
             // SizedBox(height: size.height / 10),
             SizedBox(height: size.height / 50),
             Row(

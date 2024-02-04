@@ -1,5 +1,6 @@
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
+import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +9,13 @@ class AuthButtons extends StatefulWidget {
   String name;
   int id = -1;
   final VoidCallback onTap;
+  final bool isAync;
   AuthButtons(
-      {super.key, required this.name, required this.id, required this.onTap});
+      {super.key,
+      required this.name,
+      required this.id,
+      required this.onTap,
+      required this.isAync});
 
   @override
   State<AuthButtons> createState() => _AuthButtonsState();
@@ -30,14 +36,19 @@ class _AuthButtonsState extends State<AuthButtons> {
             Provider.of<buttonProvider>(context, listen: false)
                 .OnClicked(widget.id);
           });
-          await Future.delayed(Duration(milliseconds: 150))
-              .then((value) => widget.onTap());
+          Provider.of<LoadingProvider>(context, listen: false).showLoading();
+          await Future.delayed(Duration(milliseconds: 500));
+          await Future.delayed(Duration(milliseconds: 150));
+          widget.onTap();
           await Future.delayed(Duration(milliseconds: 10));
+          if (!widget.isAync) {
+            Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+          }
           Provider.of<buttonProvider>(context, listen: false)
               .OnClicked(widget.id);
         },
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 150),
+          duration: const Duration(milliseconds: 300),
           decoration: BoxDecoration(
             color: currentid == widget.id
                 ? isclick
