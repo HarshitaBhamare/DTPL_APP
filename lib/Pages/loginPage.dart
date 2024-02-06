@@ -1,4 +1,5 @@
 import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
+import 'package:dtpl_app/Components/customMsgBox.dart';
 import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Components/tile.dart';
 import 'package:dtpl_app/Pages/forgetPassword.dart';
@@ -6,6 +7,7 @@ import 'package:dtpl_app/Pages/loadingPage.dart';
 import 'package:dtpl_app/Pages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
@@ -17,26 +19,84 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    with SingleTickerProviderStateMixin {
+  AnimationController? _animationController;
+  Animation<double>? _opacityAnimation;
   TextEditingController emailIDController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    // Initialize your animation controller
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    _opacityAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
+  }
+
+  @override
+  void dispose() {
+    _animationController?.dispose();
+    super.dispose();
+  }
+
+  bool isEmailValid(String email) {
+    final emailRegex = RegExp(
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
+      caseSensitive: false,
+    );
+    return emailRegex.hasMatch(email);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final isLoading = context.watch<LoadingProvider>().isLoading;
+    final isShowing = context.watch<MsgBoxProvider>().isShowing;
 
+    if (isShowing) {
+      _animationController?.forward();
+    } else {
+      _animationController?.reverse();
+    }
+    // Listen to changes and animate accordingly
     void OnClickLogin() {
+      if (emailIDController.text.isEmpty) {
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+        Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+            true, context, _animationController!,
+            MsgText: "Please Enter Email ID");
+        return;
+      } else if (passwordController.text.isEmpty) {
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+        Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+            true, context, _animationController!,
+            MsgText: "Please Enter Password to Login");
+        return;
+      }
+      if (!isEmailValid(emailIDController.text)) {
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+        Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+            true, context, _animationController!,
+            MsgText: "Please Enter Valid Email ID :)");
+        return;
+      }
       Provider.of<LoadingProvider>(context, listen: false).showLoading();
-      FirebaseAuthService().signInWithEmailAndPassword(
-          emailIDController.text, passwordController.text, context);
+      FirebaseAuthService().signInWithEmailAndPassword(emailIDController.text,
+          passwordController.text, context, _animationController!);
     }
 
     return Stack(children: [
       Scaffold(
         appBar: AppBar(
-            // automaticallyImplyLeading: false,
-            // centerTitle: true,
-            ),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          iconTheme:
+              IconThemeData(color: Theme.of(context).colorScheme.primary),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: SingleChildScrollView(
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
@@ -48,22 +108,27 @@ class _LoginPageState extends State<LoginPage> {
                     child: Text(
                   'Welcome back! Glad\nto see you, Again!',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: size.height / 30),
+                    fontWeight: FontWeight.bold,
+                    fontSize: size.height / 30,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 )),
               ),
               SizedBox(height: size.height / 30),
               MyTextField(
                 hint: 'E-mail',
-                show: true,
+                isPasswordField: false,
+                show: false,
                 textEditingController: emailIDController,
               ),
               SizedBox(height: size.height / 60),
               MyTextField(
                 hint: 'Password',
-                show: true,
+                isPasswordField: true,
+                show: false,
                 textEditingController: passwordController,
               ),
-              SizedBox(height: size.height / 40),
+              SizedBox(height: size.height / 35),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -80,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Forget Password?',
                         style: TextStyle(
-                            color: Colors.blueGrey.shade500,
+                            color: Theme.of(context).colorScheme.tertiary,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -99,13 +164,13 @@ class _LoginPageState extends State<LoginPage> {
                       indent: 20.0,
                       endIndent: 10.0,
                       thickness: 1,
-                      color: Colors.grey.shade700,
+                      color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ),
                   Text(
                     "Or Log with",
                     style: TextStyle(
-                        color: Colors.grey.shade700,
+                        color: Theme.of(context).colorScheme.tertiary,
                         fontWeight: FontWeight.bold),
                   ),
                   Expanded(
@@ -113,7 +178,7 @@ class _LoginPageState extends State<LoginPage> {
                       indent: 10.0,
                       endIndent: 20.0,
                       thickness: 1,
-                      color: Colors.grey.shade700,
+                      color: Theme.of(context).colorScheme.tertiary,
                     ),
                   ),
                 ],
@@ -157,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
                         style: TextStyle(
                           fontSize: size.height / 60,
                           fontWeight: FontWeight.w800,
-                          color: Colors.blueGrey.shade400,
+                          color: Theme.of(context).colorScheme.tertiary,
                         ),
                       ),
                     ),
@@ -168,7 +233,23 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      isLoading ? LoadingPage() : SizedBox()
+      AnimatedBuilder(
+        animation: _animationController!,
+        builder: (context, child) => isShowing
+            ? Opacity(
+                opacity: _opacityAnimation!.value,
+                child: MsgBox(
+                  animationController: _animationController,
+                ), // Your MsgBox or the wrapped version
+              )
+            : SizedBox(),
+      ),
+      isLoading
+          ? LoadingPage()
+          : SizedBox(
+              width: 0,
+              height: 0,
+            )
     ]);
   }
 }

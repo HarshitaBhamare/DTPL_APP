@@ -42,8 +42,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
     return Scaffold(
       appBar: AppBar(
-          // automaticallyImplyLeading: false,
-          ),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.primary,
+        ),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -52,35 +56,43 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Text(
                 'Hello! Register to get\nstarted',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: size.height / 30),
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.height / 30,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
             ),
             SizedBox(height: size.height / 120),
             MyTextField(
                 hint: 'First Name',
+                isPasswordField: false,
                 show: true,
                 textEditingController: firstNameController),
             SizedBox(height: size.height / 60),
             MyTextField(
               hint: 'Last Name',
+              isPasswordField: false,
               show: true,
               textEditingController: lastNameController,
             ),
             SizedBox(height: size.height / 60),
             MyTextField(
               hint: 'E-mail',
+              isPasswordField: false,
               show: true,
               textEditingController: emailIDController,
             ),
             SizedBox(height: size.height / 60),
             MyTextField(
               hint: 'Password',
+              isPasswordField: true,
               show: false,
               textEditingController: passwordController,
             ),
             SizedBox(height: size.height / 60),
             MyTextField(
               hint: 'Confirm Password',
+              isPasswordField: true,
               show: false,
               textEditingController: confirmpasswordController,
             ),
@@ -96,20 +108,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     indent: 20.0,
                     endIndent: 10.0,
                     thickness: 1,
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
                 Text(
                   "Or Log with",
                   style: TextStyle(
-                      color: Colors.grey.shade700, fontWeight: FontWeight.bold),
+                      color: Theme.of(context).colorScheme.tertiary,
+                      fontWeight: FontWeight.bold),
                 ),
                 Expanded(
                   child: Divider(
                     indent: 10.0,
                     endIndent: 20.0,
                     thickness: 1,
-                    color: Colors.grey.shade700,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
               ],
@@ -153,7 +166,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: TextStyle(
                         fontSize: size.height / 60,
                         fontWeight: FontWeight.w800,
-                        color: Colors.blueGrey.shade400,
+                        color: Theme.of(context).colorScheme.tertiary,
                       ),
                     ),
                   ),

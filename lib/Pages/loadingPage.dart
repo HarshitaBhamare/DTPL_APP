@@ -9,15 +9,14 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
-  Color backgroundColor = Colors.transparent; // Initial background color
+  Color backgroundColor = Colors.transparent;
 
   @override
   void initState() {
     super.initState();
-    // Start the animation after a very short delay to ensure the widget is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
-        backgroundColor = Colors.black87; // End color of the animation
+        backgroundColor = Colors.black87;
       });
     });
   }
@@ -38,7 +37,7 @@ class _LoadingPageState extends State<LoadingPage> {
           children: [
             Center(
               child: LoadingAnimationWidget.discreteCircle(
-                  color: Colors.white, size: 50),
+                  color: Theme.of(context).colorScheme.background, size: 50),
             ),
           ],
         ),

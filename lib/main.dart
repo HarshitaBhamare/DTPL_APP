@@ -1,7 +1,10 @@
+import 'package:dtpl_app/Components/customMsgBox.dart';
 import 'package:dtpl_app/Pages/landindPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/msgBoxProvider.dart';
+import 'package:dtpl_app/Themes/colorPalate.dart';
 import 'package:dtpl_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +25,9 @@ Future<void> main() async {
       ),
       ChangeNotifierProvider<LoadingProvider>(
         create: (context) => LoadingProvider(),
+      ),
+      ChangeNotifierProvider<MsgBoxProvider>(
+        create: (context) => MsgBoxProvider(),
       )
     ],
     child: MyApp(),
@@ -41,9 +47,10 @@ class _MyAppState extends State<MyApp> {
     buttonManager().context = context;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: CustomThemes.lightTheme,
       home: Scaffold(
         body: LandingPage(),
-        // body: LoadingPage(),
+        // body: MsgBox(),
       ),
     );
   }

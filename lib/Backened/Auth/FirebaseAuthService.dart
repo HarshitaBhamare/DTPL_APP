@@ -1,4 +1,5 @@
 import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,10 @@ class FirebaseAuthService {
 
   // Sign in with email and password
   Future<UserCredential?> signInWithEmailAndPassword(
-      String email, String password, BuildContext context) async {
+      String email,
+      String password,
+      BuildContext context,
+      AnimationController animationController) async {
     try {
       UserCredential userCredential =
           await _firebaseAuth.signInWithEmailAndPassword(
@@ -43,7 +47,10 @@ class FirebaseAuthService {
       // Handle exceptions
       print("Error Message ${e.message}");
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
-
+      Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+          true, context, animationController,
+          MsgText: "Invalid Credentials Please ReCheck");
+      // WaitTillEnd();
       return null;
     }
   }

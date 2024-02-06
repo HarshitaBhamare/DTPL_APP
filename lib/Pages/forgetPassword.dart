@@ -20,7 +20,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
     void OnClickResetPassword() {}
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -30,7 +34,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   child: Text(
                 'Forget Password?',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: size.height / 30),
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.height / 30,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               )),
             ),
             SizedBox(
@@ -53,6 +60,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             ),
             MyTextField(
                 hint: 'Email',
+                isPasswordField: false,
                 show: true,
                 textEditingController: emailIDController),
             SizedBox(
@@ -86,7 +94,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       style: TextStyle(
                         fontSize: size.height / 60,
                         fontWeight: FontWeight.w800,
-                        color: Colors.blueGrey.shade400,
+                        color: Theme.of(context).colorScheme.tertiary,
                       ),
                     ),
                   ),

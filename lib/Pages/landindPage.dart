@@ -33,34 +33,43 @@ class LandingPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Stack(children: [
       Scaffold(
-        body: Column(
-          children: [
-            SizedBox(
-              height: size.height / 90,
-            ),
-            Image.asset('assets/images/plant.jpg'),
-            SizedBox(height: size.height / 30),
-            Text(
-              "Welcome to",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: size.height / 38),
-            ),
-            Text(
-              'DTPL',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: size.height / 35),
-            ),
-            SizedBox(
-              height: size.height / 25,
-            ),
-            Provider.of<buttonManager>(context, listen: false)
-                .getWidget('h_login', OnClickLoginPage),
-            SizedBox(
-              height: size.height / 60,
-            ),
-            Provider.of<buttonManager>(context, listen: false)
-                .getWidget('h_register', OnClickRegisterPage),
-          ],
+        backgroundColor: Theme.of(context).colorScheme.background,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: size.height / 90,
+              ),
+              Image.asset('assets/images/plant.jpg'),
+              SizedBox(height: size.height / 30),
+              Text(
+                "Welcome to",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.height / 38,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              Text(
+                'DTPL',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.height / 35,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              SizedBox(
+                height: size.height / 25,
+              ),
+              Provider.of<buttonManager>(context, listen: false)
+                  .getWidget('h_login', OnClickLoginPage),
+              SizedBox(
+                height: size.height / 60,
+              ),
+              Provider.of<buttonManager>(context, listen: false)
+                  .getWidget('h_register', OnClickRegisterPage),
+            ],
+          ),
         ),
       ),
       isLoading ? LoadingPage() : SizedBox()

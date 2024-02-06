@@ -52,17 +52,16 @@ class _AuthButtonsState extends State<AuthButtons> {
           decoration: BoxDecoration(
             color: currentid == widget.id
                 ? isclick
-                    ? Colors.black
-                    : Color.fromRGBO(248, 247, 248, 1)
-                : Color.fromRGBO(248, 247, 248, 1),
-            // Color.fromRGBO(248, 247, 248, 1),
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context).colorScheme.secondary
+                : Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Container(
             decoration: BoxDecoration(
-                // color: ,
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.black, width: 2)),
+                border: Border.all(
+                    color: Theme.of(context).colorScheme.primary, width: 2)),
             height: size.height / 12,
             width: size.width / 1.4,
             child: Center(
@@ -71,9 +70,9 @@ class _AuthButtonsState extends State<AuthButtons> {
                 style: TextStyle(
                   color: currentid == widget.id
                       ? isclick
-                          ? Colors.white
-                          : Colors.black
-                      : Colors.black,
+                          ? Theme.of(context).colorScheme.background
+                          : Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.primary,
                   fontSize: size.height / 50,
                   fontWeight: FontWeight.bold,
                 ),
