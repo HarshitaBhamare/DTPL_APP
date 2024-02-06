@@ -14,13 +14,13 @@ class CustomThemes {
 // secondary: Color.fromRGBO(248, 247, 248, 1),
   static final ThemeData lightTheme = ThemeData.dark().copyWith(
     colorScheme: ColorScheme.dark(
-      background: Color.fromRGBO(177, 201, 239, 1), //LIGHT
-      // background: Color.fromRGBO(3, 32, 48, 1), //DARK
+      // background: Color.fromRGBO(179, 205, 224, 1), //LIGHT
+      secondary: Color.fromRGBO(146, 210, 249, 1), //DARK
       // background: Color.fromRGBO(0, 77, 116, 1),
       // primary: Color.fromRGBO(57, 88, 135, 1),//LIGHT
-      primary: Color.fromRGBO(3, 32, 48, 1), //dARK
-      // secondary: Color.fromRGBO(177, 201, 239, 1),//LIGHT
-      secondary: Color.fromRGBO(138, 174, 224, 1),
+      primary: Color.fromRGBO(1, 31, 75, 1),
+      background: Color.fromRGBO(168, 218, 249, 1), //LIGHT
+      // secondary: Color.fromRGBO(179, 205, 224, 1),
       tertiary: Colors.blueGrey.shade600,
     ),
     // Define other theme properties like typography, etc. if needed.
