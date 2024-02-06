@@ -3,6 +3,7 @@ import 'package:dtpl_app/Providers/buttonProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class AuthButtons extends StatefulWidget {
@@ -20,8 +21,6 @@ class AuthButtons extends StatefulWidget {
   @override
   State<AuthButtons> createState() => _AuthButtonsState();
 }
-
-class onTAp {}
 
 class _AuthButtonsState extends State<AuthButtons> {
   @override
@@ -67,15 +66,17 @@ class _AuthButtonsState extends State<AuthButtons> {
             child: Center(
               child: Text(
                 widget.name,
-                style: TextStyle(
+                style: GoogleFonts.gowunBatang(
+                    textStyle: TextStyle(
                   color: currentid == widget.id
                       ? isclick
                           ? Theme.of(context).colorScheme.background
                           : Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.primary,
-                  fontSize: size.height / 50,
-                  fontWeight: FontWeight.bold,
-                ),
+                  fontSize: size.height / 40,
+                  letterSpacing: 1,
+                  fontWeight: FontWeight.w900,
+                )),
               ),
             ),
           ),

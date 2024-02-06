@@ -9,6 +9,7 @@ import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -134,14 +135,14 @@ class _RegisterPageState extends State<RegisterPage>
               children: [
                 SizedBox(
                   width: size.width / 1.2,
-                  child: Text(
-                    'Hello! Register to get\nstarted',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size.height / 30,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  ),
+                  child: Text('Hello! Register to get\nstarted',
+                      style: GoogleFonts.gowunBatang(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: size.height / 30,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      )),
                 ),
                 SizedBox(height: size.height / 120),
                 MyTextField(
@@ -194,9 +195,11 @@ class _RegisterPageState extends State<RegisterPage>
                     ),
                     Text(
                       "Or Log with",
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          fontWeight: FontWeight.bold),
+                      style: GoogleFonts.gowunBatang(
+                        textStyle: TextStyle(
+                            color: Theme.of(context).colorScheme.tertiary,
+                            fontWeight: FontWeight.w900),
+                      ),
                     ),
                     Expanded(
                       child: Divider(
@@ -230,10 +233,12 @@ class _RegisterPageState extends State<RegisterPage>
                     children: [
                       Text(
                         "Already have an account?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                          fontSize: size.height / 60,
+                        style: GoogleFonts.gowunBatang(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: size.height / 60,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
                       SizedBox(width: size.width / 30),
@@ -244,14 +249,15 @@ class _RegisterPageState extends State<RegisterPage>
                               MaterialPageRoute(
                                   builder: (context) => LoginPage()));
                         },
-                        child: Text(
-                          "Login",
-                          style: TextStyle(
-                            fontSize: size.height / 60,
-                            fontWeight: FontWeight.w800,
-                            color: Theme.of(context).colorScheme.tertiary,
-                          ),
-                        ),
+                        child: Text("Login",
+                            style: GoogleFonts.gowunBatang(
+                              textStyle: TextStyle(
+                                fontSize: size.height / 60,
+                                letterSpacing: .7,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.tertiary,
+                              ),
+                            )),
                       ),
                     ],
                   ),

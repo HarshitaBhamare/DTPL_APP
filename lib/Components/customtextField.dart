@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyTextField extends StatefulWidget {
   final String hint;
@@ -54,10 +55,12 @@ class _MyTextFieldState extends State<MyTextField> {
                     onPressed: _toggleShow,
                   )
                 : null,
-            label: Text(
-              widget.hint,
-              style: TextStyle(color: Theme.of(context).colorScheme.primary),
-            ),
+            label: Text(widget.hint,
+                style: GoogleFonts.gowunBatang(
+                  textStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold),
+                )),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(

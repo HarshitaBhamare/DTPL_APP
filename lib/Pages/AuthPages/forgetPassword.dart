@@ -2,6 +2,7 @@ import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -31,14 +32,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             SizedBox(
               width: size.width / 1.1,
               child: Container(
-                  child: Text(
-                'Forget Password?',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size.height / 30,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              )),
+                  child: Text('Forget Password?',
+                      style: GoogleFonts.gowunBatang(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: size.height / 30,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ))),
             ),
             SizedBox(
               height: size.height / 90,
@@ -50,10 +51,13 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   width: size.width,
                   // alignment: Alignment.center,
                   child: Text(
-                    "Don't worry it happens. Please enter the email address linked with your account",
-                    style: TextStyle(
-                        fontSize: size.height / 60, color: Colors.grey),
-                  )),
+                      "Don't worry it happens. Please enter the email address linked with your account",
+                      style: GoogleFonts.gowunBatang(
+                        textStyle: TextStyle(
+                            fontSize: size.height / 60,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold),
+                      ))),
             ),
             SizedBox(
               height: size.height / 30,
@@ -73,14 +77,14 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Don't you have an account?",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size.height / 60,
-                      color: Colors.grey,
-                    ),
-                  ),
+                  Text("Don't you have an account?",
+                      style: GoogleFonts.gowunBatang(
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: size.height / 60,
+                          color: Colors.grey,
+                        ),
+                      )),
                   SizedBox(width: size.width / 30),
                   InkWell(
                     onTap: () {
@@ -89,14 +93,15 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           MaterialPageRoute(
                               builder: (context) => RegisterPage()));
                     },
-                    child: Text(
-                      "Register Now",
-                      style: TextStyle(
-                        fontSize: size.height / 60,
-                        fontWeight: FontWeight.w800,
-                        color: Theme.of(context).colorScheme.tertiary,
-                      ),
-                    ),
+                    child: Text("Register Now",
+                        style: GoogleFonts.gowunBatang(
+                          textStyle: TextStyle(
+                            fontSize: size.height / 60,
+                            letterSpacing: .7,
+                            fontWeight: FontWeight.w900,
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
+                        )),
                   ),
                 ],
               ),

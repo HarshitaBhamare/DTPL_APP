@@ -4,6 +4,7 @@ import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class LandingPage extends StatelessWidget {
@@ -42,22 +43,23 @@ class LandingPage extends StatelessWidget {
               ),
               Image.asset('assets/images/plant.jpg'),
               SizedBox(height: size.height / 30),
-              Text(
-                "Welcome to",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size.height / 38,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              Text(
-                'DTPL',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: size.height / 35,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
+              Text("Welcome to",
+                  style: GoogleFonts.gowunBatang(
+                    textStyle: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: size.height / 35,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  )),
+              Text('DTPL',
+                  style: GoogleFonts.gowunBatang(
+                    textStyle: TextStyle(
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.w900,
+                      fontSize: size.height / 35,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  )),
               SizedBox(
                 height: size.height / 25,
               ),
