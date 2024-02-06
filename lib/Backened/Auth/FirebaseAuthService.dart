@@ -9,7 +9,10 @@ class FirebaseAuthService {
 
   // Register with email and password
   Future<UserCredential?> registerWithEmailAndPassword(
-      String email, String password, BuildContext context) async {
+      String email,
+      String password,
+      BuildContext context,
+      AnimationController animationController) async {
     try {
       UserCredential userCredential =
           await _firebaseAuth.createUserWithEmailAndPassword(
@@ -23,6 +26,9 @@ class FirebaseAuthService {
       // Handle different Firebase Auth exceptions here
       print(e.message);
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+      Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+          true, context, animationController,
+          MsgText: e.message ?? 'An error occurred');
       return null;
     }
   }
@@ -49,7 +55,8 @@ class FirebaseAuthService {
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
       Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
           true, context, animationController,
-          MsgText: "Invalid Credentials Please ReCheck");
+          MsgText: e.message ?? 'An error occurred');
+      // MsgText: "Invalid Credentials Please ReCheck");
       // WaitTillEnd();
       return null;
     }

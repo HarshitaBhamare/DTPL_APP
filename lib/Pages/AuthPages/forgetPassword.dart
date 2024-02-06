@@ -1,5 +1,5 @@
 import 'package:dtpl_app/Components/customtextField.dart';
-import 'package:dtpl_app/Pages/registerPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

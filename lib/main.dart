@@ -1,5 +1,5 @@
 import 'package:dtpl_app/Components/customMsgBox.dart';
-import 'package:dtpl_app/Pages/landindPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/landingPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';

@@ -1,6 +1,6 @@
-import 'package:dtpl_app/Pages/loadingPage.dart';
-import 'package:dtpl_app/Pages/loginPage.dart';
-import 'package:dtpl_app/Pages/registerPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/loginPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';

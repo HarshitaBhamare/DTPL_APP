@@ -1,7 +1,7 @@
 import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
 import 'package:dtpl_app/Components/customAuthButton.dart';
-import 'package:dtpl_app/Pages/loginPage.dart';
-import 'package:dtpl_app/Pages/registerPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/loginPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:flutter/material.dart';
 
 class buttonManager with ChangeNotifier {

@@ -2,9 +2,9 @@ import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
 import 'package:dtpl_app/Components/customMsgBox.dart';
 import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Components/tile.dart';
-import 'package:dtpl_app/Pages/forgetPassword.dart';
-import 'package:dtpl_app/Pages/loadingPage.dart';
-import 'package:dtpl_app/Pages/registerPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/forgetPassword.dart';
+import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
+import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
@@ -23,12 +23,12 @@ class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   AnimationController? _animationController;
   Animation<double>? _opacityAnimation;
+  bool isCheck = false;
   TextEditingController emailIDController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
   void initState() {
     super.initState();
-    // Initialize your animation controller
     _animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 200),
@@ -56,7 +56,6 @@ class _LoginPageState extends State<LoginPage>
     Size size = MediaQuery.of(context).size;
     final isLoading = context.watch<LoadingProvider>().isLoading;
     final isShowing = context.watch<MsgBoxProvider>().isShowing;
-
     if (isShowing) {
       _animationController?.forward();
     } else {
@@ -132,8 +131,42 @@ class _LoginPageState extends State<LoginPage>
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            isCheck = !isCheck;
+                          });
+                        },
+                        child: isCheck
+                            ? Icon(
+                                Icons.check_box,
+                                color: Theme.of(context).colorScheme.primary,
+                              )
+                            : Icon(
+                                Icons.check_box_outline_blank,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                      ),
+                      SizedBox(
+                        width: size.width / 100,
+                      ),
+                      Text(
+                        "Remeber Me!",
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: size.height / 55,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                   SizedBox(
-                    width: size.width / 3,
+                    width: size.width / 6.4,
+                  ),
+                  SizedBox(
+                    width: size.width / 2.3,
                     child: InkWell(
                       onTap: () {
                         print('Forget Password of login page is pressed');
@@ -146,13 +179,15 @@ class _LoginPageState extends State<LoginPage>
                         'Forget Password?',
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.tertiary,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.bold,
+                            fontSize: size.height / 55),
                       ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: size.height / 40),
+              SizedBox(height: size.height / 60),
+              SizedBox(height: size.height / 70),
               Provider.of<buttonManager>(context, listen: false)
                   .getWidget('login', OnClickLogin),
               SizedBox(height: size.height / 30),

@@ -10,14 +10,18 @@ class CustomThemes {
   //   ),
   //   // Define other theme properties like typography, etc. if needed.
   // );
-
+// primary: Colors.black,
+// secondary: Color.fromRGBO(248, 247, 248, 1),
   static final ThemeData lightTheme = ThemeData.dark().copyWith(
     colorScheme: ColorScheme.dark(
-      background: Colors.white,
-      primary: Colors.black,
-      secondary: Color.fromRGBO(248, 247, 248, 1),
-      tertiary: Colors.blueGrey.shade400,
-      // primaryContainer: Colors.grey.shade00,
+      background: Color.fromRGBO(177, 201, 239, 1), //LIGHT
+      // background: Color.fromRGBO(3, 32, 48, 1), //DARK
+      // background: Color.fromRGBO(0, 77, 116, 1),
+      // primary: Color.fromRGBO(57, 88, 135, 1),//LIGHT
+      primary: Color.fromRGBO(3, 32, 48, 1), //dARK
+      // secondary: Color.fromRGBO(177, 201, 239, 1),//LIGHT
+      secondary: Color.fromRGBO(138, 174, 224, 1),
+      tertiary: Colors.blueGrey.shade600,
     ),
     // Define other theme properties like typography, etc. if needed.
   );
