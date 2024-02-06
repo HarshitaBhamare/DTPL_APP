@@ -15,7 +15,8 @@ class CustomThemes {
   static final ThemeData lightTheme = ThemeData.dark().copyWith(
     colorScheme: ColorScheme.dark(
       // background: Color.fromRGBO(179, 205, 224, 1), //LIGHT
-      secondary: Color.fromRGBO(146, 210, 249, 1), //DARK
+      secondary: Color.fromRGBO(194, 229, 247, 1),
+      // secondary: Color.fromRGBO(146, 210, 249, 1), //light
       // background: Color.fromRGBO(0, 77, 116, 1),
       // primary: Color.fromRGBO(57, 88, 135, 1),//LIGHT
       primary: Color.fromRGBO(1, 31, 75, 1),
