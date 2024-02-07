@@ -58,7 +58,8 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (BuildContext context, int index) => Card(
                 color: Theme.of(context).colorScheme.secondary,
                 child: SizedBox(
-                  width: size.width / 2.3,
+                  //width for the container
+                  width: size.width / 1.3,
                   child: Column(
                     children: [
                       SizedBox(
@@ -66,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         height: size.height / 4.5,
-                        width: size.width / 2.6,
+                        width: size.width / 1.4,
                         decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(10)),
@@ -82,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         height: size.height / 20,
-                        width: size.width / 2.6,
+                        width: size.width / 1.4,
                         decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(7)),
@@ -105,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         height: size.height / 20,
-                        width: size.width / 2.6,
+                        width: size.width / 1.4,
                         decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(7)),
@@ -128,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Container(
                         height: size.height / 14,
-                        width: size.width / 2.6,
+                        width: size.width / 1.4,
                         decoration: BoxDecoration(
                             color: Theme.of(context).colorScheme.background,
                             borderRadius: BorderRadius.circular(7)),
