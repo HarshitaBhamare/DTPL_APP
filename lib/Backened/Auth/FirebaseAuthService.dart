@@ -1,3 +1,4 @@
+import 'package:dtpl_app/Pages/HomePages/homePage.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,6 +49,11 @@ class FirebaseAuthService {
       print("Signed in user: ${FirebaseAuth.instance.currentUser?.email}");
       await Future.delayed(Duration(seconds: 1));
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ));
       return userCredential;
     } on FirebaseAuthException catch (e) {
       // Handle exceptions

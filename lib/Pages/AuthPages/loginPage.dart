@@ -10,6 +10,7 @@ import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -104,13 +105,16 @@ class _LoginPageState extends State<LoginPage>
               SizedBox(
                 width: size.width / 1.2,
                 child: Text('Welcome back! Glad\nto see you, Again!',
-                    style: GoogleFonts.gowunBatang(
-                      textStyle: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: size.height / 30,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    )),
+                        style: GoogleFonts.gowunBatang(
+                          textStyle: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: size.height / 30,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ))
+                    .animate()
+                    .fade(delay: Duration(milliseconds: 100))
+                    .scale(),
               ),
               SizedBox(height: size.height / 30),
               MyTextField(
@@ -118,14 +122,14 @@ class _LoginPageState extends State<LoginPage>
                 isPasswordField: false,
                 show: false,
                 textEditingController: emailIDController,
-              ),
+              ).animate().fade(delay: Duration(milliseconds: 500)).slideY(),
               SizedBox(height: size.height / 60),
               MyTextField(
                 hint: 'Password',
                 isPasswordField: true,
                 show: false,
                 textEditingController: passwordController,
-              ),
+              ).animate().fade(delay: Duration(milliseconds: 600)).slideY(),
               SizedBox(height: size.height / 35),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -147,7 +151,10 @@ class _LoginPageState extends State<LoginPage>
                             : Icon(
                                 Icons.check_box_outline_blank,
                                 color: Theme.of(context).colorScheme.primary,
-                              ),
+                              )
+                                .animate()
+                                .fade(delay: Duration(milliseconds: 700))
+                                .slideY(),
                       ),
                       SizedBox(
                         width: size.width / 100,
@@ -161,6 +168,9 @@ class _LoginPageState extends State<LoginPage>
                               fontWeight: FontWeight.w900),
                         ),
                       )
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 700))
+                          .slideY(),
                     ],
                   ),
                   SizedBox(
@@ -169,28 +179,35 @@ class _LoginPageState extends State<LoginPage>
                   SizedBox(
                     width: size.width / 2.3,
                     child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgetPassword()));
-                        },
-                        child: Text(
-                          'Forget Password?',
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary,
-                                fontWeight: FontWeight.w900,
-                                fontSize: size.height / 55),
-                          ),
-                        )),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ForgetPassword()));
+                      },
+                      child: Text(
+                        'Forget Password?',
+                        style: GoogleFonts.gowunBatang(
+                          textStyle: TextStyle(
+                              color: Theme.of(context).colorScheme.tertiary,
+                              fontWeight: FontWeight.w900,
+                              fontSize: size.height / 55),
+                        ),
+                      )
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 700))
+                          .slideY(),
+                    ),
                   ),
                 ],
               ),
               SizedBox(height: size.height / 60),
               SizedBox(height: size.height / 70),
               Provider.of<buttonManager>(context, listen: false)
-                  .getWidget('login', OnClickLogin),
+                  .getWidget('login', OnClickLogin)
+                  .animate()
+                  .fade(delay: Duration(milliseconds: 800))
+                  .slideY(),
               SizedBox(height: size.height / 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -202,7 +219,7 @@ class _LoginPageState extends State<LoginPage>
                       thickness: 1,
                       color: Theme.of(context).colorScheme.tertiary,
                     ),
-                  ),
+                  ).animate().fade(delay: Duration(milliseconds: 800)).slideY(),
                   Text(
                     "Or Log with",
                     style: GoogleFonts.gowunBatang(
@@ -210,7 +227,7 @@ class _LoginPageState extends State<LoginPage>
                           color: Theme.of(context).colorScheme.tertiary,
                           fontWeight: FontWeight.w900),
                     ),
-                  ),
+                  ).animate().fade(delay: Duration(milliseconds: 800)).slideY(),
                   Expanded(
                     child: Divider(
                       indent: 10.0,
@@ -218,7 +235,7 @@ class _LoginPageState extends State<LoginPage>
                       thickness: 1,
                       color: Theme.of(context).colorScheme.tertiary,
                     ),
-                  ),
+                  ).animate().fade(delay: Duration(milliseconds: 800)).slideY(),
                 ],
               ),
               SizedBox(height: size.height / 40),
@@ -226,11 +243,17 @@ class _LoginPageState extends State<LoginPage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SquareTile(imagePath: 'assets/images/google.png'),
+                    SquareTile(imagePath: 'assets/images/google.png')
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 500))
+                        .slideX(),
                     SizedBox(
                       width: size.width / 7,
                     ),
-                    SquareTile(imagePath: 'assets/images/apple.png'),
+                    SquareTile(imagePath: 'assets/images/apple.png')
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 500))
+                        .slideX(),
                   ],
                 ),
               ),
@@ -248,7 +271,10 @@ class _LoginPageState extends State<LoginPage>
                           color: Colors.grey,
                         ),
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 1000))
+                        .slideY(),
                     SizedBox(width: size.width / 30),
                     InkWell(
                       onTap: () {
@@ -258,14 +284,17 @@ class _LoginPageState extends State<LoginPage>
                                 builder: (context) => RegisterPage()));
                       },
                       child: Text("Register Now",
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                              fontSize: size.height / 60,
-                              letterSpacing: .7,
-                              fontWeight: FontWeight.w900,
-                              color: Theme.of(context).colorScheme.tertiary,
-                            ),
-                          )),
+                              style: GoogleFonts.gowunBatang(
+                                textStyle: TextStyle(
+                                  fontSize: size.height / 60,
+                                  letterSpacing: .7,
+                                  fontWeight: FontWeight.w900,
+                                  color: Theme.of(context).colorScheme.tertiary,
+                                ),
+                              ))
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 1000))
+                          .slideY(),
                     ),
                   ],
                 ),

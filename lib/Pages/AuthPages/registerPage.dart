@@ -9,6 +9,7 @@ import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -136,51 +137,60 @@ class _RegisterPageState extends State<RegisterPage>
                 SizedBox(
                   width: size.width / 1.2,
                   child: Text('Hello! Register to get\nstarted',
-                      style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: size.height / 30,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      )),
+                          style: GoogleFonts.gowunBatang(
+                            textStyle: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: size.height / 30,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ))
+                      .animate()
+                      .fade(delay: Duration(milliseconds: 100))
+                      .scale(),
                 ),
                 SizedBox(height: size.height / 120),
                 MyTextField(
-                    hint: 'First Name',
-                    isPasswordField: false,
-                    show: true,
-                    textEditingController: firstNameController),
+                        hint: 'First Name',
+                        isPasswordField: false,
+                        show: true,
+                        textEditingController: firstNameController)
+                    .animate()
+                    .fade(delay: Duration(milliseconds: 400))
+                    .slideY(),
                 SizedBox(height: size.height / 60),
                 MyTextField(
                   hint: 'Last Name',
                   isPasswordField: false,
                   show: true,
                   textEditingController: lastNameController,
-                ),
+                ).animate().fade(delay: Duration(milliseconds: 450)).slideY(),
                 SizedBox(height: size.height / 60),
                 MyTextField(
                   hint: 'E-mail',
                   isPasswordField: false,
                   show: true,
                   textEditingController: emailIDController,
-                ),
+                ).animate().fade(delay: Duration(milliseconds: 500)).slideY(),
                 SizedBox(height: size.height / 60),
                 MyTextField(
                   hint: 'Password',
                   isPasswordField: true,
                   show: false,
                   textEditingController: passwordController,
-                ),
+                ).animate().fade(delay: Duration(milliseconds: 550)).slideY(),
                 SizedBox(height: size.height / 60),
                 MyTextField(
                   hint: 'Confirm Password',
                   isPasswordField: true,
                   show: false,
                   textEditingController: confirmpasswordController,
-                ),
+                ).animate().fade(delay: Duration(milliseconds: 600)).slideY(),
                 SizedBox(height: size.height / 25),
                 Provider.of<buttonManager>(context, listen: false)
-                    .getWidget('register', OnClickRegsiter),
+                    .getWidget('register', OnClickRegsiter)
+                    .animate()
+                    .fade(delay: Duration(milliseconds: 650))
+                    .slideY(),
                 // SizedBox(height: size.height / 10),
                 SizedBox(height: size.height / 50),
                 Row(
@@ -192,7 +202,10 @@ class _RegisterPageState extends State<RegisterPage>
                         thickness: 1,
                         color: Theme.of(context).colorScheme.tertiary,
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 700))
+                        .slideY(),
                     Text(
                       "Or Log with",
                       style: GoogleFonts.gowunBatang(
@@ -200,7 +213,10 @@ class _RegisterPageState extends State<RegisterPage>
                             color: Theme.of(context).colorScheme.tertiary,
                             fontWeight: FontWeight.w900),
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 700))
+                        .slideY(),
                     Expanded(
                       child: Divider(
                         indent: 10.0,
@@ -208,7 +224,10 @@ class _RegisterPageState extends State<RegisterPage>
                         thickness: 1,
                         color: Theme.of(context).colorScheme.tertiary,
                       ),
-                    ),
+                    )
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 700))
+                        .slideY(),
                   ],
                 ),
                 SizedBox(height: size.height / 60),
@@ -216,11 +235,17 @@ class _RegisterPageState extends State<RegisterPage>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SquareTile(imagePath: 'assets/images/google.png'),
+                      SquareTile(imagePath: 'assets/images/google.png')
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 500))
+                          .slideX(),
                       SizedBox(
                         width: size.width / 7,
                       ),
-                      SquareTile(imagePath: 'assets/images/apple.png'),
+                      SquareTile(imagePath: 'assets/images/apple.png')
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 500))
+                          .slideX(),
                     ],
                   ),
                 ),
@@ -240,7 +265,10 @@ class _RegisterPageState extends State<RegisterPage>
                             color: Colors.grey,
                           ),
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 800))
+                          .slideY(),
                       SizedBox(width: size.width / 30),
                       InkWell(
                         onTap: () {
@@ -250,14 +278,18 @@ class _RegisterPageState extends State<RegisterPage>
                                   builder: (context) => LoginPage()));
                         },
                         child: Text("Login",
-                            style: GoogleFonts.gowunBatang(
-                              textStyle: TextStyle(
-                                fontSize: size.height / 60,
-                                letterSpacing: .7,
-                                fontWeight: FontWeight.w900,
-                                color: Theme.of(context).colorScheme.tertiary,
-                              ),
-                            )),
+                                style: GoogleFonts.gowunBatang(
+                                  textStyle: TextStyle(
+                                    fontSize: size.height / 60,
+                                    letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.tertiary,
+                                  ),
+                                ))
+                            .animate()
+                            .fade(delay: Duration(milliseconds: 900))
+                            .slideY(),
                       ),
                     ],
                   ),

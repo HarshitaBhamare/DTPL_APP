@@ -4,6 +4,7 @@ import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +51,10 @@ class LandingPage extends StatelessWidget {
                       fontSize: size.height / 35,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                  )),
+                  )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              // .animate()
+              // .fade(delay: Duration(milliseconds: 500))
+              // .slideY(),
               Text('DTPL',
                   style: GoogleFonts.gowunBatang(
                     textStyle: TextStyle(
@@ -59,17 +63,23 @@ class LandingPage extends StatelessWidget {
                       fontSize: size.height / 35,
                       color: Theme.of(context).colorScheme.primary,
                     ),
-                  )),
+                  )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
               SizedBox(
                 height: size.height / 25,
               ),
               Provider.of<buttonManager>(context, listen: false)
-                  .getWidget('h_login', OnClickLoginPage),
+                  .getWidget('h_login', OnClickLoginPage)
+                  .animate()
+                  .fade(delay: Duration(milliseconds: 700))
+                  .slideY(),
               SizedBox(
                 height: size.height / 60,
               ),
               Provider.of<buttonManager>(context, listen: false)
-                  .getWidget('h_register', OnClickRegisterPage),
+                  .getWidget('h_register', OnClickRegisterPage)
+                  .animate()
+                  .fade(delay: Duration(milliseconds: 900))
+                  .slideY(),
             ],
           ),
         ),
