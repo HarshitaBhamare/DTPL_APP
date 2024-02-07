@@ -15,6 +15,16 @@ class _HomePageState extends State<HomePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          SizedBox(
+            width: size.width / 6,
+            child: Icon(
+              Icons.shopping_cart_rounded,
+              color: Theme.of(context).colorScheme.primary,
+              size: size.height / 30,
+            ),
+          )
+        ],
         backgroundColor: Theme.of(context).colorScheme.background,
         centerTitle: true,
         title: Text('DTPL',
@@ -29,9 +39,9 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           SizedBox(
-            width: size.width / 1.1,
+            width: size.width / 1.04,
             child: Text(
-              'Features :',
+              'Featured Machines :',
               style: GoogleFonts.gowunBatang(
                   textStyle: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
@@ -40,166 +50,188 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(
-            height: size.height / 190,
-          ),
-          SizedBox(
-            height: size.height / 2.5,
+            height: size.height / 2.2,
             width: size.width / 1,
-            child: Expanded(
-              flex: 1,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) => Card(
-                  color: Theme.of(context).colorScheme.secondary,
-                  child: SizedBox(
-                    width: size.width / 2.5,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: size.height / 90,
-                        ),
-                        Container(
-                          height: size.height / 4.5,
-                          width: size.width / 2.8,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
-                              child: Text(
-                            'IMAGE',
-                            style: TextStyle(color: Colors.black),
-                          )),
-                          // child: Image.asset('assets/images/dtpllogo.png'),
-                        ),
-                        SizedBox(
-                          height: size.height / 100,
-                        ),
-                        Container(
-                          height: size.height / 25,
-                          width: size.width / 2.8,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Center(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (BuildContext context, int index) => Card(
+                color: Theme.of(context).colorScheme.secondary,
+                child: SizedBox(
+                  width: size.width / 2.3,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: size.height / 90,
+                      ),
+                      Container(
+                        height: size.height / 4.5,
+                        width: size.width / 2.6,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.background,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
                             child: Text(
-                              'Name',
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
+                          'IMAGE',
+                          style: TextStyle(color: Colors.black),
+                        )),
+                        // child: Image.asset('assets/images/dtpllogo.png'),
+                      ),
+                      SizedBox(
+                        height: size.height / 100,
+                      ),
+                      Container(
+                        height: size.height / 20,
+                        width: size.width / 2.6,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.background,
+                            borderRadius: BorderRadius.circular(7)),
+                        child: Center(
+                          child: Text(
+                            'Name',
+                            style: GoogleFonts.gowunBatang(
+                              textStyle: TextStyle(
+                                fontSize: size.height / 60,
+                                letterSpacing: .7,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: size.height / 100,
-                        ),
-                        Container(
-                          height: size.height / 25,
-                          width: size.width / 2.8,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Center(
-                            child: Text(
-                              'Price',
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
+                      ),
+                      SizedBox(
+                        height: size.height / 100,
+                      ),
+                      Container(
+                        height: size.height / 20,
+                        width: size.width / 2.6,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.background,
+                            borderRadius: BorderRadius.circular(7)),
+                        child: Center(
+                          child: Text(
+                            'Price',
+                            style: GoogleFonts.gowunBatang(
+                              textStyle: TextStyle(
+                                fontSize: size.height / 60,
+                                letterSpacing: .7,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: size.height / 100,
-                        ),
-                        Container(
-                          height: size.height / 25,
-                          width: size.width / 2.8,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Center(
-                            child: Text(
-                              'Specifications',
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
+                      ),
+                      SizedBox(
+                        height: size.height / 100,
+                      ),
+                      Container(
+                        height: size.height / 14,
+                        width: size.width / 2.6,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.background,
+                            borderRadius: BorderRadius.circular(7)),
+                        child: Center(
+                          child: Text(
+                            'Specifications',
+                            style: GoogleFonts.gowunBatang(
+                              textStyle: TextStyle(
+                                fontSize: size.height / 60,
+                                letterSpacing: .7,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
           ),
           SizedBox(
-              // height: size.height / 120,
-              ),
-          Container(
             width: size.width / 1.05,
-            height: size.height / 2.9,
-            // color: Colors.amber,
-            child: Expanded(
-              flex: 1,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemBuilder: (ctx, int) {
-                  return Card(
-                    color: Theme.of(context).colorScheme.secondary,
-                    child: ListTile(
-                        leading: Container(
-                          width: size.width / 8,
-                          height: size.height / 20,
-                          child: Center(
-                            child: Text(
-                              'IMAGE',
-                              style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary),
-                            ),
-                          ),
-                          color: Theme.of(context).colorScheme.background,
-                        ),
-                        // leading: Image.asset(),
-                        title: Text('Name',
-                            style: GoogleFonts.gowunBatang(
-                              textStyle: TextStyle(
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary),
-                            )),
-                        trailing: Text("Price",
-                            style: GoogleFonts.gowunBatang(
-                              textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary),
-                            ))),
-                  );
-                },
-              ),
+            child: Text(
+              'Machines :',
+              style: GoogleFonts.gowunBatang(
+                  textStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: size.height / 45,
+                      fontWeight: FontWeight.w800)),
             ),
+          ),
+          // SizedBox(height: size.height / 50),
+          SizedBox(
+            width: size.width / 1.05,
+            height: size.height / 3.9,
+            // color: Colors.amber,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemBuilder: (ctx, int) {
+                return Card(
+                  color: Theme.of(context).colorScheme.secondary,
+                  child: ListTile(
+                      leading: Container(
+                        width: size.width / 8,
+                        height: size.height / 20,
+                        color: Theme.of(context).colorScheme.background,
+                        child: Center(
+                          child: Text(
+                            'IMAGE',
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary),
+                          ),
+                        ),
+                      ),
+                      // leading: Image.asset(),
+                      title: Text('Name',
+                          style: GoogleFonts.gowunBatang(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.primary),
+                          )),
+                      trailing: Text("Price",
+                          style: GoogleFonts.gowunBatang(
+                            textStyle: TextStyle(
+                                fontSize: size.height / 60,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.primary),
+                          ))),
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: size.height / 190,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                width: size.width / 3.7,
+                child: InkWell(
+                  onTap: () {},
+                  child: Text(
+                    'View More >>',
+                    style: GoogleFonts.gowunBatang(
+                        textStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.w800,
+                    )),
+                  ),
+                ),
+              )
+            ],
           )
         ],
       ),
       bottomNavigationBar: Container(
         color: Theme.of(context).colorScheme.secondary,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 13, vertical: 7),
           child: GNav(
               backgroundColor: Theme.of(context).colorScheme.secondary,
               activeColor: Theme.of(context).colorScheme.primary,
@@ -209,8 +241,8 @@ class _HomePageState extends State<HomePage> {
               tabShadow: [
                 BoxShadow(color: Colors.grey.withOpacity(1), blurRadius: 2)
               ],
-              gap: 7,
-              padding: EdgeInsets.all(16),
+              gap: 5,
+              padding: const EdgeInsets.all(13),
               tabs: [
                 GButton(
                     icon: Icons.home,
@@ -218,7 +250,6 @@ class _HomePageState extends State<HomePage> {
                     text: 'Home',
                     textStyle: GoogleFonts.gowunBatang(
                       textStyle: TextStyle(
-                        fontSize: size.height / 60,
                         letterSpacing: .7,
                         fontWeight: FontWeight.w900,
                         color: Theme.of(context).colorScheme.primary,
@@ -230,7 +261,6 @@ class _HomePageState extends State<HomePage> {
                     text: 'Likes',
                     textStyle: GoogleFonts.gowunBatang(
                       textStyle: TextStyle(
-                        fontSize: size.height / 60,
                         letterSpacing: .7,
                         fontWeight: FontWeight.w900,
                         color: Theme.of(context).colorScheme.primary,
@@ -242,7 +272,6 @@ class _HomePageState extends State<HomePage> {
                     text: 'Search',
                     textStyle: GoogleFonts.gowunBatang(
                       textStyle: TextStyle(
-                        fontSize: size.height / 60,
                         letterSpacing: .7,
                         fontWeight: FontWeight.w900,
                         color: Theme.of(context).colorScheme.primary,
@@ -254,7 +283,6 @@ class _HomePageState extends State<HomePage> {
                     text: 'Settings',
                     textStyle: GoogleFonts.gowunBatang(
                       textStyle: TextStyle(
-                        fontSize: size.height / 60,
                         letterSpacing: .7,
                         fontWeight: FontWeight.w900,
                         color: Theme.of(context).colorScheme.primary,
