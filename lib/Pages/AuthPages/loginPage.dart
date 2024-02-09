@@ -243,10 +243,15 @@ class _LoginPageState extends State<LoginPage>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SquareTile(imagePath: 'assets/images/google.png')
-                        .animate()
-                        .fade(delay: Duration(milliseconds: 500))
-                        .slideX(),
+                    InkWell(
+                      onTap: () {
+                        FirebaseAuthService().signInWithGoogle(context);
+                      },
+                      child: SquareTile(imagePath: 'assets/images/google.png')
+                          .animate()
+                          .fade(delay: Duration(milliseconds: 500))
+                          .slideX(),
+                    ),
                     SizedBox(
                       width: size.width / 7,
                     ),

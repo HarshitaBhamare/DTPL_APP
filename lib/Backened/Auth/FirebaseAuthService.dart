@@ -1,8 +1,10 @@
+import 'package:dtpl_app/Pages/AuthPages/landingPage.dart';
 import 'package:dtpl_app/Pages/HomePages/homePage.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 class FirebaseAuthService {
@@ -68,5 +70,102 @@ class FirebaseAuthService {
     }
   }
 
-  // Add other authentication related methods as needed (e.g., sign out)
+  Future<void> signOut(BuildContext context) async {
+    try {
+      // Sign out from Firebase
+      Provider.of<LoadingProvider>(context, listen: false).showLoading();
+      await FirebaseAuth.instance.signOut();
+
+      // Optionally, navigate the user to the sign-in page after signing out
+      // ignore: use_build_context_synchronously
+      await Future.delayed(Duration(seconds: 2));
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LandingPage()),
+        (Route<dynamic> route) => false,
+      );
+    } catch (e) {
+      // Handle any errors here
+      print("Error signing out: $e");
+      // Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+      //     true,
+      //     context,
+      //     null, // Assuming you don't need an AnimationController for showing messages
+      //     MsgText: e.toString() ?? 'An error occurred during sign out');
+    }
+  }
+
+  Future<UserCredential?> signInWithGoogle(BuildContext context) async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
+    try {
+      // Trigger the authentication flow
+      Provider.of<LoadingProvider>(context, listen: false).showLoading();
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+
+      // Abort if user cancels the sign in process
+      if (googleSignInAccount == null) return null;
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      // Create a new credential
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      UserCredential userCredential =
+          await firebaseAuth.signInWithCredential(credential);
+
+      // Optionally, navigate to the HomePage after a successful sign in
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      // Handle Firebase authentication errors
+      print("Firebase Auth Error: ${e.message}");
+      return null;
+    } catch (e) {
+      // Handle other errors
+      print("Error signing in with Google: $e");
+
+      return null;
+    }
+  }
+
+  Future<void> signOutGoogle(BuildContext context) async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    try {
+      // Sign out from Google
+      await googleSignIn.signOut();
+      // Sign out from Firebase
+      await FirebaseAuth.instance.signOut();
+
+      // Optionally, navigate the user to the sign-in page after signing out
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LandingPage()),
+      );
+    } catch (e) {
+      // Handle errors (e.g., show a message)
+      print("Error signing out: $e");
+      // Using Provider or any other state management to show the error message
+      // This is just a placeholder, replace with your actual error handling mechanism
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error signing out. Try again.')),
+      );
+    }
+  }
 }

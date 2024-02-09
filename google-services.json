@@ -12,7 +12,20 @@
           "package_name": "com.example.dtpl_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "124923317053-bvfgaiorfjm4cfe10kj6ft5p45077gqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dtpl_app",
+            "certificate_hash": "4c9f5dad95157144cb047dd78b3d0306b9b5754d"
+          }
+        },
+        {
+          "client_id": "124923317053-cl0231fmgemos67223g8ml92os1phjuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyC9KVIiPN40iN_uNsDg9hbSWGEP-OA-ZHk"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124923317053-cl0231fmgemos67223g8ml92os1phjuj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "124923317053-3mq1d88t8u1a579ljrh2a4oolv98gtce.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dtplApp"
+              }
+            }
+          ]
         }
       }
     }
