@@ -1,11 +1,5 @@
-import 'package:dtpl_app/Pages/HomePages/customList.dart';
-import 'package:dtpl_app/Components/customMsgBox.dart';
 import 'package:dtpl_app/Pages/AuthPages/landingPage.dart';
-import 'package:dtpl_app/Pages/AuthPages/loginPage.dart';
-import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Pages/HomePages/homePage.dart';
-import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
-import 'package:dtpl_app/Pages/HomePages/listModel.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
@@ -55,32 +49,32 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomThemes.lightTheme,
-      home: Scaffold(
-        // body: SpecifiedMenuBar(),
-        body: HomePage(),
-        // body: ListOfItems(),
-        // body: SpecifiedMenuBar(),
-      ),
-      // home: StreamBuilder<User?>(
-      //   // Listen to the authentication state
-      //   stream: FirebaseAuth.instance.authStateChanges(),
-      //   builder: (BuildContext context, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.active) {
-      //       // Get the user
-      //       User? user = snapshot.data;
-      //       // If the user is not null, they're logged in, navigate to HomePage
-      //       if (user != null) {
-      //         return HomePage();
-      //       }
-      //       // User is not logged in, show the sign-in page
-      //       return LandingPage();
-      //     }
-      //     // Checking the auth state, show a loading indicator
-      //     return const Scaffold(
-      //       body: Center(child: CircularProgressIndicator()),
-      //     );
-      //   },
+      // home: Scaffold(
+      //   // body: SpecifiedMenuBar(),
+      //   body: HomePage(),
+      //   // body: ListOfItems(),
+      //   // body: SpecifiedMenuBar(),
       // ),
+      home: StreamBuilder<User?>(
+        // Listen to the authentication state
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            // Get the user
+            User? user = snapshot.data;
+            // If the user is not null, they're logged in, navigate to HomePage
+            if (user != null) {
+              return HomePage();
+            }
+            // User is not logged in, show the sign-in page
+            return LandingPage();
+          }
+          // Checking the auth state, show a loading indicator
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        },
+      ),
     );
   }
 }

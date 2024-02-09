@@ -88,6 +88,8 @@ class FirebaseAuthService {
     } catch (e) {
       // Handle any errors here
       print("Error signing out: $e");
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+
       // Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
       //     true,
       //     context,
@@ -146,6 +148,7 @@ class FirebaseAuthService {
 
   Future<void> signOutGoogle(BuildContext context) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
+    Provider.of<LoadingProvider>(context, listen: false).showLoading();
 
     try {
       // Sign out from Google
@@ -154,6 +157,8 @@ class FirebaseAuthService {
       await FirebaseAuth.instance.signOut();
 
       // Optionally, navigate the user to the sign-in page after signing out
+      await Future.delayed(Duration(seconds: 2));
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LandingPage()),
@@ -162,7 +167,9 @@ class FirebaseAuthService {
       // Handle errors (e.g., show a message)
       print("Error signing out: $e");
       // Using Provider or any other state management to show the error message
-      // This is just a placeholder, replace with your actual error handling mechanism
+      // This is just a placeholder, replace with your actual error handling mechanism\
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error signing out. Try again.')),
       );
