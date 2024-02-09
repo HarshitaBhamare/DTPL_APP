@@ -1,7 +1,10 @@
 import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
 // import 'package:dtpl_app/Components/customMenuImg.dart';
 import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
+import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
+import 'package:dtpl_app/Pages/HomePages/customList.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -31,6 +34,20 @@ class _HomePageState extends State<HomePage> {
               size: size.height / 30,
             ),
           ).animate().fade(delay: Duration(milliseconds: 450)).slideX(),
+          InkWell(
+            onTap: () async {
+              FirebaseAuthService().signOut(context);
+              await FirebaseAuth.instance.signOut();
+            },
+            child: SizedBox(
+              width: size.width / 6,
+              child: Icon(
+                Icons.logout,
+                color: Theme.of(context).colorScheme.primary,
+                size: size.height / 30,
+              ),
+            ).animate().fade(delay: Duration(milliseconds: 450)).slideX(),
+          ),
         ],
         backgroundColor: Theme.of(context).colorScheme.background,
         centerTitle: true,
@@ -43,208 +60,243 @@ class _HomePageState extends State<HomePage> {
             ))).animate().fade(delay: Duration(milliseconds: 100)).scale(),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Column(
-        children: [
-          SizedBox(
-              width: size.width / 1.04,
-              child: Text(
-                'Featured Machines :',
-                style: GoogleFonts.gowunBatang(
-                  textStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: size.height / 40,
-                      fontWeight: FontWeight.w800),
-                ),
-              ).animate().fade(delay: Duration(milliseconds: 500)).slideY()),
-          InkWell(
-            onTap: () {
-              print('Menu open');
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => SpecifiedMenuBarImg()));
-            },
-            child: SizedBox(
-              height: size.height / 2.2,
-              width: size.width / 1.05,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) => Card(
-                  color: Theme.of(context).colorScheme.secondary,
-                  child: SizedBox(
-                    //width for real container
-                    width: size.width / 1.3,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: size.height / 90,
-                        ),
-                        Container(
-                          height: size.height / 4.5,
-                          width: size.width / 1.4,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Center(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+                width: size.width / 1.04,
+                child: Text(
+                  'Featured Machines :',
+                  style: GoogleFonts.gowunBatang(
+                    textStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: size.height / 40,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ).animate().fade(delay: Duration(milliseconds: 500)).slideY()),
+            InkWell(
+              onTap: () {
+                print('Menu open');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SpecifiedMenuBar()));
+              },
+              child: SizedBox(
+                height: size.height / 2.2,
+                width: size.width / 1.05,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (BuildContext context, int index) => Card(
+                    color: Theme.of(context).colorScheme.secondary,
+                    child: SizedBox(
+                      //width for real container
+                      width: size.width / 1.3,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: size.height / 90,
+                          ),
+                          Container(
+                            height: size.height / 4.5,
+                            width: size.width / 1.4,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.background,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Center(
+                                child: Text(
+                              'IMAGE',
+                              style: TextStyle(color: Colors.black),
+                            )),
+                            // child: Image.asset('assets/images/dtpllogo.png'),
+                          ),
+                          SizedBox(
+                            height: size.height / 100,
+                          ),
+                          Container(
+                            height: size.height / 20,
+                            width: size.width / 1.4,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.background,
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Center(
                               child: Text(
-                            'IMAGE',
-                            style: TextStyle(color: Colors.black),
-                          )),
-                          // child: Image.asset('assets/images/dtpllogo.png'),
-                        ),
-                        SizedBox(
-                          height: size.height / 100,
-                        ),
-                        Container(
-                          height: size.height / 20,
-                          width: size.width / 1.4,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Center(
-                            child: Text(
-                              'Name',
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary,
+                                'Name',
+                                style: GoogleFonts.gowunBatang(
+                                  textStyle: TextStyle(
+                                    fontSize: size.height / 60,
+                                    letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: size.height / 100,
-                        ),
-                        Container(
-                          height: size.height / 20,
-                          width: size.width / 1.4,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Center(
-                            child: Text(
-                              'Price',
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary,
+                          SizedBox(
+                            height: size.height / 100,
+                          ),
+                          Container(
+                            height: size.height / 20,
+                            width: size.width / 1.4,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.background,
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Center(
+                              child: Text(
+                                'Price',
+                                style: GoogleFonts.gowunBatang(
+                                  textStyle: TextStyle(
+                                    fontSize: size.height / 60,
+                                    letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: size.height / 100,
-                        ),
-                        Container(
-                          height: size.height / 14,
-                          width: size.width / 1.4,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.background,
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Center(
-                            child: Text(
-                              'Specifications',
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary,
+                          SizedBox(
+                            height: size.height / 100,
+                          ),
+                          Container(
+                            height: size.height / 14,
+                            width: size.width / 1.4,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.background,
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Center(
+                              child: Text(
+                                'Specifications',
+                                style: GoogleFonts.gowunBatang(
+                                  textStyle: TextStyle(
+                                    fontSize: size.height / 60,
+                                    letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ).animate().fadeIn(delay: Duration(milliseconds: 900)),
-          ),
-          SizedBox(
-            width: size.width / 1.05,
-            child: Text(
-              'Machines :',
-              style: GoogleFonts.gowunBatang(
-                  textStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: size.height / 45,
-                      fontWeight: FontWeight.w800)),
-            ).animate().fade(delay: Duration(milliseconds: 500)).slideY(),
-          ),
-          // SizedBox(height: size.height / 50),
-          SizedBox(
-            width: size.width / 1.05,
-            height: size.height / 3.9,
-            // color: Colors.amber,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemBuilder: (ctx, int) {
-                return Card(
-                  color: Theme.of(context).colorScheme.secondary,
-                  child: ListTile(
-                      leading: Container(
-                        width: size.width / 8,
-                        height: size.height / 20,
-                        color: Theme.of(context).colorScheme.background,
+              ).animate().fade(delay: Duration(milliseconds: 800)).slideX(),
+            ),
+            SizedBox(
+              width: size.width / 1.05,
+              child: Text(
+                'Machines :',
+                style: GoogleFonts.gowunBatang(
+                    textStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: size.height / 45,
+                        fontWeight: FontWeight.w800)),
+              )
+                  .animate()
+                  .fade(delay: const Duration(milliseconds: 800))
+                  .slideY(),
+            ),
+            // SizedBox(height: size.height / 50),
+            SizedBox(
+              width: size.width / 1.05,
+              height: size.height / 3.9,
+              // color: Colors.amber,
+              child: Container(
+                child: ListView.builder(
+                  itemCount: 10,
+                  shrinkWrap: true,
+                  itemBuilder: (ctx, int) {
+                    return Card(
+                      margin: EdgeInsets.all(5),
+                      color: Theme.of(context).colorScheme.secondary,
+                      child: SizedBox(
+                        height: size.height / 10,
                         child: Center(
-                          child: Text(
-                            'IMAGE',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
-                          ),
+                          child: ListTile(
+                              leading: Container(
+                                width: size.width / 7,
+                                height: size.height / 5,
+                                color: Theme.of(context).colorScheme.background,
+                                child: Center(
+                                  child: Text(
+                                    'IMAGE',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                ),
+                              ),
+                              // leading: Image.asset(),
+                              title: Text('Name',
+                                  style: GoogleFonts.gowunBatang(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: size.height / 35,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  )),
+                              trailing: Text("Price",
+                                  style: GoogleFonts.gowunBatang(
+                                    textStyle: TextStyle(
+                                        fontSize: size.height / 50,
+                                        fontWeight: FontWeight.w900,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ))),
                         ),
                       ),
-                      // leading: Image.asset(),
-                      title: Text('Name',
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                                fontWeight: FontWeight.w900,
-                                color: Theme.of(context).colorScheme.primary),
-                          )),
-                      trailing: Text("Price",
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                                fontSize: size.height / 60,
-                                fontWeight: FontWeight.w900,
-                                color: Theme.of(context).colorScheme.primary),
-                          ))),
-                );
-              },
-            ).animate().fade(delay: Duration(milliseconds: 1200)).slideY(),
-          ),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(
-                width: size.width / 3.7,
-                child: InkWell(
-                  onTap: () {},
-                  child: Text(
-                    'View More >>',
-                    style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.w800,
-                    )),
-                  )
-                      .animate()
-                      .fade(delay: Duration(milliseconds: 1500))
-                      .slideX(),
-                ),
+                    );
+                  },
+                )
+                    .animate()
+                    .fade(
+                        delay: Duration(milliseconds: 1000),
+                        duration: Duration(milliseconds: 500))
+                    .slideY(),
               ),
-            ],
-          )
-        ],
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(
+                  width: size.width / 3.7,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ListOfItems(),
+                          ));
+                    },
+                    child: Text(
+                      'View More >>',
+                      style: GoogleFonts.gowunBatang(
+                          textStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.w800,
+                      )),
+                    )
+                        .animate()
+                        .fade(delay: Duration(milliseconds: 1500))
+                        .slideX(),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         color: Theme.of(context).colorScheme.secondary,
