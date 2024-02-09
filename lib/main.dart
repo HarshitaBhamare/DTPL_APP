@@ -55,39 +55,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomThemes.lightTheme,
-<<<<<<< Updated upstream
-      // home: Scaffold(
-      //   // body: SpecifiedMenuBar(),
-      //   // body: HomePage(),
-      //   body: LandingPage(),
-      //   // body: SpecifiedMenuBar(),
-      // ),
-      home: StreamBuilder<User?>(
-        // Listen to the authentication state
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            // Get the user
-            User? user = snapshot.data;
-            // If the user is not null, they're logged in, navigate to HomePage
-            if (user != null) {
-              return HomePage();
-            }
-            // User is not logged in, show the sign-in page
-            return LandingPage();
-          }
-          // Checking the auth state, show a loading indicator
-          return Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
-        },
-=======
       home: Scaffold(
         // body: SpecifiedMenuBar(),
         body: ListOfItems(),
         // body: LandingPage(),
         // body: SpecifiedMenuBar(),
->>>>>>> Stashed changes
       ),
     );
   }
