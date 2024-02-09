@@ -4,7 +4,7 @@ import 'package:dtpl_app/Pages/AuthPages/landingPage.dart';
 import 'package:dtpl_app/Pages/AuthPages/loginPage.dart';
 import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Pages/HomePages/homePage.dart';
-import 'package:dtpl_app/Components/customMenuImg.dart';
+import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
 import 'package:dtpl_app/Pages/HomePages/listModel.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
@@ -55,8 +55,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: CustomThemes.lightTheme,
       home: Scaffold(
-        body: SpecifiedMenuBar(),
-        // body: HomePage(),
+        // body: SpecifiedMenuBar(),
+        body: HomePage(),
         // body: LandingPage(),
         // body: SpecifiedMenuBar(),
       ),

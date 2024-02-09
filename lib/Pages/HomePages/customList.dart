@@ -1,57 +1,84 @@
-// import 'package:flutter/material.dart';
-// import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-// class CustomList extends StatefulWidget {
-//   const CustomList({super.key});
+class ListOfItems extends StatefulWidget {
+  const ListOfItems({super.key});
 
-//   @override
-//   State<CustomList> createState() => _CustomListState();
-// }
+  @override
+  State<ListOfItems> createState() => _ListOfItemsState();
+}
 
-// class _CustomListState extends State<CustomList> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return BottomNavigationBar(items: items)(
-//       child: GNav(
-//           // rippleColor: Colors.grey[800], // tab button ripple color when pressed
-//           // hoverColor: Colors.grey[700], // tab button hover color
-//           haptic: true, // haptic feedback
-//           tabBorderRadius: 15,
-//           tabActiveBorder:
-//               Border.all(color: Colors.black, width: 1), // tab button border
-//           tabBorder:
-//               Border.all(color: Colors.grey, width: 1), // tab button border
-//           tabShadow: [
-//             BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)
-//           ], // tab button shadow
-//           curve: Curves.easeOutExpo, // tab animation curves
-//           duration: Duration(milliseconds: 900), // tab animation duration
-//           gap: 8, // the tab button gap between icon and text
-//           color: Colors.grey[800], // unselected icon color
-//           activeColor: Colors.purple, // selected icon and text color
-//           iconSize: 24, // tab button icon size
-//           tabBackgroundColor:
-//               Colors.purple.withOpacity(0.1), // selected tab background color
-//           padding: EdgeInsets.symmetric(
-//               horizontal: 20, vertical: 5), // navigation bar padding
-//           tabs: [
-//             GButton(
-//               icon: Icons.home,
-//               text: 'Home',
-//             ),
-//             GButton(
-//               icon: Icons.abc,
-//               text: 'Likes',
-//             ),
-//             GButton(
-//               icon: Icons.search,
-//               text: 'Search',
-//             ),
-//             GButton(
-//               icon: Icons.panorama_fisheye_outlined,
-//               text: 'Profile',
-//             )
-//           ]),
-//     );
-//   }
-// }
+class _ListOfItemsState extends State<ListOfItems> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Machines',
+            style: GoogleFonts.gowunBatang(
+                textStyle: TextStyle(
+              letterSpacing: 1,
+              color: Theme.of(context).colorScheme.primary,
+              fontWeight: FontWeight.w900,
+            ))).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+        backgroundColor: Theme.of(context).colorScheme.background,
+        iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: Column(
+        children: [
+          Container(
+            child: ListView.builder(
+              itemCount: 10,
+              shrinkWrap: true,
+              itemBuilder: (ctx, int) {
+                return Card(
+                  margin: EdgeInsets.all(5),
+                  color: Theme.of(context).colorScheme.secondary,
+                  child: SizedBox(
+                    height: size.height / 10,
+                    child: Center(
+                      child: ListTile(
+                          leading: Container(
+                            width: size.width / 7,
+                            height: size.height / 5,
+                            color: Theme.of(context).colorScheme.background,
+                            child: Center(
+                              child: Text(
+                                'IMAGE',
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                            ),
+                          ),
+                          // leading: Image.asset(),
+                          title: Text('Name',
+                              style: GoogleFonts.gowunBatang(
+                                textStyle: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: size.height / 35,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              )),
+                          trailing: Text("Price",
+                              style: GoogleFonts.gowunBatang(
+                                textStyle: TextStyle(
+                                    fontSize: size.height / 50,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ))),
+                    ),
+                  ),
+                );
+              },
+            ).animate().fade(duration: Duration(milliseconds: 700)).slideY(),
+          ),
+        ],
+      ),
+    );
+  }
+}

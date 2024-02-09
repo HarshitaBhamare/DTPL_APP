@@ -190,6 +190,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.0"
+  flutter_hidden_drawer:
+    dependency: "direct main"
+    description:
+      name: flutter_hidden_drawer
+      sha256: "6241f1a0847480fc1ddf78eb1fb5b0b66a1983c55f79534957e03f110cfc900c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:

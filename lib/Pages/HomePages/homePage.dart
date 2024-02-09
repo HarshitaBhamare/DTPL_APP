@@ -1,4 +1,5 @@
-import 'package:dtpl_app/Components/customMenuImg.dart';
+import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
+import 'package:dtpl_app/Pages/HomePages/customList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -55,10 +56,8 @@ class _HomePageState extends State<HomePage> {
           InkWell(
             onTap: () {
               print('Menu open');
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => SpecifiedMenuBarImg()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SpecifiedMenuBar()));
             },
             child: SizedBox(
               height: size.height / 2.2,
@@ -163,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-            ).animate().fadeIn(delay: Duration(milliseconds: 900)),
+            ).animate().fade(delay: Duration(milliseconds: 900)).slideX(),
           ),
           SizedBox(
             width: size.width / 1.05,
@@ -182,49 +181,67 @@ class _HomePageState extends State<HomePage> {
             height: size.height / 3.9,
             // color: Colors.amber,
             child: ListView.builder(
+              itemCount: 10,
               shrinkWrap: true,
               itemBuilder: (ctx, int) {
                 return Card(
+                  margin: EdgeInsets.all(5),
                   color: Theme.of(context).colorScheme.secondary,
-                  child: ListTile(
-                      leading: Container(
-                        width: size.width / 8,
-                        height: size.height / 20,
-                        color: Theme.of(context).colorScheme.background,
-                        child: Center(
-                          child: Text(
-                            'IMAGE',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
+                  child: SizedBox(
+                    height: size.height / 10,
+                    child: Center(
+                      child: ListTile(
+                          leading: Container(
+                            width: size.width / 7,
+                            height: size.height / 5,
+                            color: Theme.of(context).colorScheme.background,
+                            child: Center(
+                              child: Text(
+                                'IMAGE',
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      // leading: Image.asset(),
-                      title: Text('Name',
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                                fontWeight: FontWeight.w900,
-                                color: Theme.of(context).colorScheme.primary),
-                          )),
-                      trailing: Text("Price",
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                                fontSize: size.height / 60,
-                                fontWeight: FontWeight.w900,
-                                color: Theme.of(context).colorScheme.primary),
-                          ))),
+                          // leading: Image.asset(),
+                          title: Text('Name',
+                              style: GoogleFonts.gowunBatang(
+                                textStyle: TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: size.height / 35,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              )),
+                          trailing: Text("Price",
+                              style: GoogleFonts.gowunBatang(
+                                textStyle: TextStyle(
+                                    fontSize: size.height / 50,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ))),
+                    ),
+                  ),
                 );
               },
-            ).animate().fade(delay: Duration(milliseconds: 1200)).slideY(),
+            )
+                .animate()
+                .fadeIn(
+                    delay: Duration(milliseconds: 1200),
+                    duration: Duration(milliseconds: 700))
+                .slideY(),
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               SizedBox(
                 width: size.width / 3.7,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ListOfItems()));
+                  },
                   child: Text(
                     'View More >>',
                     style: GoogleFonts.gowunBatang(
