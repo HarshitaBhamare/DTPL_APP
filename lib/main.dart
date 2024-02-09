@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: CustomThemes.lightTheme,
+<<<<<<< Updated upstream
       // home: Scaffold(
       //   // body: SpecifiedMenuBar(),
       //   // body: HomePage(),
@@ -80,6 +81,13 @@ class _MyAppState extends State<MyApp> {
             body: Center(child: CircularProgressIndicator()),
           );
         },
+=======
+      home: Scaffold(
+        // body: SpecifiedMenuBar(),
+        body: ListOfItems(),
+        // body: LandingPage(),
+        // body: SpecifiedMenuBar(),
+>>>>>>> Stashed changes
       ),
     );
   }
