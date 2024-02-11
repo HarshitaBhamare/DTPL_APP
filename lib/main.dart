@@ -54,8 +54,8 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: context.watch<ThemeNotifier>().currentTheme,
       home: Scaffold(
-        // body: LandingPage(),
-        body: HomePage(),
+        body: LandingPage(),
+        // body: HomePage(),
         // body: ListOfItems(),
         // body: SpecifiedMenuBar(),
       ),

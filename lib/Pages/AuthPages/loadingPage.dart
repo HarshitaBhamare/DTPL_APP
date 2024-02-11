@@ -37,7 +37,7 @@ class _LoadingPageState extends State<LoadingPage> {
           children: [
             Center(
               child: LoadingAnimationWidget.discreteCircle(
-                  color: Theme.of(context).colorScheme.background, size: 50),
+                  color: Theme.of(context).colorScheme.primary, size: 50),
             ),
           ],
         ),
