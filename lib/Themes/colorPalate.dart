@@ -17,6 +17,7 @@ class CustomThemes {
     primaryContainer: Color.fromRGBO(4, 12, 23, 1),
     secondary: Color.fromRGBO(248, 247, 248, 1),
     secondaryContainer: Color.fromRGBO(110, 166, 238, 1),
+    // secondaryContainer: Color.fromRGBO(147, 194, 255, 1),
     tertiary: Colors.blueGrey.shade600,
   ));
 }

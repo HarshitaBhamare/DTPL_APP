@@ -270,10 +270,16 @@ class _RegisterPageState extends State<RegisterPage>
                       SizedBox(width: size.width / 30),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
+                                builder: (context) => LoginPage(),
+                              ),
+                              (route) => false);
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => LoginPage()));
                         },
                         child: Text("Login",
                                 style: TextStyle(

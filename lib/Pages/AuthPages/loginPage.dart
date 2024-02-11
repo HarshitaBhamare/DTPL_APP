@@ -199,7 +199,7 @@ class _LoginPageState extends State<LoginPage>
                 ],
               ),
               SizedBox(height: size.height / 60),
-              SizedBox(height: size.height / 70),
+              // SizedBox(height: size.height / 70),
               Provider.of<buttonManager>(context, listen: false)
                   .getWidget('login', OnClickLogin)
                   .animate()
@@ -278,10 +278,16 @@ class _LoginPageState extends State<LoginPage>
                     SizedBox(width: size.width / 30),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
+                              builder: (context) => RegisterPage(),
+                            ),
+                            (route) => false);
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => RegisterPage()));
                       },
                       child: Text("Register Now",
                               style: TextStyle(

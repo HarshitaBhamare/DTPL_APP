@@ -126,10 +126,15 @@ class FirebaseAuthService {
           await firebaseAuth.signInWithCredential(credential);
 
       // Optionally, navigate to the HomePage after a successful sign in
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => HomePage()),
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ),
+          (route) => false);
 
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
 
@@ -173,6 +178,31 @@ class FirebaseAuthService {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error signing out. Try again.')),
       );
+    }
+  }
+
+  Future<Widget?> getProfilePic() async {
+    if (_firebaseAuth.currentUser?.photoURL != null) {
+      return Container(
+        alignment: Alignment.center,
+        width: 10,
+        height: 10,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100),
+            image: DecorationImage(
+                image: NetworkImage(
+              _firebaseAuth.currentUser!.photoURL!,
+            ))),
+      );
+    } else {
+      // Return a default image or placeholder if photoURL is null
+      return Container(
+          height: 80,
+          width: 80,
+          child: Icon(
+            Icons.person,
+            size: 60,
+          )); // Replace with your asset path
     }
   }
 }

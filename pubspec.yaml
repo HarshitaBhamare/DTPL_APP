@@ -45,6 +45,7 @@ dependencies:
   flutter_animate: ^4.5.0
   google_sign_in: ^6.2.1
   flutter_hidden_drawer: ^1.0.1
+  crypto: ^3.0.1
   # provider:
 
 dev_dependencies:
