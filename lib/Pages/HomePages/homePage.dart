@@ -1,17 +1,13 @@
 import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
 import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
-// import 'package:dtpl_app/Components/customMenuImg.dart';
-// import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
 import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
 import 'package:dtpl_app/Pages/HomePages/customList.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
-// import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/themeProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:flutter/animation.dart';
 import 'package:provider/provider.dart';
 
@@ -31,15 +27,28 @@ class _HomePageState extends State<HomePage> {
     return Stack(children: [
       Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
-            SizedBox(
-              width: size.width / 6,
-              child: Icon(
-                Icons.shopping_cart_rounded,
-                color: Theme.of(context).colorScheme.primary,
-                size: size.height / 30,
-              ),
-            ).animate().fade(delay: Duration(milliseconds: 450)).slideX(),
+            InkWell(
+              splashColor: ThemeNotifier.isDark
+                  ? Theme.of(context).colorScheme.background
+                  : Colors.white.withOpacity(0.9),
+              onTap: () async {
+                final themeNotifier =
+                    Provider.of<ThemeNotifier>(context, listen: false);
+                themeNotifier.updateTheme();
+              },
+              child: SizedBox(
+                width: size.width / 9,
+                child: Icon(
+                  ThemeNotifier.isDark
+                      ? Icons.nights_stay_outlined
+                      : Icons.wb_sunny_outlined,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  size: size.height / 30,
+                ),
+              ).animate().fade(delay: Duration(milliseconds: 450)).slideX(),
+            ),
             InkWell(
               onTap: () async {
                 User? user = FirebaseAuth.instance.currentUser;
@@ -68,21 +77,21 @@ class _HomePageState extends State<HomePage> {
                 width: size.width / 6,
                 child: Icon(
                   Icons.logout,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                   size: size.height / 30,
                 ),
               ).animate().fade(delay: Duration(milliseconds: 450)).slideX(),
             ),
           ],
           backgroundColor: Theme.of(context).colorScheme.background,
-          centerTitle: true,
+          // centerTitle: true,
           title: Text('DTPL',
-              style: GoogleFonts.gowunBatang(
-                  textStyle: TextStyle(
-                letterSpacing: 1,
-                color: Theme.of(context).colorScheme.primary,
+              style: TextStyle(
+                fontFamily: 'SFCompactRounded',
+                letterSpacing: 2,
+                color: Theme.of(context).colorScheme.primaryContainer,
                 fontWeight: FontWeight.w900,
-              ))).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
         ),
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SingleChildScrollView(
@@ -92,11 +101,11 @@ class _HomePageState extends State<HomePage> {
                   width: size.width / 1.04,
                   child: Text(
                     'Featured Machines :',
-                    style: GoogleFonts.gowunBatang(
-                      textStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: size.height / 40,
-                          fontWeight: FontWeight.w800),
+                    style: TextStyle(
+                      fontFamily: 'SFCompactRounded',
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      fontSize: size.height / 40,
+                      fontWeight: FontWeight.w800,
                     ),
                   )
                       .animate()
@@ -117,10 +126,10 @@ class _HomePageState extends State<HomePage> {
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (BuildContext context, int index) => Card(
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Theme.of(context).colorScheme.secondaryContainer,
                       child: SizedBox(
                         //width for real container
-                        width: size.width / 1.3,
+                        width: size.width / 1.15,
                         child: Column(
                           children: [
                             SizedBox(
@@ -128,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Container(
                               height: size.height / 4.5,
-                              width: size.width / 1.4,
+                              width: size.width / 1.23,
                               decoration: BoxDecoration(
                                   color:
                                       Theme.of(context).colorScheme.background,
@@ -136,7 +145,9 @@ class _HomePageState extends State<HomePage> {
                               child: Center(
                                   child: Text(
                                 'IMAGE',
-                                style: TextStyle(color: Colors.black),
+                                style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
                               )),
                               // child: Image.asset('assets/images/dtpllogo.png'),
                             ),
@@ -145,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Container(
                               height: size.height / 20,
-                              width: size.width / 1.4,
+                              width: size.width / 1.23,
                               decoration: BoxDecoration(
                                   color:
                                       Theme.of(context).colorScheme.background,
@@ -153,14 +164,13 @@ class _HomePageState extends State<HomePage> {
                               child: Center(
                                 child: Text(
                                   'Name',
-                                  style: GoogleFonts.gowunBatang(
-                                    textStyle: TextStyle(
-                                      fontSize: size.height / 60,
-                                      letterSpacing: .7,
-                                      fontWeight: FontWeight.w900,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
+                                  style: TextStyle(
+                                    fontFamily: 'SFCompactRounded',
+                                    fontSize: size.height / 60,
+                                    // letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ),
@@ -170,7 +180,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Container(
                               height: size.height / 20,
-                              width: size.width / 1.4,
+                              width: size.width / 1.23,
                               decoration: BoxDecoration(
                                   color:
                                       Theme.of(context).colorScheme.background,
@@ -178,14 +188,13 @@ class _HomePageState extends State<HomePage> {
                               child: Center(
                                 child: Text(
                                   'Price',
-                                  style: GoogleFonts.gowunBatang(
-                                    textStyle: TextStyle(
-                                      fontSize: size.height / 60,
-                                      letterSpacing: .7,
-                                      fontWeight: FontWeight.w900,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
+                                  style: TextStyle(
+                                    fontFamily: 'SFCompactRounded',
+                                    fontSize: size.height / 60,
+                                    // letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ),
@@ -195,7 +204,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Container(
                               height: size.height / 14,
-                              width: size.width / 1.4,
+                              width: size.width / 1.23,
                               decoration: BoxDecoration(
                                   color:
                                       Theme.of(context).colorScheme.background,
@@ -203,14 +212,13 @@ class _HomePageState extends State<HomePage> {
                               child: Center(
                                 child: Text(
                                   'Specifications',
-                                  style: GoogleFonts.gowunBatang(
-                                    textStyle: TextStyle(
-                                      fontSize: size.height / 60,
-                                      letterSpacing: .7,
-                                      fontWeight: FontWeight.w900,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
+                                  style: TextStyle(
+                                    fontFamily: 'SFCompactRounded',
+                                    fontSize: size.height / 60,
+                                    letterSpacing: .7,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ),
@@ -224,14 +232,13 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(
                 width: size.width / 1.05,
-                child: Text(
-                  'Machines :',
-                  style: GoogleFonts.gowunBatang(
-                      textStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: size.height / 45,
-                          fontWeight: FontWeight.w800)),
-                )
+                child: Text('Machines :',
+                        style: TextStyle(
+                            fontFamily: 'SFCompactRounded',
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
+                            fontSize: size.height / 45,
+                            fontWeight: FontWeight.w800))
                     .animate()
                     .fade(delay: const Duration(milliseconds: 800))
                     .slideY(),
@@ -248,7 +255,7 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (ctx, int) {
                       return Card(
                         margin: EdgeInsets.all(5),
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.secondaryContainer,
                         child: SizedBox(
                           height: size.height / 10,
                           child: Center(
@@ -262,6 +269,7 @@ class _HomePageState extends State<HomePage> {
                                     child: Text(
                                       'IMAGE',
                                       style: TextStyle(
+                                          fontFamily: 'SFCompactRounded',
                                           color: Theme.of(context)
                                               .colorScheme
                                               .primary),
@@ -270,23 +278,21 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 // leading: Image.asset(),
                                 title: Text('Name',
-                                    style: GoogleFonts.gowunBatang(
-                                      textStyle: TextStyle(
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: size.height / 35,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
+                                    style: TextStyle(
+                                      fontFamily: 'SFCompactRounded',
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: size.height / 35,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     )),
                                 trailing: Text("Price",
-                                    style: GoogleFonts.gowunBatang(
-                                      textStyle: TextStyle(
-                                          fontSize: size.height / 50,
-                                          fontWeight: FontWeight.w900,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
-                                    ))),
+                                    style: TextStyle(
+                                        fontFamily: 'SFCompactRounded',
+                                        fontSize: size.height / 50,
+                                        fontWeight: FontWeight.w900,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary))),
                           ),
                         ),
                       );
@@ -315,11 +321,11 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Text(
                         'View More >>',
-                        style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
+                        style: TextStyle(
+                          fontFamily: 'SFCompactRounded',
+                          color: Theme.of(context).colorScheme.primaryContainer,
                           fontWeight: FontWeight.w800,
-                        )),
+                        ),
                       )
                           .animate()
                           .fade(delay: Duration(milliseconds: 1500))
@@ -332,79 +338,84 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         bottomNavigationBar: Container(
-          color: Theme.of(context).colorScheme.secondary,
+          color: Theme.of(context).colorScheme.secondaryContainer,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 13, vertical: 7),
             child: GNav(
-                backgroundColor: Theme.of(context).colorScheme.secondary,
-                activeColor: Theme.of(context).colorScheme.primary,
+                backgroundColor:
+                    Theme.of(context).colorScheme.secondaryContainer,
+                activeColor: Theme.of(context).colorScheme.primaryContainer,
                 tabBackgroundColor: Theme.of(context).colorScheme.background,
-                tabBorder: Border.all(
-                    color: Colors.grey, width: 1), // tab button border
-                tabShadow: [
-                  BoxShadow(color: Colors.grey.withOpacity(1), blurRadius: 2)
-                ],
                 gap: 5,
-                padding: const EdgeInsets.all(13),
+                padding: EdgeInsets.all(13),
                 tabs: [
                   GButton(
                       icon: Icons.home,
-                      iconColor: Theme.of(context).colorScheme.primary,
+                      iconColor: Theme.of(context).colorScheme.primaryContainer,
                       text: 'Home',
-                      textStyle: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          letterSpacing: .7,
-                          fontWeight: FontWeight.w900,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                      textStyle: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        // letterSpacing: .7,
+                        fontWeight: FontWeight.w900,
+                        color: Theme.of(context).colorScheme.primaryContainer,
                       )),
                   GButton(
                       icon: Icons.favorite,
-                      iconColor: Theme.of(context).colorScheme.primary,
+                      iconColor: Theme.of(context).colorScheme.primaryContainer,
                       text: 'Likes',
-                      textStyle: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          letterSpacing: .7,
-                          fontWeight: FontWeight.w900,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                      textStyle: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        // letterSpacing: .7,
+                        fontWeight: FontWeight.w900,
+                        color: Theme.of(context).colorScheme.primaryContainer,
                       )),
                   GButton(
-                      icon: Icons.search,
-                      iconColor: Theme.of(context).colorScheme.primary,
-                      text: 'Search',
-                      textStyle: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          letterSpacing: .7,
-                          fontWeight: FontWeight.w900,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                    icon: Icons.search,
+                    iconColor: Theme.of(context).colorScheme.primaryContainer,
+                    text: 'Search',
+                    textStyle: TextStyle(
+                      fontFamily: 'SFCompactRounded',
+                      // letterSpacing: .7,
+                      fontWeight: FontWeight.w900,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    ),
+                  ),
+                  GButton(
+                      icon: Icons.shopping_cart_rounded,
+                      iconColor: Theme.of(context).colorScheme.primaryContainer,
+                      text: 'Cart',
+                      textStyle: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        // letterSpacing: .7,
+                        fontWeight: FontWeight.w900,
+                        color: Theme.of(context).colorScheme.primaryContainer,
                       )),
                   GButton(
-                      icon: Icons.settings,
-                      iconColor: Theme.of(context).colorScheme.primary,
-                      text: 'Settings',
-                      textStyle: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          letterSpacing: .7,
-                          fontWeight: FontWeight.w900,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      )),
+                    icon: Icons.settings,
+                    iconColor: Theme.of(context).colorScheme.primaryContainer,
+                    text: 'Settings',
+                    textStyle: TextStyle(
+                      // letterSpacing: .7,
+                      fontFamily: 'SFCompactRounded',
+                      fontWeight: FontWeight.w900,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    ),
+                  ),
                   GButton(
                       icon: Icons.person,
-                      iconColor: Theme.of(context).colorScheme.primary,
+                      iconColor: Theme.of(context).colorScheme.primaryContainer,
                       text: 'Profile',
-                      textStyle: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          letterSpacing: .7,
-                          fontWeight: FontWeight.w900,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ))
+                      textStyle: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        // letterSpacing: .7,
+                        fontWeight: FontWeight.w900,
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                      )),
                 ]),
           ),
-        ),
+        ).animate().fade(
+            delay: Duration(milliseconds: 1700),
+            duration: Duration(milliseconds: 500)),
       ),
       isLoading ? LoadingPage() : SizedBox()
     ]);

@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "124923317053-4dmhs1bpm1fg1g8p82lb4h5852er1oge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dtpl_app",
+            "certificate_hash": "bcc8860499fa2e40d00208470a58b268212d4109"
+          }
+        },
+        {
           "client_id": "124923317053-bvfgaiorfjm4cfe10kj6ft5p45077gqn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

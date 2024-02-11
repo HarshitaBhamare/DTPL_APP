@@ -4,6 +4,7 @@ import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
+import 'package:dtpl_app/Providers/themeProvider.dart';
 import 'package:dtpl_app/Themes/colorPalate.dart';
 import 'package:dtpl_app/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,6 +30,9 @@ Future<void> main() async {
       ),
       ChangeNotifierProvider<MsgBoxProvider>(
         create: (context) => MsgBoxProvider(),
+      ),
+      ChangeNotifierProvider<ThemeNotifier>(
+        create: (context) => ThemeNotifier(),
       )
     ],
     child: MyApp(),
@@ -48,33 +52,33 @@ class _MyAppState extends State<MyApp> {
     buttonManager().context = context;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: CustomThemes.lightTheme,
-      // home: Scaffold(
-      //   // body: SpecifiedMenuBar(),
-      //   body: HomePage(),
-      //   // body: ListOfItems(),
-      //   // body: SpecifiedMenuBar(),
-      // ),
-      home: StreamBuilder<User?>(
-        // Listen to the authentication state
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            // Get the user
-            User? user = snapshot.data;
-            // If the user is not null, they're logged in, navigate to HomePage
-            if (user != null) {
-              return HomePage();
-            }
-            // User is not logged in, show the sign-in page
-            return LandingPage();
-          }
-          // Checking the auth state, show a loading indicator
-          return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
-        },
+      theme: context.watch<ThemeNotifier>().currentTheme,
+      home: Scaffold(
+        // body: LandingPage(),
+        body: HomePage(),
+        // body: ListOfItems(),
+        // body: SpecifiedMenuBar(),
       ),
+      // home: StreamBuilder<User?>(
+      //   // Listen to the authentication state
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (BuildContext context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.active) {
+      //       // Get the user
+      //       User? user = snapshot.data;
+      //       // If the user is not null, they're logged in, navigate to HomePage
+      //       if (user != null) {
+      //         return HomePage();
+      //       }
+      //       // User is not logged in, show the sign-in page
+      //       return LandingPage();
+      //     }
+      //     // Checking the auth state, show a loading indicator
+      //     return const Scaffold(
+      //       body: Center(child: CircularProgressIndicator()),
+      //     );
+      //   },
+      // ),
     );
   }
 }

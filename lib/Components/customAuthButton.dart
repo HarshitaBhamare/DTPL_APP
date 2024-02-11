@@ -66,17 +66,17 @@ class _AuthButtonsState extends State<AuthButtons> {
             child: Center(
               child: Text(
                 widget.name,
-                style: GoogleFonts.gowunBatang(
-                    textStyle: TextStyle(
+                style: TextStyle(
+                  fontFamily: 'SFCompactRounded',
                   color: currentid == widget.id
                       ? isclick
                           ? Theme.of(context).colorScheme.background
                           : Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.primary,
                   fontSize: size.height / 40,
-                  letterSpacing: 1,
+                  // letterSpacing: 1,
                   fontWeight: FontWeight.w900,
-                )),
+                ),
               ),
             ),
           ),

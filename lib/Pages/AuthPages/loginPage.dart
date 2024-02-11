@@ -105,12 +105,11 @@ class _LoginPageState extends State<LoginPage>
               SizedBox(
                 width: size.width / 1.2,
                 child: Text('Welcome back! Glad\nto see you, Again!',
-                        style: GoogleFonts.gowunBatang(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: size.height / 30,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
+                        style: TextStyle(
+                          fontFamily: 'SFCompactRounded',
+                          fontWeight: FontWeight.w900,
+                          fontSize: size.height / 28,
+                          color: Theme.of(context).colorScheme.primaryContainer,
                         ))
                     .animate()
                     .fade(delay: Duration(milliseconds: 100))
@@ -161,12 +160,11 @@ class _LoginPageState extends State<LoginPage>
                       ),
                       Text(
                         "Remeber Me!",
-                        style: GoogleFonts.gowunBatang(
-                          textStyle: TextStyle(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontSize: size.height / 55,
-                              fontWeight: FontWeight.w900),
-                        ),
+                        style: TextStyle(
+                            fontFamily: 'SFCompactRounded',
+                            color: Theme.of(context).colorScheme.primary,
+                            fontSize: size.height / 55,
+                            fontWeight: FontWeight.w900),
                       )
                           .animate()
                           .fade(delay: Duration(milliseconds: 700))
@@ -187,12 +185,11 @@ class _LoginPageState extends State<LoginPage>
                       },
                       child: Text(
                         'Forget Password?',
-                        style: GoogleFonts.gowunBatang(
-                          textStyle: TextStyle(
-                              color: Theme.of(context).colorScheme.tertiary,
-                              fontWeight: FontWeight.w900,
-                              fontSize: size.height / 55),
-                        ),
+                        style: TextStyle(
+                            fontFamily: 'SFCompactRounded',
+                            color: Theme.of(context).colorScheme.tertiary,
+                            fontWeight: FontWeight.w900,
+                            fontSize: size.height / 55),
                       )
                           .animate()
                           .fade(delay: Duration(milliseconds: 700))
@@ -222,11 +219,10 @@ class _LoginPageState extends State<LoginPage>
                   ).animate().fade(delay: Duration(milliseconds: 800)).slideY(),
                   Text(
                     "Or Log with",
-                    style: GoogleFonts.gowunBatang(
-                      textStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.tertiary,
-                          fontWeight: FontWeight.w900),
-                    ),
+                    style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        color: Theme.of(context).colorScheme.tertiary,
+                        fontWeight: FontWeight.w900),
                   ).animate().fade(delay: Duration(milliseconds: 800)).slideY(),
                   Expanded(
                     child: Divider(
@@ -269,12 +265,11 @@ class _LoginPageState extends State<LoginPage>
                   children: [
                     Text(
                       "Don't you have an account?",
-                      style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: size.height / 60,
-                          color: Colors.grey,
-                        ),
+                      style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        fontWeight: FontWeight.w900,
+                        fontSize: size.height / 60,
+                        color: Colors.grey,
                       ),
                     )
                         .animate()
@@ -289,13 +284,12 @@ class _LoginPageState extends State<LoginPage>
                                 builder: (context) => RegisterPage()));
                       },
                       child: Text("Register Now",
-                              style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                  fontSize: size.height / 60,
-                                  letterSpacing: .7,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.tertiary,
-                                ),
+                              style: TextStyle(
+                                fontSize: size.height / 60,
+                                fontFamily: 'SFCompactRounded',
+                                // letterSpacing: .7,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.tertiary,
                               ))
                           .animate()
                           .fade(delay: Duration(milliseconds: 1000))

@@ -55,12 +55,13 @@ class _MyTextFieldState extends State<MyTextField> {
                     onPressed: _toggleShow,
                   )
                 : null,
-            label: Text(widget.hint,
-                style: GoogleFonts.gowunBatang(
-                  textStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold),
-                )),
+            label: Text(
+              widget.hint,
+              style: TextStyle(
+                  fontFamily: 'SFCompactRounded',
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w900),
+            ),
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(

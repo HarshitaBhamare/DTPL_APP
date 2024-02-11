@@ -44,25 +44,25 @@ class LandingPage extends StatelessWidget {
               ),
               Image.asset('assets/images/plant.jpg'),
               SizedBox(height: size.height / 30),
-              Text("Welcome to",
-                  style: GoogleFonts.gowunBatang(
-                    textStyle: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: size.height / 35,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                  )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              Text(
+                "Welcome to",
+                style: TextStyle(
+                  fontFamily: 'SFCompactRounded',
+                  fontWeight: FontWeight.w900,
+                  fontSize: size.height / 35,
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                ),
+              ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
               // .animate()
               // .fade(delay: Duration(milliseconds: 500))
               // .slideY(),
               Text('DTPL',
-                  style: GoogleFonts.gowunBatang(
-                    textStyle: TextStyle(
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.w900,
-                      fontSize: size.height / 35,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                  style: TextStyle(
+                    fontFamily: 'SFCompactRounded',
+                    // letterSpacing: 1,
+                    fontWeight: FontWeight.w900,
+                    fontSize: size.height / 35,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                   )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
               SizedBox(
                 height: size.height / 25,

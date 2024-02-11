@@ -17,12 +17,12 @@ class _ListOfItemsState extends State<ListOfItems> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Machines',
-            style: GoogleFonts.gowunBatang(
-                textStyle: TextStyle(
-              letterSpacing: 1,
+            style: TextStyle(
+              fontFamily: 'SFCompactRounded',
+              // letterSpacing: 1,
               color: Theme.of(context).colorScheme.primary,
               fontWeight: FontWeight.w900,
-            ))).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+            )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
         backgroundColor: Theme.of(context).colorScheme.background,
         iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
       ),
@@ -44,27 +44,35 @@ class _ListOfItemsState extends State<ListOfItems> {
                     width: size.width / 1.08,
                     decoration: BoxDecoration(
                         // color: Colors.pink,
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.secondaryContainer,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          hintText: 'Search',
-                          hintStyle: TextStyle(
-                              color: Theme.of(context).colorScheme.primary),
-                          suffixIcon: SizedBox(
-                            height: size.height / 50,
-                            child: SizedBox(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        enabledBorder: InputBorder.none,
+                        hintText: 'Search',
+                        hintStyle: TextStyle(
+                            fontFamily: 'SFCompactRounded',
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
+                            fontWeight: FontWeight.w500,
+                            fontSize: size.height / 50),
+                        suffixIcon: SizedBox(
+                          height: size.height / 50,
+                          child: SizedBox(
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  top: size.height / 130,
+                                  right: size.width / 201),
                               child: Image.asset(
                                 'assets/images/search.png',
-                                // height: 10,
+                                // height: 100,
+                                // width: size.width / 7,
                               ),
                             ),
                           ),
-                          contentPadding: EdgeInsets.only(
-                              left: size.width / 30, top: size.height / 70),
                         ),
+                        contentPadding: EdgeInsets.only(
+                            left: size.width / 30, top: size.height / 55),
                       ),
                     ),
                   ).animate().fade(delay: Duration(milliseconds: 700)).scale(),
@@ -82,7 +90,7 @@ class _ListOfItemsState extends State<ListOfItems> {
                   itemBuilder: (ctx, int) {
                     return Card(
                       margin: EdgeInsets.all(5),
-                      color: Theme.of(context).colorScheme.secondary,
+                      color: Theme.of(context).colorScheme.secondaryContainer,
                       child: SizedBox(
                         height: size.height / 10,
                         child: Center(
@@ -95,6 +103,7 @@ class _ListOfItemsState extends State<ListOfItems> {
                                   child: Text(
                                     'IMAGE',
                                     style: TextStyle(
+                                        fontFamily: 'SFCompactRounded',
                                         color: Theme.of(context)
                                             .colorScheme
                                             .primary),
@@ -102,24 +111,24 @@ class _ListOfItemsState extends State<ListOfItems> {
                                 ),
                               ),
                               // leading: Image.asset(),
-                              title: Text('Name',
-                                  style: GoogleFonts.gowunBatang(
-                                    textStyle: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: size.height / 35,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                  )),
-                              trailing: Text("Price",
-                                  style: GoogleFonts.gowunBatang(
-                                    textStyle: TextStyle(
-                                        fontSize: size.height / 50,
-                                        fontWeight: FontWeight.w900,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                  ))),
+                              title: Text(
+                                'Name',
+                                style: TextStyle(
+                                    fontFamily: 'SFCompactRounded',
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: size.height / 35,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                              trailing: Text(
+                                "Price",
+                                style: TextStyle(
+                                    fontFamily: 'SFCompactRounded',
+                                    fontSize: size.height / 50,
+                                    fontWeight: FontWeight.w900,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              )),
                         ),
                       ),
                     );

@@ -41,9 +41,9 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
             child: Container(
               width: size.width / 1.3,
               height: size.height / 2.7,
-              child: Image.asset('assets/images/google.png'),
+              // child: Image.asset('assets/images/google.png'),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.secondaryContainer,
                 borderRadius: BorderRadius.circular(1000),
               ),
             ).animate().fadeIn(duration: 500.ms).then(curve: Curves.easeOut),
@@ -75,12 +75,11 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                           alignment: Alignment.centerRight,
                           child: Text(
                             'Model Name',
-                            style: GoogleFonts.gowunBatang(
-                              textStyle: TextStyle(
-                                  fontSize: size.height / 30,
-                                  fontWeight: FontWeight.w900,
-                                  color: Theme.of(context).colorScheme.primary),
-                            ),
+                            style: TextStyle(
+                                fontFamily: 'SFCompactRounded',
+                                fontSize: size.height / 30,
+                                fontWeight: FontWeight.w900,
+                                color: Theme.of(context).colorScheme.primary),
                           ),
                         ),
                       ),
@@ -96,12 +95,11 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'About....',
-                            style: GoogleFonts.gowunBatang(
-                                textStyle: TextStyle(
-                                    fontSize: size.height / 40,
-                                    fontWeight: FontWeight.w700,
-                                    color:
-                                        Theme.of(context).colorScheme.primary)),
+                            style: TextStyle(
+                                fontFamily: 'SFCompactRounded',
+                                fontSize: size.height / 40,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).colorScheme.primary),
                           ),
                         ),
                       ),
@@ -122,23 +120,23 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                               children: [
                                 Text(
                                   'Price',
-                                  style: GoogleFonts.gowunBatang(
-                                      textStyle: TextStyle(
-                                          fontSize: size.height / 60,
-                                          fontWeight: FontWeight.w700,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary)),
+                                  style: TextStyle(
+                                      fontFamily: 'SFCompactRounded',
+                                      fontSize: size.height / 60,
+                                      fontWeight: FontWeight.w700,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                                 Text(
                                   '80.8',
-                                  style: GoogleFonts.gowunBatang(
-                                      textStyle: TextStyle(
-                                          fontSize: size.height / 30,
-                                          fontWeight: FontWeight.w700,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary)),
+                                  style: TextStyle(
+                                      fontFamily: 'SFCompactRounded',
+                                      fontSize: size.height / 30,
+                                      fontWeight: FontWeight.w700,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
                                 ),
                               ],
                             ),
@@ -151,8 +149,9 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                                 height: size.height / 15,
                                 width: size.width / 2,
                                 decoration: BoxDecoration(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer,
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -167,14 +166,13 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                                       width: size.width / 30,
                                     ),
                                     Text('Add to Cart',
-                                        style: GoogleFonts.gowunBatang(
-                                          textStyle: TextStyle(
-                                            fontSize: size.height / 40,
-                                            fontWeight: FontWeight.w800,
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                          ),
+                                        style: TextStyle(
+                                          fontFamily: 'SFCompactRounded',
+                                          fontSize: size.height / 40,
+                                          fontWeight: FontWeight.w800,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                         ))
                                   ],
                                 ),

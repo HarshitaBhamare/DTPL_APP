@@ -137,12 +137,12 @@ class _RegisterPageState extends State<RegisterPage>
                 SizedBox(
                   width: size.width / 1.2,
                   child: Text('Hello! Register to get\nstarted',
-                          style: GoogleFonts.gowunBatang(
-                            textStyle: TextStyle(
-                              fontWeight: FontWeight.w900,
-                              fontSize: size.height / 30,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                          style: TextStyle(
+                            fontFamily: 'SFCompactRounded',
+                            fontWeight: FontWeight.w900,
+                            fontSize: size.height / 30,
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
                           ))
                       .animate()
                       .fade(delay: Duration(milliseconds: 100))
@@ -208,11 +208,10 @@ class _RegisterPageState extends State<RegisterPage>
                         .slideY(),
                     Text(
                       "Or Log with",
-                      style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                            color: Theme.of(context).colorScheme.tertiary,
-                            fontWeight: FontWeight.w900),
-                      ),
+                      style: TextStyle(
+                          fontFamily: 'SFCompactRounded',
+                          color: Theme.of(context).colorScheme.tertiary,
+                          fontWeight: FontWeight.w900),
                     )
                         .animate()
                         .fade(delay: Duration(milliseconds: 700))
@@ -258,12 +257,11 @@ class _RegisterPageState extends State<RegisterPage>
                     children: [
                       Text(
                         "Already have an account?",
-                        style: GoogleFonts.gowunBatang(
-                          textStyle: TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: size.height / 60,
-                            color: Colors.grey,
-                          ),
+                        style: TextStyle(
+                          fontFamily: 'SFCompactRounded',
+                          fontWeight: FontWeight.w900,
+                          fontSize: size.height / 60,
+                          color: Colors.grey,
                         ),
                       )
                           .animate()
@@ -278,14 +276,12 @@ class _RegisterPageState extends State<RegisterPage>
                                   builder: (context) => LoginPage()));
                         },
                         child: Text("Login",
-                                style: GoogleFonts.gowunBatang(
-                                  textStyle: TextStyle(
-                                    fontSize: size.height / 60,
-                                    letterSpacing: .7,
-                                    fontWeight: FontWeight.w900,
-                                    color:
-                                        Theme.of(context).colorScheme.tertiary,
-                                  ),
+                                style: TextStyle(
+                                  fontFamily: 'SFCompactRounded',
+                                  fontSize: size.height / 60,
+                                  // letterSpacing: .7,
+                                  fontWeight: FontWeight.w900,
+                                  color: Theme.of(context).colorScheme.tertiary,
                                 ))
                             .animate()
                             .fade(delay: Duration(milliseconds: 900))

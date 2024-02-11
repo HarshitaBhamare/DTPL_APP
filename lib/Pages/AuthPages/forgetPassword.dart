@@ -33,12 +33,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
               width: size.width / 1.1,
               child: Container(
                   child: Text('Forget Password?',
-                      style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: size.height / 30,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                      style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        fontWeight: FontWeight.w900,
+                        fontSize: size.height / 30,
+                        color: Theme.of(context).colorScheme.primary,
                       ))),
             ),
             SizedBox(
@@ -52,11 +51,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   // alignment: Alignment.center,
                   child: Text(
                       "Don't worry it happens. Please enter the email address linked with your account",
-                      style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                            fontSize: size.height / 60,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        fontSize: size.height / 60,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
                       ))),
             ),
             SizedBox(
@@ -78,12 +77,11 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Don't you have an account?",
-                      style: GoogleFonts.gowunBatang(
-                        textStyle: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: size.height / 60,
-                          color: Colors.grey,
-                        ),
+                      style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        fontWeight: FontWeight.w900,
+                        fontSize: size.height / 60,
+                        color: Colors.grey,
                       )),
                   SizedBox(width: size.width / 30),
                   InkWell(
@@ -94,13 +92,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                               builder: (context) => RegisterPage()));
                     },
                     child: Text("Register Now",
-                        style: GoogleFonts.gowunBatang(
-                          textStyle: TextStyle(
-                            fontSize: size.height / 60,
-                            letterSpacing: .7,
-                            fontWeight: FontWeight.w900,
-                            color: Theme.of(context).colorScheme.tertiary,
-                          ),
+                        style: TextStyle(
+                          fontSize: size.height / 60,
+                          fontFamily: 'SFCompactRounded',
+                          // letterSpacing: .7,
+                          fontWeight: FontWeight.w900,
+                          color: Theme.of(context).colorScheme.tertiary,
                         )),
                   ),
                 ],
