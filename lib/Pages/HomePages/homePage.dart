@@ -28,8 +28,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
           centerTitle: true,
-          iconTheme: IconThemeData(
-              color: Theme.of(context).colorScheme.primaryContainer),
+          // iconTheme: IconThemeData(
+          //     color: Theme.of(context).colorScheme.primaryContainer),
           title: Text('DTPL',
               style: TextStyle(
                 fontFamily: 'SFCompactRounded',
@@ -138,6 +138,13 @@ class _HomePageState extends State<HomePage> {
                 height: size.height / 60,
               ),
               ListTile(
+                onTap: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => SpecifiedMenuBar(),
+                  //     ));
+                },
                 leading: SizedBox(
                     width: size.width / 9,
                     child: Image.asset(

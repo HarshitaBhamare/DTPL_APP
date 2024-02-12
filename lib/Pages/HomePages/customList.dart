@@ -19,8 +19,8 @@ class _ListOfItemsState extends State<ListOfItems> {
         title: Text('Machines',
             style: TextStyle(
               fontFamily: 'SFCompactRounded',
-              // letterSpacing: 1,
-              color: Theme.of(context).colorScheme.primary,
+              letterSpacing: 1.5,
+              color: Theme.of(context).colorScheme.primaryContainer,
               fontWeight: FontWeight.w900,
             )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
         backgroundColor: Theme.of(context).colorScheme.background,

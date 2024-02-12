@@ -81,6 +81,7 @@ flutter:
     - assets/images/avatar.png
     - assets/images/logout.png
     - assets/images/dtpl.jpg
+    - assets/images/menu.png
   #   - images/a_dot_ham.jpeg
 
   fonts:

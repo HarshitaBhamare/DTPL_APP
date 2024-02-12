@@ -4,8 +4,10 @@ class CustomThemes {
   static final ThemeData DarkTheme = ThemeData.dark().copyWith(
       colorScheme: ColorScheme.dark(
     background: Color.fromRGBO(9, 25, 46, 1),
-    primary: Color.fromRGBO(133, 177, 236, 1),
-    primaryContainer: Color.fromRGBO(110, 166, 238, 1),
+    // primary: Color.fromRGBO(133, 177, 236, 1),
+    primaryContainer: Color.fromRGBO(48, 128, 232, 1),
+    primary: Color.fromRGBO(130, 178, 241, 1),
+    // primaryContainer: Color.fromRGBO(110, 166, 238, 1),
     secondary: Color.fromRGBO(14, 38, 69, 1),
     secondaryContainer: Color.fromRGBO(14, 38, 69, 1),
     tertiary: Colors.blueGrey.shade500,
