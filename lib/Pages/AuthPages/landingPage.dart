@@ -49,7 +49,7 @@ class LandingPage extends StatelessWidget {
                   "Devi Technocraft\nPrivate Limited",
                   style: TextStyle(
                     fontFamily: 'SFCompactRounded',
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.bold,
                     fontSize: size.height / 18,
                     color: Theme.of(context).colorScheme.primaryContainer,
                   ),
