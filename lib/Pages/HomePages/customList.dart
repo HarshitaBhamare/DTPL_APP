@@ -61,7 +61,7 @@ class _ListOfItemsState extends State<ListOfItems> {
                           child: SizedBox(
                             child: Padding(
                               padding: EdgeInsets.only(
-                                  top: size.height / 130,
+                                  top: size.height / 70,
                                   right: size.width / 201),
                               child: Image.asset(
                                 'assets/images/search.png',

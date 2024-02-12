@@ -110,15 +110,20 @@ class _HomePageState extends State<HomePage> {
                   themeNotifier.updateTheme();
                 },
                 leading: SizedBox(
-                  width: size.width / 9,
-                  child: Icon(
-                    ThemeNotifier.isDark
-                        ? Icons.nights_stay_outlined
-                        : Icons.wb_sunny_outlined,
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    size: size.height / 30,
-                  ),
-                ),
+                    width: size.width / 9,
+                    child: !ThemeNotifier.isDark
+                        ? Image.asset(
+                            'assets/images/light.png',
+                            height: size.height / 20,
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
+                          )
+                        : Image.asset(
+                            'assets/images/dark.png',
+                            height: size.height / 32,
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
+                          )),
                 title: Text(
                   'Theme',
                   style: TextStyle(
@@ -134,13 +139,12 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 leading: SizedBox(
-                  width: size.width / 9,
-                  child: Icon(
-                    Icons.groups,
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    size: size.height / 30,
-                  ),
-                ),
+                    width: size.width / 9,
+                    child: Image.asset(
+                      'assets/images/users.png',
+                      height: size.height / 20,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    )),
                 title: Text(
                   'About Us',
                   style: TextStyle(
@@ -156,13 +160,12 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 leading: SizedBox(
-                  width: size.width / 9,
-                  child: Icon(
-                    Icons.person,
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    size: size.height / 30,
-                  ),
-                ),
+                    width: size.width / 9,
+                    child: Image.asset(
+                      'assets/images/avatar.png',
+                      height: size.height / 25,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    )),
                 title: Text(
                   'Profile',
                   style: TextStyle(
@@ -182,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                   child: Icon(
                     Icons.settings,
                     color: Theme.of(context).colorScheme.primaryContainer,
-                    size: size.height / 30,
+                    size: size.height / 28,
                   ),
                 ),
                 title: Text(
@@ -223,19 +226,18 @@ class _HomePageState extends State<HomePage> {
                     }
                   },
                   leading: SizedBox(
-                    width: size.width / 9,
-                    child: Icon(
-                      Icons.logout,
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      size: size.height / 30,
-                    ),
-                  ),
+                      width: size.width / 9,
+                      child: Image.asset(
+                        'assets/images/logout.png',
+                        height: size.height / 31,
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                      )),
                   title: Text(
                     'Logout',
                     style: TextStyle(
                       fontFamily: 'SFCompactRounded',
                       color: Theme.of(context).colorScheme.primaryContainer,
-                      fontSize: size.height / 38,
+                      fontSize: size.height / 35,
                       fontWeight: FontWeight.w500,
                     ),
                   ))

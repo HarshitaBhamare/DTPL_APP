@@ -4,6 +4,7 @@ import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -38,34 +39,61 @@ class LandingPage extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SingleChildScrollView(
           child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: size.height / 90,
+                height: size.height / 19,
               ),
-              Image.asset('assets/images/plant.jpg'),
-              SizedBox(height: size.height / 30),
-              Text(
-                "Welcome to",
-                style: TextStyle(
-                  fontFamily: 'SFCompactRounded',
-                  fontWeight: FontWeight.w900,
-                  fontSize: size.height / 35,
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                ),
-              ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              Center(
+                child: Text(
+                  "Devi Technocraft\nPrivate Limited",
+                  style: TextStyle(
+                    fontFamily: 'SFCompactRounded',
+                    fontWeight: FontWeight.w900,
+                    fontSize: size.height / 18,
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              ),
+              SizedBox(height: size.height / 50),
+              Container(
+                width: size.width / 1.7,
+                height: size.height / 4.5,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Image.asset('assets/images/dtpl.jpg'),
+              ).animate().fadeIn(delay: Duration(milliseconds: 100)).scale(),
+              SizedBox(height: size.height / 8),
+              Center(
+                child: Text(
+                  "Welcome to",
+                  style: TextStyle(
+                    fontFamily: 'SFCompactRounded',
+                    fontWeight: FontWeight.w900,
+                    fontSize: size.height / 25,
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                  ),
+                ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              ),
               // .animate()
               // .fade(delay: Duration(milliseconds: 500))
               // .slideY(),
-              Text('DTPL',
-                  style: TextStyle(
-                    fontFamily: 'SFCompactRounded',
-                    // letterSpacing: 1,
-                    fontWeight: FontWeight.w900,
-                    fontSize: size.height / 35,
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                  )).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              Center(
+                child: Text('DTPL',
+                        style: TextStyle(
+                          fontFamily: 'SFCompactRounded',
+                          // letterSpacing: 1,
+                          fontWeight: FontWeight.w900,
+                          fontSize: size.height / 25,
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                        ))
+                    .animate()
+                    .fade(delay: Duration(milliseconds: 100))
+                    .scale(),
+              ),
               SizedBox(
-                height: size.height / 25,
+                height: size.height / 30,
               ),
               Provider.of<buttonManager>(context, listen: false)
                   .getWidget('h_login', OnClickLoginPage)
@@ -73,7 +101,7 @@ class LandingPage extends StatelessWidget {
                   .fade(delay: Duration(milliseconds: 700))
                   .slideY(),
               SizedBox(
-                height: size.height / 60,
+                height: size.height / 27,
               ),
               Provider.of<buttonManager>(context, listen: false)
                   .getWidget('h_register', OnClickRegisterPage)
