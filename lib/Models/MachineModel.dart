@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MachineModel {
-  String? machineImage;
+  List<String>? machineImage;
+  String? machineType;
   String? machineName;
   int? machineId;
   double? machinePrice;
@@ -22,6 +25,7 @@ class MachineModel {
   MachineModel({
     this.machineImage,
     this.machineName,
+    this.machineType,
     this.machineId,
     this.machinePrice,
     this.tankCapacity,
@@ -41,8 +45,9 @@ class MachineModel {
 
   factory MachineModel.fromJson(Map<String, dynamic> json) {
     return MachineModel(
-      machineImage: json['machineImage'],
+      machineImage: List<String>.from(json['machineImage']),
       machineName: json['machineName'],
+      machineType: json['machineType'],
       machineId: json['machineId'],
       machinePrice: json['machinePrice']?.toDouble(),
       tankCapacity: json['tankCapacity'],
@@ -65,6 +70,7 @@ class MachineModel {
     return {
       'machineImage': machineImage,
       'machineName': machineName,
+      'machineType': machineType,
       'machineId': machineId,
       'machinePrice': machinePrice,
       'tankCapacity': tankCapacity,
@@ -85,9 +91,10 @@ class MachineModel {
 }
 
 Future<void> uploadMachine(MachineModel machine) async {
-  // Assuming machineId is unique and you want to use it as the document ID
   await FirebaseFirestore.instance
-      .collection('Machines')
-      .doc(machine.machineId.toString())
-      .set(machine.toJson()); // Ensure you have a toJson method in MachineModel
+      .collection('Machines') // Main collection
+      .doc(machine.machineType) // Document for each Machine Type
+      .collection('Models') // Subcollection under each Machine Type for models
+      .doc(machine.machineId.toString()) // Specific machine model document
+      .set(machine.toJson()); // Upload machine data
 }

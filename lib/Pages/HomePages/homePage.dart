@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
+import 'package:dtpl_app/Models/MachineModel.dart';
 import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
 import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
 import 'package:dtpl_app/Pages/HomePages/customList.dart';
@@ -9,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 // import 'package:flutter/animation.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +23,46 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<GlobalKey> itemKeys = List.generate(10, (index) => GlobalKey());
+
+  Future<List<MachineModel>> loadMachinesFromAsset() async {
+    final jsonString = await rootBundle.loadString('assets/machineList.json');
+    final jsonResponse = json.decode(jsonString) as List;
+    return jsonResponse
+        .map((machineJson) => MachineModel.fromJson(machineJson))
+        .toList();
+  }
+
+  Future<void> uploadMachines() async {
+    List<MachineModel> machines = await loadMachinesFromAsset();
+    print(machines.length);
+    for (var machine in machines) {
+      print(machine.machineName!);
+      await uploadMachine(machine);
+    }
+  }
+
+  double x = 0;
+  double y = 0;
+  double width = 0;
+  double height = 0;
+  void _getWidgetPosition(int id, VoidCallback onPositionRetrieved) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final RenderBox renderBox =
+          itemKeys[id].currentContext?.findRenderObject() as RenderBox;
+      final Offset position = renderBox.localToGlobal(Offset.zero);
+      final Size size = renderBox.size; // Capture the size of the widget
+
+      print("Widget Position: x: ${position.dx}, y: ${position.dy}");
+      x = position.dx;
+      y = position.dy;
+      width = size.width; // Update width
+      height = size.height; // Update height
+
+      onPositionRetrieved(); // Call the callback after x, y, width, and height have been updated
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -28,6 +72,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.background,
           centerTitle: true,
+          actions: [],
           // iconTheme: IconThemeData(
           //     color: Theme.of(context).colorScheme.primaryContainer),
           title: Text('DTPL',
@@ -270,12 +315,14 @@ class _HomePageState extends State<HomePage> {
                       .fade(delay: Duration(milliseconds: 500))
                       .slideY()),
               InkWell(
-                onTap: () {
-                  print('Menu open');
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SpecifiedMenuBar()));
+                onTap: () async {
+                  // await uploadMachines();
+
+                  // print('Menu open');
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => SpecifiedMenuBar()));
                 },
                 child: SizedBox(
                   height: size.height / 2.2,
@@ -410,47 +457,73 @@ class _HomePageState extends State<HomePage> {
                   child: ListView.builder(
                     itemCount: 10,
                     shrinkWrap: true,
-                    itemBuilder: (ctx, int) {
+                    itemBuilder: (ctx, index) {
                       return Card(
                         margin: EdgeInsets.all(5),
                         color: Theme.of(context).colorScheme.secondaryContainer,
-                        child: SizedBox(
-                          height: size.height / 10,
-                          child: Center(
-                            child: ListTile(
-                                leading: Container(
-                                  width: size.width / 7,
-                                  height: size.height / 5,
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  child: Center(
-                                    child: Text(
-                                      'IMAGE',
-                                      style: TextStyle(
-                                          fontFamily: 'SFCompactRounded',
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              print("I tapped");
+                              _getWidgetPosition(index, () {
+                                // This code will now execute after x, y, width, and height have been updated
+                                print(
+                                    "x: $x, y: $y, width: $width, height: $height");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SpecifiedMenuBar(
+                                              xPosi: x,
+                                              yPosi: y,
+                                              width: width, // Pass width
+                                              height: height, // Pass height
+                                            )));
+                              });
+                            });
+                          },
+                          child: SizedBox(
+                            height: size.height / 10,
+                            child: Center(
+                              child: ListTile(
+                                  leading: Container(
+                                    width: size.width / 7,
+                                    height: size.height / 5,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .background,
+                                    child: Center(
+                                      child: Container(
+                                        key: itemKeys[index],
+                                        child: Text(
+                                          'IMAGE',
+                                          style: TextStyle(
+                                              fontFamily: 'SFCompactRounded',
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary),
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                // leading: Image.asset(),
-                                title: Text('Name',
-                                    style: TextStyle(
-                                      fontFamily: 'SFCompactRounded',
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: size.height / 35,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    )),
-                                trailing: Text("Price",
-                                    style: TextStyle(
+                                  // leading: Image.asset(),
+                                  title: Text('Name',
+                                      style: TextStyle(
                                         fontFamily: 'SFCompactRounded',
-                                        fontSize: size.height / 50,
                                         fontWeight: FontWeight.w900,
+                                        fontSize: size.height / 35,
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .primary))),
+                                            .primary,
+                                      )),
+                                  trailing: Text("Price",
+                                      style: TextStyle(
+                                          fontFamily: 'SFCompactRounded',
+                                          fontSize: size.height / 50,
+                                          fontWeight: FontWeight.w900,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary))),
+                            ),
                           ),
                         ),
                       );
