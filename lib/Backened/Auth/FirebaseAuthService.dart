@@ -146,6 +146,7 @@ class FirebaseAuthService {
     } catch (e) {
       // Handle other errors
       print("Error signing in with Google: $e");
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
 
       return null;
     }
