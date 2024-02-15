@@ -11,6 +11,7 @@ class CustomThemes {
     secondary: Color.fromRGBO(14, 38, 69, 1),
     secondaryContainer: Color.fromRGBO(14, 38, 69, 1),
     tertiary: Colors.blueGrey.shade500,
+    tertiaryContainer: Color.fromRGBO(10, 37, 73, 1),
   ));
   static final ThemeData lightTheme = ThemeData.dark().copyWith(
       colorScheme: ColorScheme.dark(
@@ -21,5 +22,6 @@ class CustomThemes {
     secondaryContainer: Color.fromRGBO(110, 166, 238, 1),
     // secondaryContainer: Color.fromRGBO(147, 194, 255, 1),
     tertiary: Colors.blueGrey.shade600,
+    tertiaryContainer: Color.fromRGBO(219, 230, 243, 1),
   ));
 }

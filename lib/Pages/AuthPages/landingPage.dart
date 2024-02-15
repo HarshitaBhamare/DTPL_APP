@@ -3,6 +3,8 @@ import 'package:dtpl_app/Pages/AuthPages/loginPage.dart';
 import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/themeProvider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -55,16 +57,26 @@ class LandingPage extends StatelessWidget {
                   ),
                 ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
               ),
-              SizedBox(height: size.height / 50),
-              Container(
-                width: size.width / 1.7,
-                height: size.height / 4.5,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset('assets/images/dtpl.jpg'),
-              ).animate().fadeIn(delay: Duration(milliseconds: 100)).scale(),
-              SizedBox(height: size.height / 8),
+              SizedBox(height: size.height / 90),
+              ClipOval(
+                child: Container(
+                  // color: Colors.amber,
+                  // color: Colors.amber,
+                  color: ThemeNotifier.isDark
+                      ? Theme.of(context).colorScheme.tertiaryContainer
+                      : Theme.of(context).colorScheme.background,
+                  width: size.width / 1.1,
+                  height: size.height / 3.5,
+                  child: Image.asset(
+                    'assets/images/logodtpl.png',
+                    fit: BoxFit.fitHeight,
+                  )
+                      .animate()
+                      .fadeIn(delay: Duration(milliseconds: 100))
+                      .scale(),
+                ),
+              ),
+              SizedBox(height: size.height / 20),
               Center(
                 child: Text(
                   "Welcome to",

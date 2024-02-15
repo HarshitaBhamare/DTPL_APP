@@ -14,4 +14,9 @@ class ThemeNotifier with ChangeNotifier {
     isDark = !isDark;
     notifyListeners();
   }
+
+  // void SetLightTheme() {
+  //   isDark = false;
+  //   notifyListeners();
+  // }?
 }

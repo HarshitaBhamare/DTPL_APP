@@ -97,7 +97,7 @@ class _ListOfItemsState extends State<ListOfItems> {
                           child: ListTile(
                               leading: Container(
                                 width: size.width / 7,
-                                height: size.height / 5,
+                                height: size.height / 2,
                                 color: Theme.of(context).colorScheme.background,
                                 child: Center(
                                   child: Text(
