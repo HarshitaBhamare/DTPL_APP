@@ -42,58 +42,58 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
       children: [
         Scaffold(
           backgroundColor: Theme.of(context).colorScheme.background,
-          body: SingleChildScrollView(
-            child: Stack(
-              children: [
-                AnimatedPositioned(
+          body: Stack(
+            children: [
+              AnimatedPositioned(
+                duration: Duration(milliseconds: 1000),
+                left: _moveToTopRight ? size.width / 2 - 100 : widget.xPosi,
+                top: _moveToTopRight ? 100 : widget.yPosi,
+                child: AnimatedContainer(
                   duration: Duration(milliseconds: 1000),
-                  left: _moveToTopRight ? size.width / 2 - 100 : widget.xPosi,
-                  top: _moveToTopRight ? 100 : widget.yPosi,
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 1000),
-                    width: _moveToTopRight ? 200 : widget.width,
-                    height: _moveToTopRight ? 200 : widget.height,
-                    // child: Image.asset('assets/images/google.png'),
-                    decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(_moveToTopRight ? 100 : 0),
-                      color: Colors.green,
-                    ),
+                  width: _moveToTopRight ? 200 : widget.width,
+                  height: _moveToTopRight ? 200 : widget.height,
+                  // child: Image.asset('assets/images/google.png'),
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(_moveToTopRight ? 100 : 0),
+                    color: Colors.green,
                   ),
                 ),
-                Positioned(
-                  // right: size.width / 2,
-                  top: (_moveToTopRight ? 100 : widget.yPosi) +
-                      (_moveToTopRight
-                          ? 200
-                          : widget
-                              .height), // 10 is an arbitrary space, adjust as needed
-                  child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: size.height / 80,
+              ),
+              Positioned(
+                // right: size.width / 2,
+                top: (_moveToTopRight ? 100 : widget.yPosi) +
+                    (_moveToTopRight
+                        ? 200
+                        : widget
+                            .height), // 10 is an arbitrary space, adjust as needed
+                child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: size.height / 80,
+                    ),
+                    Container(
+                      width: size.width,
+                      // color: Colors.amber,
+                      padding: EdgeInsets.only(left: size.width / 18),
+                      child: Text(
+                        'Machine Name : Soft 103 / GT',
+                        style: TextStyle(
+                            fontFamily: 'SFCompactRounded',
+                            fontSize: size.height / 30,
+                            fontWeight: FontWeight.w900,
+                            color: Theme.of(context).colorScheme.primary),
                       ),
-                      Container(
-                        width: size.width,
-                        // color: Colors.amber,
-                        padding: EdgeInsets.only(left: size.width / 18),
-                        child: Text(
-                          'Machine Name : Soft 103 / GT',
-                          style: TextStyle(
-                              fontFamily: 'SFCompactRounded',
-                              fontSize: size.height / 30,
-                              fontWeight: FontWeight.w900,
-                              color: Theme.of(context).colorScheme.primary),
-                        ),
-                      ),
-                      SizedBox(
-                        height: size.height / 75,
-                      ),
-                      Container(
-                        // color: Colors.amber,
-                        width: size.width / 1.06,
-                        height: size.height,
+                    ),
+                    SizedBox(
+                      height: size.height / 75,
+                    ),
+                    Container(
+                      // color: Colors.amber,
+                      width: size.width / 1.06,
+                      height: size.height,
+                      child: SingleChildScrollView(
                         child: Column(
                           children: [
                             TextMenu(
@@ -159,16 +159,16 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: size.height / 3.7,
-                      ),
-                    ],
-                  ),
-                ).animate().scaleXY(
-                    duration: Duration(milliseconds: 300),
-                    delay: Duration(milliseconds: 1200))
-              ],
-            ),
+                    ),
+                    SizedBox(
+                      height: size.height / 3.7,
+                    ),
+                  ],
+                ),
+              ).animate().scaleXY(
+                  duration: Duration(milliseconds: 300),
+                  delay: Duration(milliseconds: 1200))
+            ],
           ),
           bottomNavigationBar: BottomAppBar(
             height: size.height / 14,
