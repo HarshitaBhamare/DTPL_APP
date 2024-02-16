@@ -90,9 +90,9 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                       height: size.height / 75,
                     ),
                     Container(
-                      // color: Colors.amber,
+                      // color: Colors.green,
                       width: size.width / 1.06,
-                      height: size.height,
+                      height: size.height / 2,
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
