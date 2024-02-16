@@ -39,7 +39,7 @@ class _TextMenuState extends State<TextMenu> {
                 ),
               )),
               Text(
-                "  :  ",
+                "  :     ",
                 style: TextStyle(
                     fontFamily: 'SFCompactRounded',
                     fontSize: size.height / 40,
