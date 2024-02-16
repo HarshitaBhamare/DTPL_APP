@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dtpl_app/Backened/Auth/FirebaseAuthService.dart';
 import 'package:dtpl_app/Models/MachineModel.dart';
 import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
@@ -61,6 +62,22 @@ class _HomePageState extends State<HomePage> {
 
       onPositionRetrieved(); // Call the callback after x, y, width, and height have been updated
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    // uploadMachines();
+    // FirebaseFirestore.instance
+    //     .collection('Machines')
+    //     .doc('Hard Machine')
+    //     .set({'name': 'Hard Machine'});
+    // FirebaseFirestore.instance
+    //     .collection('Machines')
+    //     .doc('Softy Machine')
+    //     .set({'name': 'Softy Machine'});
   }
 
   @override
@@ -319,125 +336,169 @@ class _HomePageState extends State<HomePage> {
                       .animate()
                       .fade(delay: Duration(milliseconds: 500))
                       .slideY()),
-              InkWell(
-                onTap: () async {
-                  // await uploadMachines();
-
-                  // print('Menu open');
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => SpecifiedMenuBar()));
-                },
+              Container(
+                // color: Colors.amber,
                 child: SizedBox(
-                  height: size.height / 2.2,
+                  height: size.height / 2,
                   width: size.width / 1.05,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (BuildContext context, int index) => Card(
-                      color: Theme.of(context).colorScheme.secondaryContainer,
-                      child: SizedBox(
-                        //width for real container
-                        width: size.width / 1.15,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: size.height / 90,
-                            ),
-                            Container(
-                              height: size.height / 4.5,
-                              width: size.width / 1.23,
-                              decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                  child: Text(
-                                'IMAGE',
-                                style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
-                              )),
-                              // child: Image.asset('assets/images/dtpllogo.png'),
-                            ),
-                            SizedBox(
-                              height: size.height / 100,
-                            ),
-                            Container(
-                              height: size.height / 20,
-                              width: size.width / 1.23,
-                              decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(7)),
-                              child: Center(
-                                child: Text(
-                                  'Name',
-                                  style: TextStyle(
-                                    fontFamily: 'SFCompactRounded',
-                                    fontSize: size.height / 60,
-                                    // letterSpacing: .7,
-                                    fontWeight: FontWeight.w900,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: size.height / 100,
-                            ),
-                            Container(
-                              height: size.height / 20,
-                              width: size.width / 1.23,
-                              decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(7)),
-                              child: Center(
-                                child: Text(
-                                  'Price',
-                                  style: TextStyle(
-                                    fontFamily: 'SFCompactRounded',
-                                    fontSize: size.height / 60,
-                                    // letterSpacing: .7,
-                                    fontWeight: FontWeight.w900,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: size.height / 100,
-                            ),
-                            Container(
-                              height: size.height / 14,
-                              width: size.width / 1.23,
-                              decoration: BoxDecoration(
-                                  color:
-                                      Theme.of(context).colorScheme.background,
-                                  borderRadius: BorderRadius.circular(7)),
-                              child: Center(
-                                child: Text(
-                                  'Specifications',
-                                  style: TextStyle(
-                                    fontFamily: 'SFCompactRounded',
-                                    fontSize: size.height / 60,
-                                    letterSpacing: .7,
-                                    fontWeight: FontWeight.w900,
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+                  child: StreamBuilder<QuerySnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection('Machines')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          print("errr");
+                          return Text('Error: ${snapshot.error}');
+                        }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(
+                              child: CircularProgressIndicator(
+                                  color: Colors.green));
+                        }
+                        print(snapshot.data!.docChanges.length);
+                        return Container(
+                            // color: Colors.amber,
+                            height: size.height / 3,
+                            child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: snapshot.data!.docs.length,
+                                itemBuilder: (context, index) {
+                                  DocumentSnapshot document =
+                                      snapshot.data!.docs[index];
+                                  Map<String, dynamic> data =
+                                      document.data() as Map<String, dynamic>;
+                                  // data.forEach((key, value) {
+                                  //   print('$key: $value');
+                                  // });
+
+                                  // MachineModel machine =
+                                  //     MachineModel.fromJson(data);
+                                  return Card(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer,
+                                    child: SizedBox(
+                                      //width for real container
+                                      width: size.width / 1.15,
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: size.height / 90,
+                                          ),
+                                          Container(
+                                            height: size.height / 4.5,
+                                            width: size.width / 1.23,
+                                            decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .background,
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            // child: Center(
+                                            //     child: Text(
+                                            //   'IMAGE',
+                                            //   style: TextStyle(
+                                            //       color: Theme.of(context)
+                                            //           .colorScheme
+                                            //           .primary),
+                                            // )),
+                                            // child: Image.asset(
+                                            //     'assets/images/Machine1.png'),
+                                            child: Image.network(
+                                                data.values.elementAt(0),
+                                                fit: BoxFit.fill),
+                                          ),
+                                          SizedBox(
+                                            height: size.height / 100,
+                                          ),
+                                          Container(
+                                            height: size.height / 20,
+                                            width: size.width / 1.23,
+                                            decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .background,
+                                                borderRadius:
+                                                    BorderRadius.circular(7)),
+                                            child: Center(
+                                              child: Text(
+                                                data.values.elementAt(1),
+                                                style: TextStyle(
+                                                  fontFamily:
+                                                      'SFCompactRounded',
+                                                  fontSize: size.height / 60,
+                                                  // letterSpacing: .7,
+                                                  fontWeight: FontWeight.w900,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: size.height / 100,
+                                          ),
+                                          Container(
+                                            height: size.height / 20,
+                                            width: size.width / 1.23,
+                                            decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .background,
+                                                borderRadius:
+                                                    BorderRadius.circular(7)),
+                                            child: Center(
+                                              child: Text(
+                                                'Price',
+                                                style: TextStyle(
+                                                  fontFamily:
+                                                      'SFCompactRounded',
+                                                  fontSize: size.height / 60,
+                                                  // letterSpacing: .7,
+                                                  fontWeight: FontWeight.w900,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: size.height / 100,
+                                          ),
+                                          Container(
+                                            height: size.height / 14,
+                                            width: size.width / 1.23,
+                                            decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .background,
+                                                borderRadius:
+                                                    BorderRadius.circular(7)),
+                                            child: Center(
+                                              child: Text(
+                                                'Specifications',
+                                                style: TextStyle(
+                                                  fontFamily:
+                                                      'SFCompactRounded',
+                                                  fontSize: size.height / 60,
+                                                  letterSpacing: .7,
+                                                  fontWeight: FontWeight.w900,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }));
+                      }),
                 ).animate().fade(delay: Duration(milliseconds: 800)).slideX(),
               ),
               SizedBox(
@@ -459,87 +520,117 @@ class _HomePageState extends State<HomePage> {
                 height: size.height / 3.9,
                 // color: Colors.amber,
                 child: Container(
-                  child: ListView.builder(
-                    itemCount: 10,
-                    shrinkWrap: true,
-                    itemBuilder: (ctx, index) {
-                      return Card(
-                        margin: EdgeInsets.all(5),
-                        color: Theme.of(context).colorScheme.secondaryContainer,
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              print("I tapped");
-                              _getWidgetPosition(index, () {
-                                // This code will now execute after x, y, width, and height have been updated
-                                print(
-                                    "x: $x, y: $y, width: $width, height: $height");
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => SpecifiedMenuBar(
-                                              xPosi: x,
-                                              yPosi: y,
-                                              width: width, // Pass width
-                                              height: height, // Pass height
-                                            )));
-                              });
-                            });
-                          },
-                          child: SizedBox(
-                            height: size.height / 10,
-                            child: Center(
-                              child: ListTile(
-                                  leading: Container(
-                                    width: size.width / 7,
-                                    height: size.height / 5,
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .background,
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection('Machines')
+                        .doc(
+                            'Softy Machine') // You may want to make this dynamic or handle multiple machine types
+                        .collection('Models')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      }
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.waiting:
+                          return Center(child: CircularProgressIndicator());
+                        default:
+                          return ListView(
+                            children: snapshot.data!.docs
+                                .map((DocumentSnapshot document) {
+                              Map<String, dynamic> data =
+                                  document.data()! as Map<String, dynamic>;
+                              MachineModel machine =
+                                  MachineModel.fromJson(data);
+                              // Use your MachineModel to build the UI
+                              return Card(
+                                margin: EdgeInsets.all(5),
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer,
+                                child: InkWell(
+                                  onTap: () {
+                                    // setState(() {
+                                    //   print("I tapped");
+                                    //   _getWidgetPosition(index, () {
+                                    //     // This code will now execute after x, y, width, and height have been updated
+                                    //     print(
+                                    //         "x: $x, y: $y, width: $width, height: $height");
+                                    //     Navigator.push(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //             builder: (context) =>
+                                    //                 SpecifiedMenuBar(
+                                    //                   xPosi: x,
+                                    //                   yPosi: y,
+                                    //                   width:
+                                    //                       width, // Pass width
+                                    //                   height:
+                                    //                       height, // Pass height
+                                    //                 )));
+                                    //   });
+                                    // });
+                                  },
+                                  child: SizedBox(
+                                    height: size.height / 10,
                                     child: Center(
-                                      child: Container(
-                                        key: itemKeys[index],
-                                        child: Text(
-                                          'IMAGE',
-                                          style: TextStyle(
-                                              fontFamily: 'SFCompactRounded',
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .primary),
-                                        ),
-                                      ),
+                                      child: ListTile(
+                                          leading: Container(
+                                            width: size.width / 7,
+                                            height: size.height / 5,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .background,
+                                            child: Center(
+                                              child: Container(
+                                                // key: itemKeys[index],
+                                                child: Text(
+                                                  'IMAGE',
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          'SFCompactRounded',
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .primary),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          // leading: Image.asset(),
+                                          title: Text(machine.machineName!,
+                                              style: TextStyle(
+                                                fontFamily: 'SFCompactRounded',
+                                                fontWeight: FontWeight.w900,
+                                                fontSize: size.height / 35,
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                              )),
+                                          trailing: Text(
+                                              machine.machinePrice!.toString(),
+                                              style: TextStyle(
+                                                  fontFamily:
+                                                      'SFCompactRounded',
+                                                  fontSize: size.height / 50,
+                                                  fontWeight: FontWeight.w900,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary))),
                                     ),
                                   ),
-                                  // leading: Image.asset(),
-                                  title: Text('Name',
-                                      style: TextStyle(
-                                        fontFamily: 'SFCompactRounded',
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: size.height / 35,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      )),
-                                  trailing: Text("Price",
-                                      style: TextStyle(
-                                          fontFamily: 'SFCompactRounded',
-                                          fontSize: size.height / 50,
-                                          fontWeight: FontWeight.w900,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary))),
-                            ),
-                          ),
-                        ),
-                      );
+                                ),
+                              );
+                            }).toList(),
+                          );
+                      }
                     },
-                  )
-                      .animate()
-                      .fade(
-                          delay: Duration(milliseconds: 1000),
-                          duration: Duration(milliseconds: 500))
-                      .slideY(),
-                ),
+                  ),
+                )
+                    .animate()
+                    .fade(
+                        delay: Duration(milliseconds: 1000),
+                        duration: Duration(milliseconds: 500))
+                    .slideY(),
               ),
 
               Row(

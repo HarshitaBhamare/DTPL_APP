@@ -22,7 +22,7 @@ class _TextMenuState extends State<TextMenu> {
           decoration: BoxDecoration(
             border: Border(
                 bottom: BorderSide(
-                    width: 1.1,
+                    width: 0.8,
                     color: Theme.of(context).colorScheme.primaryContainer)),
           ),
           child: Row(

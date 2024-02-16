@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class MsgBox extends StatelessWidget {
   AnimationController? animationController;
   MsgBox({super.key, required this.animationController});

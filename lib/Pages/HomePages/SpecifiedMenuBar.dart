@@ -101,6 +101,7 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                       width: size.width / 1.06,
                       height: size.height / 2,
                       child: SingleChildScrollView(
+                        //
                         child: Column(
                           children: [
                             TextMenu(
@@ -184,62 +185,66 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
             ],
           ),
           bottomNavigationBar: BottomAppBar(
-            height: size.height / 14,
             color: Theme.of(context).colorScheme.secondaryContainer,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Price : ',
-                  style: TextStyle(
-                      fontFamily: 'SFCompactRounded',
-                      fontSize: size.height / 35,
-                      fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-                Text(
-                  '80.8',
-                  style: TextStyle(
-                      fontFamily: 'SFCompactRounded',
-                      fontSize: size.height / 35,
-                      fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.primary),
-                ),
-                SizedBox(
-                  width: size.width / 8,
-                ),
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    // height: 200,
-                    height: size.height,
-                    width: size.width / 2.1,
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondaryContainer,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.shopping_cart,
-                          size: size.height / 35,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        SizedBox(
-                          width: size.width / 30,
-                        ),
-                        Text('Add to Cart',
-                            style: TextStyle(
-                              fontFamily: 'SFCompactRounded',
-                              fontSize: size.height / 40,
-                              fontWeight: FontWeight.w800,
-                              color: Theme.of(context).colorScheme.primary,
-                            ))
-                      ],
+            height: 10,
+            child: Container(
+              height: size.height / 14, //nai thai raiyu be aa to ahi
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Price : ',
+                    style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        fontSize: size.height / 35,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
+                  Text(
+                    '80.8',
+                    style: TextStyle(
+                        fontFamily: 'SFCompactRounded',
+                        fontSize: size.height / 35,
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.primary),
+                  ),
+                  SizedBox(
+                    width: size.width / 8,
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      // height: 200,
+                      height: size.height,
+                      width: size.width / 2.1,
+                      decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).colorScheme.secondaryContainer,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.shopping_cart,
+                            size: size.height / 35,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          SizedBox(
+                            width: size.width / 30,
+                          ),
+                          Text('Add to Cart',
+                              style: TextStyle(
+                                fontFamily: 'SFCompactRounded',
+                                fontSize: size.height / 40,
+                                fontWeight: FontWeight.w800,
+                                color: Theme.of(context).colorScheme.primary,
+                              ))
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
