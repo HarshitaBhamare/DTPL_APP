@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextMenu extends StatefulWidget {
@@ -14,16 +15,59 @@ class _TextMenuState extends State<TextMenu> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width / 1.1,
-      child: Text(
-        widget.txt + ':' + widget.value,
-        style: TextStyle(
-            fontFamily: 'SFCompactRounded',
-            fontSize: size.height / 40,
-            letterSpacing: 1,
-            fontWeight: FontWeight.w700,
-            color: Theme.of(context).colorScheme.primary),
-      ),
-    );
+        width: size.width / 1.09,
+        child: Container(
+          // width: size.width / 1.1,
+          padding: EdgeInsets.symmetric(horizontal: 7, vertical: 7),
+          decoration: BoxDecoration(
+            border: Border(
+                bottom: BorderSide(
+                    width: 1.1,
+                    color: Theme.of(context).colorScheme.primaryContainer)),
+          ),
+          child: Row(
+            children: [
+              (Expanded(
+                child: Text(
+                  widget.txt,
+                  style: TextStyle(
+                      fontFamily: 'SFCompactRounded',
+                      fontSize: size.height / 40,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.w700,
+                      color: Theme.of(context).colorScheme.primary),
+                ),
+              )),
+              Text(
+                "  :  ",
+                style: TextStyle(
+                    fontFamily: 'SFCompactRounded',
+                    fontSize: size.height / 40,
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.primary),
+              ),
+              Expanded(
+                  child: Text(
+                widget.value,
+                style: TextStyle(
+                    fontFamily: 'SFCompactRounded',
+                    fontSize: size.height / 40,
+                    letterSpacing: 1,
+                    fontWeight: FontWeight.w700,
+                    color: Theme.of(context).colorScheme.primary),
+              )),
+            ],
+          ),
+        ));
   }
 }
+// Text(
+//         widget.txt + ':' + widget.value,
+      //   style: TextStyle(
+      //       fontFamily: 'SFCompactRounded',
+      //       fontSize: size.height / 40,
+      //       letterSpacing: 1,
+      //       fontWeight: FontWeight.w700,
+      //       color: Theme.of(context).colorScheme.primary),
+      // ),

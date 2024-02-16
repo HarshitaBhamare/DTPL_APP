@@ -76,9 +76,9 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                     Container(
                       width: size.width,
                       // color: Colors.amber,
-                      padding: EdgeInsets.only(left: size.width / 18),
+                      padding: EdgeInsets.only(left: size.width / 3),
                       child: Text(
-                        'Machine Name : Soft 103 / GT',
+                        'Soft 103 / GT',
                         style: TextStyle(
                             fontFamily: 'SFCompactRounded',
                             fontSize: size.height / 30,
@@ -90,6 +90,13 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                       height: size.height / 75,
                     ),
                     Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              top: BorderSide(
+                                  width: 2,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primaryContainer))),
                       // color: Colors.green,
                       width: size.width / 1.06,
                       height: size.height / 2,
