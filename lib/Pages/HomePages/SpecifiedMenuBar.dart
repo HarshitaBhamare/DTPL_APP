@@ -172,9 +172,15 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                     ),
                   ],
                 ),
-              ).animate().scaleXY(
-                  duration: Duration(milliseconds: 300),
-                  delay: Duration(milliseconds: 1200))
+              )
+                  .animate()
+                  .fade(
+                      delay: Duration(milliseconds: 1000),
+                      duration: Duration(milliseconds: 500))
+                  .slideX(),
+              // ).animate().fade(delay: Duration(milliseconds: 800)).scaleY(
+              // duration: Duration(milliseconds: 300),
+              // delay: Duration(milliseconds: 1200)),
             ],
           ),
           bottomNavigationBar: BottomAppBar(
