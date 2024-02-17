@@ -1,0 +1,56 @@
+[
+    {
+        "machineImage": [
+            "url1",
+            "url2"
+        ],
+        "machineType": "Soft Serve",
+        "machineName": "Model X1",
+        "machineId": 101,
+        "machinePrice": 4500.00,
+        "tankCapacity": 10,
+        "hourlyConeOutput": 300,
+        "freezingCylinderCapacity": "2 Litres",
+        "machineOverrun": "85%",
+        "flavour": "Vanilla",
+        "machineRefrigent": "R404A",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220V, 50Hz",
+        "dimension": [
+            600,
+            400,
+            850
+        ],
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            "url1",
+            "url2"
+        ],
+        "machineType": "Soft Serve",
+        "machineName": "Model X1",
+        "machineId": 101,
+        "machinePrice": 4500.00,
+        "tankCapacity": 10,
+        "hourlyConeOutput": 300,
+        "freezingCylinderCapacity": "2 Litres",
+        "machineOverrun": "85%",
+        "flavour": "Vanilla",
+        "machineRefrigent": "R404A",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220V, 50Hz",
+        "dimension": [
+            600,
+            400,
+            850
+        ],
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": false
+    }
+]
