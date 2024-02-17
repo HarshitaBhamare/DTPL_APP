@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class BlasterFrezzer {
   List<String>? machineImage;
   String? machineType;
@@ -72,4 +74,13 @@ class BlasterFrezzer {
       'isTransportationIncl': isTransportationIncl,
     };
   }
+}
+
+Future<void> uploadMachine(BlasterFrezzer machine) async {
+  await FirebaseFirestore.instance
+      .collection('Machines') // Main collection
+      .doc(machine.machineType) // Document for each Machine Type
+      .collection('Models') // Subcollection under each Machine Type for models
+      .doc(machine.machineId.toString()) // Specific machine model document
+      .set(machine.toJson()); // Upload machine data
 }
