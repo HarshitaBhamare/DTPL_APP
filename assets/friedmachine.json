@@ -1,0 +1,52 @@
+[
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Frying",
+        "machineName": "Deluxe Fryer 5000",
+        "machineId": 102,
+        "machinePrice": 3200.5,
+        "panSize": "45x45 cm",
+        "panTemp": "180\u00b0C",
+        "defrostPedal": true,
+        "machineContains": "Oil filtration system, Safety lock",
+        "coolingStorage": "Yes, up to 5 liters",
+        "compressor": 2,
+        "powerSupply": "220V, 60Hz",
+        "dimension": [
+            700,
+            550,
+            1200
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Frying",
+        "machineName": "Deluxe Fryer 5000",
+        "machineId": 102,
+        "machinePrice": 3200.5,
+        "panSize": "45x45 cm",
+        "panTemp": "180\u00b0C",
+        "defrostPedal": true,
+        "machineContains": "Oil filtration system, Safety lock",
+        "coolingStorage": "Yes, up to 5 liters",
+        "compressor": 2,
+        "powerSupply": "220V, 60Hz",
+        "dimension": [
+            700,
+            550,
+            1200
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    }
+]

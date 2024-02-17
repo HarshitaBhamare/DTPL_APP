@@ -1,0 +1,52 @@
+[
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Frezzing Master",
+        "machineName": "FreezeTech Supreme",
+        "machineId": 205,
+        "machinePrice": 6300.99,
+        "marbleSize": [
+            1200,
+            600
+        ],
+        "marbleTemp": "-25\u00b0C",
+        "corianThickness": "50mm",
+        "normalContainer": "20L",
+        "coldContainer": "15L",
+        "bottle": "1L",
+        "coolingStorage": "Yes, up to 10L",
+        "compressor": 3,
+        "powerSupply": "240V, 60Hz",
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Frezzing Master",
+        "machineName": "FreezeTech Supreme",
+        "machineId": 205,
+        "machinePrice": 6300.99,
+        "marbleSize": [
+            1200,
+            600
+        ],
+        "marbleTemp": "-25\u00b0C",
+        "corianThickness": "50mm",
+        "normalContainer": "20L",
+        "coldContainer": "15L",
+        "bottle": "1L",
+        "coolingStorage": "Yes, up to 10L",
+        "compressor": 3,
+        "powerSupply": "240V, 60Hz",
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": false
+    }
+]

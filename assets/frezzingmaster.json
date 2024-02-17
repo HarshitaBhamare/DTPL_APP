@@ -1,0 +1,52 @@
+[
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Freezing",
+        "machineName": "FreezePro Elite",
+        "machineId": 203,
+        "machinePrice": 5200.75,
+        "marbleSize": [
+            1200,
+            800
+        ],
+        "marbleTemp": "-20\u00b0C",
+        "corianThickness": "40mm",
+        "normalContainer": "5L",
+        "coldContainer": "10L",
+        "bottle": "2L",
+        "coolingStorage": "Yes",
+        "compressor": 2,
+        "powerSupply": "220V, 60Hz",
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Freezing",
+        "machineName": "FreezePro Elite",
+        "machineId": 203,
+        "machinePrice": 5200.75,
+        "marbleSize": [
+            1200,
+            800
+        ],
+        "marbleTemp": "-20\u00b0C",
+        "corianThickness": "40mm",
+        "normalContainer": "5L",
+        "coldContainer": "10L",
+        "bottle": "2L",
+        "coolingStorage": "Yes",
+        "compressor": 2,
+        "powerSupply": "220V, 60Hz",
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": true
+    }
+]

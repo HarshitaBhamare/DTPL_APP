@@ -1,0 +1,56 @@
+[
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Ice Cream Maker",
+        "machineName": "HardeeMaster 3000",
+        "machineId": 406,
+        "machinePrice": 8200.0,
+        "cyclinderCapacity": 2,
+        "hourlyOutput": 150,
+        "flavour": "Vanilla, Chocolate",
+        "batchCapacity": 5,
+        "machineOverrun": "70%",
+        "machineRerigerant": "R404A",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220V, 50Hz",
+        "dimension": [
+            700,
+            550,
+            1500
+        ],
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            "image_url1",
+            "image_url2"
+        ],
+        "machineType": "Ice Cream Maker",
+        "machineName": "HardeeMaster 3000",
+        "machineId": 406,
+        "machinePrice": 8200.0,
+        "cyclinderCapacity": 2,
+        "hourlyOutput": 150,
+        "flavour": "Vanilla, Chocolate",
+        "batchCapacity": 5,
+        "machineOverrun": "70%",
+        "machineRerigerant": "R404A",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220V, 50Hz",
+        "dimension": [
+            700,
+            550,
+            1500
+        ],
+        "GST": 18,
+        "isPackingIncl": true,
+        "isTransportationIncl": false
+    }
+]
