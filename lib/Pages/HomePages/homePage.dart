@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:ui';
+import 'package:dtpl_app/Components/AnimatedItem.dart';
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/FrezzingMaster.dart';
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/Frezzing_FriedMachines.dart';
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/FriedMachine.dart';
@@ -17,6 +18,7 @@ import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
 import 'package:dtpl_app/Pages/Components/FrostedGlass.dart';
 import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
 import 'package:dtpl_app/Pages/HomePages/customList.dart';
+import 'package:dtpl_app/Providers/listViewProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/themeProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,7 +40,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<GlobalKey> itemKeys = List.generate(10, (index) => GlobalKey());
+  GlobalKey<AnimatedItemState> animatedItemKey = GlobalKey<AnimatedItemState>();
 
+  final ScrollController _scrollController = ScrollController();
+
+  void startAnimation() {
+    animatedItemKey.currentState?.startAnimation();
+  }
+
+  int _currentIndex = 0;
   Future<List<MachineModel>> loadMachinesFromAsset() async {
     final jsonString = await rootBundle.loadString('assets/machineList.json');
     final jsonResponse = json.decode(jsonString) as List;
@@ -153,6 +163,7 @@ class _HomePageState extends State<HomePage> {
   double y = 0;
   double width = 0;
   double height = 0;
+
   void _getWidgetPosition(int id, VoidCallback onPositionRetrieved) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final RenderBox renderBox =
@@ -174,7 +185,23 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _scrollController.addListener(_scrollListener);
     // Upload();
+  }
+
+  void _scrollListener() {
+    double itemWidth = MediaQuery.of(context).size.width / 1.1;
+    int newFirstItemIndex = (_scrollController.offset / itemWidth).floor();
+
+    // Get the current index from the provider without listening to changes
+    int currentFirstItemIndex =
+        Provider.of<ListViewProvider>(context, listen: false).currentIndex;
+
+    // Only call SetIndex if the index has actually changed
+    if (newFirstItemIndex != currentFirstItemIndex) {
+      Provider.of<ListViewProvider>(context, listen: false)
+          .SetIndex(newFirstItemIndex);
+    }
   }
 
   Future<void> Upload() async {
@@ -183,9 +210,48 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  Stream<QuerySnapshot<Object?>>? getCurrentList(int index) {
+    if (index == 0) {
+      return FirebaseFirestore.instance
+          .collection('Machines')
+          .doc(
+              'Frezzing Fried Machines') // You may want to make this dynamic or handle multiple machine types
+          .collection('Frezzing Machine')
+          .snapshots();
+    } else if (index == 1) {
+      return FirebaseFirestore.instance
+          .collection('Machines')
+          .doc(
+              'Gelato Natural Machines') // You may want to make this dynamic or handle multiple machine types
+          .collection('Hardee Machines')
+          .snapshots();
+    } else if (index == 2) {
+      return FirebaseFirestore.instance
+          .collection('Machines')
+          .doc(
+              'Softy Machines') // You may want to make this dynamic or handle multiple machine types
+          .collection('Models')
+          .snapshots();
+    }
+    return FirebaseFirestore.instance
+        .collection('Machines')
+        .doc(
+            'ThickShake Machines') // You may want to make this dynamic or handle multiple machine types
+        .collection('Models')
+        .snapshots();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final isLoading = context.watch<LoadingProvider>().isLoading;
+    // final currentMyIndex = context.watch<ListViewProvider>().currentIndex;
     return Stack(children: [
       Scaffold(
         appBar: AppBar(
@@ -429,329 +495,405 @@ class _HomePageState extends State<HomePage> {
           children: [
             SizedBox(
                 width: size.width / 1.04,
-                child: Text(
-                  'Featured Machines :',
-                  style: TextStyle(
-                    fontFamily: 'SFCompactRounded',
-                    color: Theme.of(context).colorScheme.primary,
-                    fontSize: size.height / 40,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ).animate().fade(delay: Duration(milliseconds: 500)).slideY()),
-            Container(
-              // color: Colors.amber,
-              // alignment: Alignment.center,
-              child: SizedBox(
-                // alignment: Alignment.center,
-                height: size.height / 2,
-                width: size.width / 1,
-                child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance
-                        .collection('Machines')
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        print("errr");
-                        return Text('Error: ${snapshot.error}');
-                      }
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(
-                            child:
-                                CircularProgressIndicator(color: Colors.green));
-                      }
-                      // print("Length : " +
-                      // snapshot.data!.docChanges.length.toString());
-                      return Container(
-                          // color: Colors.amber,
-                          child: ListView.builder(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: snapshot.data!.docs.length,
-                              padding: EdgeInsets.only(left: 20),
-                              itemBuilder: (context, index) {
-                                DocumentSnapshot document =
-                                    snapshot.data!.docs[index];
-                                Map<String, dynamic> data =
-                                    document.data() as Map<String, dynamic>;
-                                return Container(
-                                  // color: Colors.green,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          // boxShadow: [
-                                          //   BoxShadow(
-                                          //       blurRadius: 3,
-                                          //       offset: Offset(0, 0),
-                                          //       color: Theme.of(context)
-                                          //           .colorScheme
-                                          //           .primary)
-                                          // ],
-                                          boxShadow: [
-                                            // Top left shadow - Simulates the light source from top left
-                                            BoxShadow(
-                                              color: Colors.white.withOpacity(
-                                                  0.5), // Lighter shadow color
-                                              blurRadius: 15,
-                                              offset: Offset(-5, -5),
-                                            ),
-                                            // Bottom right shadow - Simulates the shadow created by the light
-                                            BoxShadow(
-                                              color: Colors.black.withOpacity(
-                                                  0.2), // Darker shadow color for depth
-                                              blurRadius: 15,
-                                              offset: Offset(5, 5),
-                                            ),
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .secondaryContainer,
-                                        ),
-                                        width: size.width / 1.1,
-                                        height: size.height,
-                                        child: SizedBox(
-                                          //width for real container,
-                                          width: size.width / 1.15,
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: size.height / 40,
-                                              ),
-                                              Container(
-                                                height: size.height / 3,
-                                                width: size.width / 1.23,
-                                                decoration: BoxDecoration(
-                                                    color: Colors.transparent,
-                                                    // color: Theme.of(context)
-                                                    //     .colorScheme
-                                                    //     .primaryContainer,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                                child: Image.network(
-                                                    data.values.elementAt(0),
-                                                    fit: BoxFit.fitHeight),
-                                              ),
-                                              SizedBox(
-                                                height: size.height / 40,
-                                              ),
-                                              Container(
-                                                height: size.height / 10,
-                                                width: size.width / 1.23,
-                                                decoration: BoxDecoration(
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .onBackground,
-                                                    // .withOpacity(0.3),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            7)),
-                                                child: Column(children: [
-                                                  Center(
-                                                    child: Text(
-                                                      data.values.elementAt(1),
-                                                      style: TextStyle(
-                                                        fontFamily:
-                                                            'SFCompactRounded',
-                                                        fontSize:
-                                                            size.height / 35,
-                                                        // letterSpacing: .7,
-                                                        fontWeight:
-                                                            FontWeight.w900,
-                                                        color: Theme.of(context)
-                                                            .colorScheme
-                                                            .primaryContainer,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: size.height / 80,
-                                                  ),
-                                                  Container(
-                                                    alignment:
-                                                        Alignment.bottomCenter,
-                                                    child: Text(
-                                                      'Starts From : 1,50,000 - 3,50,000 Rs',
-                                                      style: TextStyle(
-                                                        fontFamily:
-                                                            'SFCompactRounded',
-                                                        fontSize:
-                                                            size.height / 50,
-                                                        // letterSpacing: .7,
-                                                        fontWeight:
-                                                            FontWeight.w100,
-                                                        fontStyle:
-                                                            FontStyle.italic,
-                                                        color: Theme.of(context)
-                                                            .colorScheme
-                                                            .tertiary,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ]),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      index != snapshot.data!.size - 1
-                                          ? SizedBox(width: size.width / 5)
-                                          : SizedBox(
-                                              width: size.width / 20,
-                                            )
-                                    ],
-                                  ),
-                                );
-                              }));
-                    }),
-              ).animate().fade(delay: Duration(milliseconds: 800)).slideX(),
-            ),
+                child: Center(
+                  child: Text(
+                    'Featured Machines ',
+                    style: TextStyle(
+                      fontFamily: 'SFCompactRounded',
+                      color: Theme.of(context).colorScheme.primary,
+                      fontSize: size.height / 32.5,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ).animate().fade(delay: Duration(milliseconds: 500)).slideY(),
+                )),
             SizedBox(
-              height: size.height / 70,
+              height: size.height / 60,
             ),
-            SizedBox(
-              width: size.width / 1.05,
-              child: Text('Machines :',
-                      style: TextStyle(
-                          fontFamily: 'SFCompactRounded',
-                          color: Theme.of(context).colorScheme.primary,
-                          fontSize: size.height / 40,
-                          fontWeight: FontWeight.w800))
-                  .animate()
-                  .fade(delay: const Duration(milliseconds: 800))
-                  .slideY(),
-            ),
-            // SizedBox(height: size.height / 0),
             Container(
-              width: size.width / 1.09,
-              height: size.height / 5.1,
-              // color: Colors.amber,
+              // color: Colors.green,
+              width: size.width,
+              height: size.height / 2.1,
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('Machines')
-                    .doc(
-                        'Softy Machines') // You may want to make this dynamic or handle multiple machine types
-                    .collection('Models')
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
-                    print("Error");
+                    print("errr");
                     return Text('Error: ${snapshot.error}');
                   }
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.waiting:
-                      return Center(child: CircularProgressIndicator());
-                    default:
-                      return ListView(
-                        children: snapshot.data!.docs
-                            .map((DocumentSnapshot document) {
-                          Map<String, dynamic> data =
-                              document.data()! as Map<String, dynamic>;
-                          SoftyMachine machine = SoftyMachine.fromJson(data);
-                          // print("Length : " +
-                          // snapshot.data!.docChanges.length.toString());
-                          // Use your MachineModel to build the UI
-                          data.forEach((key, value) {
-                            // print("Key : $key Value : $value");
-                          });
-                          return Column(
-                            children: [
-                              Container(
-                                width: size.width,
-                                height: size.height / 12,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondaryContainer),
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: SizedBox(
-                                    height: size.height / 11.9,
-                                    child: Center(
-                                      child: ListTile(
-                                          leading: Container(
-                                            width: size.width / 7,
-                                            height: size.height / 5,
-                                            // color: Colors.amber,
-                                            child: Center(
-                                                child: Image.network(
-                                                    machine.machineImage!.first,
-                                                    fit: BoxFit.cover)),
-                                          ),
-                                          // leading: Image.asset(),
-                                          title: Text(machine.machineName!,
-                                              style: TextStyle(
-                                                  fontFamily:
-                                                      'SFCompactRounded',
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: size.height / 42.5,
-                                                  // color: Theme.of(context)
-                                                  //     .colorScheme
-                                                  //     .primaryContainer,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primaryContainer)),
-                                          trailing: Text(
-                                              machine.machinePrice!.toString(),
-                                              style: TextStyle(
-                                                  fontFamily:
-                                                      'SFCompactRounded',
-                                                  fontSize: size.height / 50,
-                                                  fontWeight: FontWeight.w100,
-                                                  fontStyle: FontStyle.italic,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .tertiary))),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: size.height / 50,
-                              )
-                            ],
-                          );
-                        }).toList(),
-                      );
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                        child: CircularProgressIndicator(color: Colors.green));
                   }
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: snapshot.data!.docs.length,
+                    controller: _scrollController,
+                    padding: const EdgeInsets.only(left: 20),
+                    itemBuilder: (context, index) {
+                      // currentIndex = index;
+                      // Provider.of<ListViewProvider>(context, listen: false)
+                      //     .SetIndex(index);
+                      DocumentSnapshot document = snapshot.data!.docs[index];
+                      Map<String, dynamic> data =
+                          document.data() as Map<String, dynamic>;
+                      return Row(
+                        children: [
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Container(
+                                // color: Colors.red,
+                                width: size.width / 1.1,
+                                height: size.height,
+                                child: Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                        boxShadow: [
+                                          // Top left shadow - Simulates the light source from top left
+                                          BoxShadow(
+                                            color: Colors.white.withOpacity(
+                                                0.5), // Lighter shadow color
+                                            blurRadius: 15,
+                                            offset: Offset(-5, -5),
+                                          ),
+                                          // Bottom right shadow - Simulates the shadow created by the light
+                                          BoxShadow(
+                                            color: Colors.black.withOpacity(
+                                                0.2), // Darker shadow color for depth
+                                            blurRadius: 15,
+                                            offset: Offset(5, 5),
+                                          ),
+                                        ],
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .secondaryContainer,
+                                      ),
+                                      height: size.height / 2.2,
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: size.height / 50,
+                                          ),
+                                          Container(
+                                            // color: Colors.green,
+                                            width: size.width,
+                                            height: size.height / 3.5,
+                                            child: Image.network(
+                                              data.values.elementAt(0),
+                                              fit: BoxFit.contain,
+                                              loadingBuilder: (context, child,
+                                                  loadingProgress) {
+                                                if (loadingProgress == null) {
+                                                  return child; // image is fully loaded
+                                                } else {
+                                                  return Center(
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .secondary,
+                                                      value: loadingProgress
+                                                                  .expectedTotalBytes !=
+                                                              null
+                                                          ? loadingProgress
+                                                                  .cumulativeBytesLoaded /
+                                                              loadingProgress
+                                                                  .expectedTotalBytes!
+                                                          : null,
+                                                    ),
+                                                  );
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: size.height / 50,
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .onBackground,
+                                                // .withOpacity(0.3),
+                                                borderRadius:
+                                                    BorderRadius.circular(10)),
+                                            width: size.width / 1.3,
+                                            height: size.height / 9,
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: size.height / 70,
+                                                ),
+                                                Text(
+                                                  data.values.elementAt(1),
+                                                  style: TextStyle(
+                                                    fontFamily:
+                                                        'SFCompactRounded',
+                                                    fontSize: size.height / 35,
+                                                    // letterSpacing: .7,
+                                                    fontWeight: FontWeight.w900,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primaryContainer,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: size.height / 80,
+                                                ),
+                                                Container(
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  child: Text(
+                                                    'Starts From : 1,50,000 - 3,50,000 Rs',
+                                                    style: TextStyle(
+                                                      fontFamily:
+                                                          'SFCompactRounded',
+                                                      fontSize:
+                                                          size.height / 50,
+                                                      // letterSpacing: .7,
+                                                      fontWeight:
+                                                          FontWeight.w100,
+                                                      fontStyle:
+                                                          FontStyle.italic,
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .tertiary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      )),
+                                )),
+                          ),
+                          index != snapshot.data!.size - 1
+                              ? SizedBox(width: size.width / 5)
+                              : SizedBox(
+                                  width: size.width / 20,
+                                )
+                        ],
+                      );
+                    },
+                  );
                 },
-              )
-                  .animate()
-                  .fade(
-                      delay: Duration(milliseconds: 1000),
-                      duration: Duration(milliseconds: 500))
-                  .slideY(),
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            // dot container....
+            Container(
+              width: 100,
+              height: 10,
+              // color: Colors.black,
+            ),
+            // SizedBox(
+            //   height: size.height / 50,
+            // ),
+            Column(
               children: [
                 SizedBox(
-                  width: size.width / 3.7,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ListOfItems(),
-                          ));
-                    },
-                    child: Text(
-                      'View More >>',
-                      style: TextStyle(
-                        fontFamily: 'SFCompactRounded',
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    )
+                  width: size.width / 1.05,
+                  child: Center(
+                    child: Text('Softy Machines ',
+                            style: TextStyle(
+                                fontFamily: 'SFCompactRounded',
+                                color: Theme.of(context).colorScheme.primary,
+                                fontSize: size.height / 32.5,
+                                fontWeight: FontWeight.w800))
                         .animate()
-                        .fade(delay: Duration(milliseconds: 1500))
-                        .slideX(),
+                        .fade(delay: const Duration(milliseconds: 800))
+                        .slideY(),
                   ),
                 ),
+                SizedBox(
+                  height: size.height / 100,
+                ),
+                Container(
+                    width: size.width,
+                    height: size.height / 5.1,
+                    // color: Colors.amber,
+                    child: Consumer<ListViewProvider>(
+                      builder: (context, value, child) {
+                        // print("I AM REBUILDING THIS SHTI AGAIN");
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (animatedItemKey.currentState != null) {
+                            animatedItemKey.currentState!.startAnimation();
+                          }
+                        });
+                        return AnimatedItem(
+                            key: animatedItemKey,
+                            child: StreamBuilder<QuerySnapshot>(
+                              stream: getCurrentList(value.currentIndex),
+                              builder: (context, snapshot) {
+                                if (snapshot.hasError) {
+                                  print("Error");
+                                  return Text('Error: ${snapshot.error}');
+                                }
+                                switch (snapshot.connectionState) {
+                                  case ConnectionState.waiting:
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  default:
+                                    return ListView(
+                                      children: snapshot.data!.docs
+                                          .map((DocumentSnapshot document) {
+                                        Map<String, dynamic> data = document
+                                            .data()! as Map<String, dynamic>;
+                                        // SoftyMachine machine =
+                                        //     SoftyMachine.fromJson(data);
+                                        final machine;
+                                        if (value.currentIndex == 0) {
+                                          machine =
+                                              FrezzingMaster.fromJson(data);
+                                        } else if (value.currentIndex == 1) {
+                                          machine =
+                                              HardeeMachine.fromJson(data);
+                                        } else if (value.currentIndex == 2) {
+                                          machine = SoftyMachine.fromJson(data);
+                                        } else {
+                                          machine =
+                                              ThickShakeMachine.fromJson(data);
+                                        }
+                                        // print("Length : " +
+                                        // snapshot.data!.docChanges.length.toString());
+                                        // Use your MachineModel to build the UI
+                                        data.forEach((key, value) {
+                                          // print("Key : $key Value : $value");
+                                        });
+                                        return Column(
+                                          children: [
+                                            Container(
+                                              width: size.width / 1.1,
+                                              height: size.height / 12,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  boxShadow: [
+                                                    // Top left shadow - Simulates the light source from top left
+                                                    BoxShadow(
+                                                      color: Colors.white
+                                                          .withOpacity(
+                                                              0.5), // Lighter shadow color
+                                                      blurRadius: 15,
+                                                      offset: Offset(-5, -5),
+                                                    ),
+                                                    // Bottom right shadow - Simulates the shadow created by the light
+                                                    BoxShadow(
+                                                      color: Colors.black
+                                                          .withOpacity(
+                                                              0.2), // Darker shadow color for depth
+                                                      blurRadius: 15,
+                                                      offset: Offset(5, 5),
+                                                    ),
+                                                  ],
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .secondaryContainer),
+                                              child: InkWell(
+                                                onTap: () {},
+                                                child: SizedBox(
+                                                  height: size.height / 11.9,
+                                                  child: Center(
+                                                    child: ListTile(
+                                                        leading: Container(
+                                                          width: size.width / 7,
+                                                          height:
+                                                              size.height / 5,
+                                                          // color: Colors.amber,
+                                                          child: Center(
+                                                            child:
+                                                                Image.network(
+                                                              machine
+                                                                  .machineImage!
+                                                                  .first,
+                                                              fit: BoxFit.cover,
+                                                              loadingBuilder:
+                                                                  (context,
+                                                                      child,
+                                                                      loadingProgress) {
+                                                                if (loadingProgress ==
+                                                                    null) {
+                                                                  return child; // image is fully loaded
+                                                                } else {
+                                                                  return Center(
+                                                                    child:
+                                                                        CircularProgressIndicator(
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .colorScheme
+                                                                          .secondary,
+                                                                      value: loadingProgress.expectedTotalBytes !=
+                                                                              null
+                                                                          ? loadingProgress.cumulativeBytesLoaded /
+                                                                              loadingProgress.expectedTotalBytes!
+                                                                          : null,
+                                                                    ),
+                                                                  );
+                                                                }
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        // leading: Image.asset(),
+                                                        title: Text(
+                                                            machine
+                                                                .machineName!,
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'SFCompactRounded',
+                                                                fontWeight: FontWeight
+                                                                    .w700,
+                                                                fontSize: size.height /
+                                                                    42.5,
+                                                                // color: Theme.of(context)
+                                                                //     .colorScheme
+                                                                //     .primaryContainer,
+                                                                color: Theme.of(context)
+                                                                    .colorScheme
+                                                                    .primaryContainer)),
+                                                        trailing: Text(
+                                                            machine.machinePrice!
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'SFCompactRounded',
+                                                                fontSize: size.height /
+                                                                    50,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w100,
+                                                                fontStyle: FontStyle
+                                                                    .italic,
+                                                                color: Theme.of(context)
+                                                                    .colorScheme
+                                                                    .tertiary))),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: size.height / 50,
+                                            )
+                                          ],
+                                        );
+                                      }).toList(),
+                                    );
+                                }
+                              },
+                            )
+                            //     .animate()
+                            //     .fade(
+                            //         delay: Duration(milliseconds: 1000),
+                            //         duration: Duration(milliseconds: 500))
+                            //     .slideY(),
+                            );
+                      },
+                    )),
               ],
-            )
+            ),
           ],
         ),
         bottomNavigationBar: Container(

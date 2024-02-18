@@ -4,6 +4,7 @@ import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
 import 'package:dtpl_app/Pages/HomePages/homePage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
 import 'package:dtpl_app/Providers/buttonProvider.dart';
+import 'package:dtpl_app/Providers/listViewProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:dtpl_app/Providers/themeProvider.dart';
@@ -35,6 +36,9 @@ Future<void> main() async {
       ),
       ChangeNotifierProvider<ThemeNotifier>(
         create: (context) => ThemeNotifier(),
+      ),
+      ChangeNotifierProvider<ListViewProvider>(
+        create: (context) => ListViewProvider(),
       )
     ],
     child: MyApp(),
