@@ -2,7 +2,7 @@ import 'package:dtpl_app/Themes/colorPalate.dart';
 import 'package:flutter/material.dart';
 
 class ThemeNotifier with ChangeNotifier {
-  ThemeData _currentTheme = CustomThemes.DarkTheme;
+  ThemeData _currentTheme = CustomThemes.lightTheme;
 
   ThemeData get currentTheme => _currentTheme;
   static bool isDark = true;
