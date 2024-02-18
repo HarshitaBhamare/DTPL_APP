@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+
 class BlasterFrezzer {
   List<String>? machineImage;
   String? machineType;
@@ -71,5 +74,11 @@ class BlasterFrezzer {
       'isPackingIncl': isPackingIncl,
       'isTransportationIncl': isTransportationIncl,
     };
+  }
+
+  Future<List<BlasterFrezzer>> loadThickShakeMachineData() async {
+    String data = await rootBundle.loadString('assets/blasterfrezzer.json');
+    final jsonResult = json.decode(data) as List;
+    return jsonResult.map((json) => BlasterFrezzer.fromJson(json)).toList();
   }
 }

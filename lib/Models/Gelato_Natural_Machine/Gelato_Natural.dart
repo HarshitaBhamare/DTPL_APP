@@ -6,4 +6,9 @@ class Gelato_Natural {
   List<BlasterFrezzer>? blasterFrezzers;
   List<HardeeMachine>? hardeeMachines;
   List<PastoMagicMachine>? pastoMagicMachines;
+
+  Gelato_Natural(
+      {required this.blasterFrezzers,
+      required this.hardeeMachines,
+      required this.pastoMagicMachines});
 }

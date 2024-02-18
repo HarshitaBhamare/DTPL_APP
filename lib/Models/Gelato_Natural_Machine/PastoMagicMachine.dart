@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class PastoMagicMachine {
   List<String>? machineImage;
@@ -81,6 +84,12 @@ class PastoMagicMachine {
       'isPackingIncl': isPackingIncl,
       'isTransportationIncl': isTransportationIncl,
     };
+  }
+
+  Future<List<PastoMagicMachine>> loadThickShakeMachineData() async {
+    String data = await rootBundle.loadString('assets/pastomagicmachine.json');
+    final jsonResult = json.decode(data) as List;
+    return jsonResult.map((json) => PastoMagicMachine.fromJson(json)).toList();
   }
 }
 

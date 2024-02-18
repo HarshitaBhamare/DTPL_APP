@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class FrezzingMaster {
   List<String>? machineImage;
@@ -81,6 +84,12 @@ class FrezzingMaster {
       'isPackingIncl': isPackingIncl,
       'isTransportationIncl': isTransportationIncl,
     };
+  }
+
+  Future<List<FrezzingMaster>> loadThickShakeMachineData() async {
+    String data = await rootBundle.loadString('assets/frezzingmaster.json');
+    final jsonResult = json.decode(data) as List;
+    return jsonResult.map((json) => FrezzingMaster.fromJson(json)).toList();
   }
 }
 

@@ -75,8 +75,16 @@ flutter:
     - assets/gradient.png
     - assets/gradient.jpg
 
+    - assets/blasterfrezzer.json
+    - assets/frezzingmaster.json
+    - assets/friedmachine.json
+    - assets/hardeemachine.json
+    - assets/pastomagicmachine.json
+    - assets/softymachine.json
+    - assets/thickshake.json
+
     - assets/images/Machine1.png
-    - assets/machineList.json
+    # - assets/machineList.json
     - assets/images/google.png
     - assets/images/apple.png
     - assets/images/plant.jpg

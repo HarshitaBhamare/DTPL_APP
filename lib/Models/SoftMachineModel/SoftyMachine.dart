@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class SoftyMachine {
   List<String>? machineImage;
@@ -85,6 +88,12 @@ class SoftyMachine {
       'isPackingIncl': isPackingIncl,
       'isTransportationIncl': isTransportationIncl,
     };
+  }
+
+  Future<List<SoftyMachine>> loadThickShakeMachineData() async {
+    String data = await rootBundle.loadString('assets/softymachine.json');
+    final jsonResult = json.decode(data) as List;
+    return jsonResult.map((json) => SoftyMachine.fromJson(json)).toList();
   }
 }
 

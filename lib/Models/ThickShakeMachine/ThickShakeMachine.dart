@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class ThickShakeMachine {
   List<String>? machineImage;
@@ -86,13 +89,10 @@ class ThickShakeMachine {
       'isTransportationIncl': isTransportationIncl,
     };
   }
-}
 
-Future<void> uploadMachine(ThickShakeMachine machine) async {
-  await FirebaseFirestore.instance
-      .collection('Machines') // Main collection
-      .doc(machine.machineType) // Document for each Machine Type
-      .collection('Models') // Subcollection under each Machine Type for models
-      .doc(machine.machineId.toString()) // Specific machine model document
-      .set(machine.toJson()); // Upload machine data
+  Future<List<ThickShakeMachine>> loadThickShakeMachineData() async {
+    String data = await rootBundle.loadString('assets/thickshake.json');
+    final jsonResult = json.decode(data) as List;
+    return jsonResult.map((json) => ThickShakeMachine.fromJson(json)).toList();
+  }
 }
