@@ -1,3 +1,4 @@
+
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/Frezzing_FriedMachines.dart';
 import 'package:dtpl_app/Models/Gelato_Natural_Machine/Gelato_Natural.dart';
 import 'package:dtpl_app/Models/SoftMachineModel/SoftyMachine.dart';
@@ -14,5 +15,6 @@ class Machines {
       required this.frezzingfriedMachines,
       required this.gelatonaturalMachines,
       required this.thickShakeMachines});
-  
 }
+
+

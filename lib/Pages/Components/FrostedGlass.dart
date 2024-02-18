@@ -5,16 +5,20 @@ import 'package:flutter/material.dart';
 class ForstedGlass extends StatelessWidget {
   final double width, height;
   final Widget child_;
+  final Color color;
+  final double roundedRadius;
   ForstedGlass(
       {super.key,
       required this.width,
       required this.height,
-      required this.child_});
+      required this.child_,
+      required this.color,
+      required this.roundedRadius});
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(roundedRadius),
       child: Container(
         width: width,
         height: height,
@@ -27,13 +31,13 @@ class ForstedGlass extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.white.withOpacity(0.13)),
+                border: Border.all(color: color.withOpacity(0.2)),
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withOpacity(0.15),
-                      Colors.white.withOpacity(0.05)
+                      color.withOpacity(0.1),
+                      Colors.black.withOpacity(0.5)
                     ]),
               ),
             ),

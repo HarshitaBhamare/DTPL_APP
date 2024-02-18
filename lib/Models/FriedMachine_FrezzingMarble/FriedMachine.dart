@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
 
 class FriedMachine {
   List<String>? machineImage;
@@ -78,6 +80,12 @@ class FriedMachine {
       'isTransportationIncl': isTransportationIncl,
     };
   }
+  Future<List<FriedMachine>> loadThickShakeMachineData() async {
+  String data = await rootBundle.loadString('assets/friedmachine.json');
+  final jsonResult = json.decode(data) as List;
+  return jsonResult.map((json) => FriedMachine.fromJson(json)).toList();
+}
+
 }
 
 Future<void> uploadFriedMachine(FriedMachine machine) async {
@@ -88,3 +96,7 @@ Future<void> uploadFriedMachine(FriedMachine machine) async {
       .doc(machine.machineId.toString()) // Specific machine model document
       .set(machine.toJson()); // Upload machine data
 }
+
+
+// Repeat similar functions for the other machine types
+

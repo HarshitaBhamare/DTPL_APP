@@ -48,8 +48,8 @@ class CustomThemes {
   //   tertiaryContainer: Color.fromRGBO(219, 230, 243, 1),
   // ));
   static final ThemeData DarkTheme = ThemeData.dark().copyWith(
-      colorScheme: ColorScheme.dark(
-    background: Color.fromRGBO(25, 25, 25, 1), // bg
+      colorScheme: const ColorScheme.dark(
+    background: Color(0xFFE7F1F9), // bg
     // primary: Color.fromRGBO(133, 177, 236, 1),
     primaryContainer: Color.fromRGBO(250, 255, 236, 1), // text
     primary: Color.fromRGBO(175, 255, 255, 1), // image text
