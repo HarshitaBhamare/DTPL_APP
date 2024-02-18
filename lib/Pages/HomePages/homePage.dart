@@ -324,7 +324,7 @@ class _HomePageState extends State<HomePage> {
                       height: size.height / 80,
                     ),
                     Text(
-                      'Harshita Bhamare',
+                      'Rohan Gajjar',
                       style: TextStyle(
                           fontFamily: 'SFCompactRounded',
                           fontSize: size.height / 30,
