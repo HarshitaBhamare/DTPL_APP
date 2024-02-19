@@ -11,7 +11,6 @@ import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -68,20 +67,20 @@ class _LoginPageState extends State<LoginPage>
       if (emailIDController.text.isEmpty) {
         Provider.of<LoadingProvider>(context, listen: false).hideLoading();
         Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
-            true, context, _animationController!,
+            true, false, context, _animationController!,
             MsgText: "Please Enter Email ID");
         return;
       } else if (passwordController.text.isEmpty) {
         Provider.of<LoadingProvider>(context, listen: false).hideLoading();
         Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
-            true, context, _animationController!,
+            true, false, context, _animationController!,
             MsgText: "Please Enter Password to Login");
         return;
       }
       if (!isEmailValid(emailIDController.text)) {
         Provider.of<LoadingProvider>(context, listen: false).hideLoading();
         Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
-            true, context, _animationController!,
+            true, false, context, _animationController!,
             MsgText: "Please Enter Valid Email ID :)");
         return;
       }

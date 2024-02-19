@@ -30,7 +30,7 @@ class FirebaseAuthService {
       print(e.message);
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
       Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
-          true, context, animationController,
+          true, false, context, animationController,
           MsgText: e.message ?? 'An error occurred');
       return null;
     }
@@ -63,7 +63,7 @@ class FirebaseAuthService {
       print("Error Message ${e.message}");
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
       Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
-          true, context, animationController,
+          true, false, context, animationController,
           MsgText: e.message ?? 'An error occurred');
       // MsgText: "Invalid Credentials Please ReCheck");
       // WaitTillEnd();
@@ -89,6 +89,7 @@ class FirebaseAuthService {
     } catch (e) {
       // Handle any errors here
       print("Error signing out: $e");
+      await Future.delayed(Duration(seconds: 1));
       Provider.of<LoadingProvider>(context, listen: false).hideLoading();
 
       // Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
@@ -147,33 +148,29 @@ class FirebaseAuthService {
     }
   }
 
-  Future<void> signOutGoogle(BuildContext context) async {
+  Future<void> signOutGoogle(
+      BuildContext context, bool Function() isWidgetMounted) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     Provider.of<LoadingProvider>(context, listen: false).showLoading();
 
     try {
-      // Sign out from Google
       await googleSignIn.signOut();
-      // Sign out from Firebase
       await FirebaseAuth.instance.signOut();
 
-      // Optionally, navigate the user to the sign-in page after signing out
       await Future.delayed(Duration(seconds: 2));
-      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+
+      if (!isWidgetMounted()) return;
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => LandingPage()),
       );
     } catch (e) {
-      // Handle errors (e.g., show a message)
       print("Error signing out: $e");
-      // Using Provider or any other state management to show the error message
-      // This is just a placeholder, replace with your actual error handling mechanism\
-      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error signing out. Try again.')),
-      );
+    } finally {
+      if (isWidgetMounted()) {
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+      }
     }
   }
 

@@ -12,6 +12,7 @@ class MsgBox extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final String msgText = context.watch<MsgBoxProvider>().msgText;
+    final bool isSuccess = context.watch<MsgBoxProvider>().isSuccessMsg;
     return Material(
       type: MaterialType.transparency,
       child: Padding(
@@ -23,7 +24,10 @@ class MsgBox extends StatelessWidget {
           width: size.width / 1.1,
           height: size.height / 15,
           decoration: BoxDecoration(
-              color: Colors.red, borderRadius: BorderRadius.circular(10)),
+              color: isSuccess
+                  ? MsgBoxProvider().successColor
+                  : MsgBoxProvider().errorColor,
+              borderRadius: BorderRadius.circular(10)),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 10),
             width: size.width / 1.13,
@@ -45,7 +49,8 @@ class MsgBox extends StatelessWidget {
                   onTap: () async {
                     await animationController?.reverse().orCancel;
                     Provider.of<MsgBoxProvider>(context, listen: false)
-                        .ShowHide(false, context, animationController!);
+                        .ShowHide(
+                            false, isSuccess, context, animationController!);
                   },
                   child: Icon(
                     Icons.cancel,

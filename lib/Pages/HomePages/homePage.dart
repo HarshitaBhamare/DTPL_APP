@@ -16,9 +16,7 @@ import 'package:dtpl_app/Models/Machines.dart';
 import 'package:dtpl_app/Models/SoftMachineModel/SoftyMachine.dart';
 import 'package:dtpl_app/Models/ThickShakeMachine/ThickShakeMachine.dart';
 import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
-import 'package:dtpl_app/Pages/Components/FrostedGlass.dart';
 import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
-import 'package:dtpl_app/Pages/HomePages/customList.dart';
 import 'package:dtpl_app/Providers/listViewProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
 import 'package:dtpl_app/Providers/msgBoxProvider.dart';
@@ -30,8 +28,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hidden_drawer/flutter_hidden_drawer.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-// import 'package:flutter/animation.dart';
-import 'dart:math';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -88,19 +84,27 @@ class _HomePageState extends State<HomePage>
         }
       });
     });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // Ensure the context is available and the build process is completed
-      // print("Builded the Whole Widget");
-      _opacityAnimation =
-          Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(Duration(seconds: 2));
+      if (!mounted) {
+        return;
+      }
       Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+        true,
         true,
         context,
         _animationController!,
         MsgText: "Successful login",
       );
-      // print("Builded the Whole Widget1");
     });
+  }
+
+  @override
+  void dispose() {
+    _animationController?.dispose();
+    debouncer._timer?.cancel();
+    itemPositionsListener.itemPositions.removeListener(() {});
+    super.dispose();
   }
 
   void centerNearestItem() {
@@ -273,13 +277,6 @@ class _HomePageState extends State<HomePage>
     Machines machines = await createMachinesInstance();
     await uploadMachinesToFirestore(machines);
   }
-
-  // @override
-  // void dispose() {
-  //   _scrollController.removeListener(_scrollListener);
-  //   _scrollController.dispose();
-  //   super.dispose();
-  // }
 
   Stream<QuerySnapshot<Object?>>? getCurrentList(int index) {
     if (index == 0) {
@@ -524,7 +521,8 @@ class _HomePageState extends State<HomePage>
                       if (signInMethod == 'google.com') {
                         // final GoogleSignIn googleSignIn = GoogleSignIn();
                         print("Signout Using : Google");
-                        await FirebaseAuthService().signOutGoogle(context);
+                        await FirebaseAuthService()
+                            .signOutGoogle(context, () => mounted);
                       } else {
                         print("Signout Using : EmailID");
                         await FirebaseAuthService().signOut(context);
@@ -1046,6 +1044,11 @@ class _HomePageState extends State<HomePage>
       ),
       Consumer<MsgBoxProvider>(
         builder: (context, value, child) {
+          if (value.isShowing) {
+            _animationController?.forward();
+          } else {
+            _animationController?.reverse();
+          }
           return AnimatedBuilder(
             animation: _animationController!,
             builder: (context, child) => value.isShowing
@@ -1057,18 +1060,9 @@ class _HomePageState extends State<HomePage>
                     ), // Your MsgBox or the wrapped version
                   )
                 : SizedBox(),
-          ).animate().fadeOut(duration: Duration(seconds: 10));
+          );
         },
       ),
-      // Center(
-      //   child: FloatingActionButton(
-      //     onPressed: () {
-      //       Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
-      //           true, context, _animationController!,
-      //           MsgText: "Successfull login");
-      //     },
-      //   ),
-      // ),
       isLoading ? LoadingPage() : SizedBox()
     ]);
   }
