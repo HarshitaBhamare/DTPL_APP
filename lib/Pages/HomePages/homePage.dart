@@ -28,8 +28,24 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 // import 'package:flutter/animation.dart';
+import 'dart:math';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
+import 'dart:async';
+
+class Debouncer {
+  final int milliseconds;
+  Timer? _timer;
+
+  Debouncer({required this.milliseconds});
+
+  run(VoidCallback action) {
+    _timer?.cancel();
+    _timer = Timer(Duration(milliseconds: milliseconds), action);
+  }
+}
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -42,7 +58,55 @@ class _HomePageState extends State<HomePage> {
   List<GlobalKey> itemKeys = List.generate(10, (index) => GlobalKey());
   GlobalKey<AnimatedItemState> animatedItemKey = GlobalKey<AnimatedItemState>();
 
-  final ScrollController _scrollController = ScrollController();
+  final ItemScrollController itemScrollController = ItemScrollController();
+  final ItemPositionsListener itemPositionsListener =
+      ItemPositionsListener.create();
+  final Debouncer debouncer = Debouncer(milliseconds: 200);
+
+  @override
+  void initState() {
+    super.initState();
+    itemPositionsListener.itemPositions.addListener(() {
+      debouncer.run(() {
+        if (itemPositionsListener.itemPositions.value.isNotEmpty) {
+          centerNearestItem();
+        }
+      });
+    });
+  }
+
+  void centerNearestItem() {
+    // Obtain the indices of the items currently visible in the viewport.
+    final indices = itemPositionsListener.itemPositions.value
+        .where((ItemPosition position) =>
+            position.itemLeadingEdge < 1 && position.itemTrailingEdge > 0)
+        .map((ItemPosition position) => position.index)
+        .toList();
+
+    // If there's no item currently visible, return.
+    if (indices.isEmpty) return;
+
+    // Find the index of the item closest to the center.
+    final centerIndex = indices.reduce((a, b) {
+      final aPosition = itemPositionsListener.itemPositions.value
+          .firstWhere((ItemPosition position) => position.index == a);
+      final bPosition = itemPositionsListener.itemPositions.value
+          .firstWhere((ItemPosition position) => position.index == b);
+      final aDistance = (aPosition.itemLeadingEdge - 0.5).abs() +
+          (aPosition.itemTrailingEdge - 0.5).abs();
+      final bDistance = (bPosition.itemLeadingEdge - 0.5).abs() +
+          (bPosition.itemTrailingEdge - 0.5).abs();
+      return aDistance < bDistance ? a : b;
+    });
+
+    // Smoothly scroll to the centerIndex.
+    itemScrollController.scrollTo(
+      index: centerIndex,
+      duration: Duration(milliseconds: 500),
+      // alignment: 0.5, // Always attempt to center the item.
+      curve: Curves.easeInOutCubic,
+    );
+  }
 
   void startAnimation() {
     animatedItemKey.currentState?.startAnimation();
@@ -181,40 +245,17 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _scrollController.addListener(_scrollListener);
-    // Upload();
-  }
-
-  void _scrollListener() {
-    double itemWidth = MediaQuery.of(context).size.width / 1.1;
-    int newFirstItemIndex = (_scrollController.offset / itemWidth).floor();
-
-    // Get the current index from the provider without listening to changes
-    int currentFirstItemIndex =
-        Provider.of<ListViewProvider>(context, listen: false).currentIndex;
-
-    // Only call SetIndex if the index has actually changed
-    if (newFirstItemIndex != currentFirstItemIndex) {
-      Provider.of<ListViewProvider>(context, listen: false)
-          .SetIndex(newFirstItemIndex);
-    }
-  }
-
   Future<void> Upload() async {
     Machines machines = await createMachinesInstance();
     await uploadMachinesToFirestore(machines);
   }
 
-  @override
-  void dispose() {
-    _scrollController.removeListener(_scrollListener);
-    _scrollController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _scrollController.removeListener(_scrollListener);
+  //   _scrollController.dispose();
+  //   super.dispose();
+  // }
 
   Stream<QuerySnapshot<Object?>>? getCurrentList(int index) {
     if (index == 0) {
@@ -526,11 +567,13 @@ class _HomePageState extends State<HomePage> {
                     return const Center(
                         child: CircularProgressIndicator(color: Colors.green));
                   }
-                  return ListView.builder(
+                  return ScrollablePositionedList.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data!.docs.length,
-                    controller: _scrollController,
+                    itemScrollController: itemScrollController,
+                    itemPositionsListener: itemPositionsListener,
                     padding: const EdgeInsets.only(left: 20),
+                    physics: const ClampingScrollPhysics(),
                     itemBuilder: (context, index) {
                       // currentIndex = index;
                       // Provider.of<ListViewProvider>(context, listen: false)
@@ -540,6 +583,7 @@ class _HomePageState extends State<HomePage> {
                           document.data() as Map<String, dynamic>;
                       return Row(
                         children: [
+                          SizedBox(width: size.width / 20),
                           Align(
                             alignment: Alignment.topCenter,
                             child: Container(
