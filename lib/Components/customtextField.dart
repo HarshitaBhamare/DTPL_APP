@@ -75,7 +75,7 @@ class _MyTextFieldState extends State<MyTextField> {
                   color: Theme.of(context).colorScheme.primary,
                   width: 2,
                 )),
-            fillColor: Theme.of(context).colorScheme.secondary,
+            fillColor: Theme.of(context).colorScheme.secondaryContainer,
             filled: true,
           )),
     );

@@ -53,7 +53,7 @@ class LandingPage extends StatelessWidget {
                     fontFamily: 'SFCompactRounded',
                     fontWeight: FontWeight.bold,
                     fontSize: size.height / 18,
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
               ),
@@ -63,7 +63,7 @@ class LandingPage extends StatelessWidget {
                   // color: Colors.amber,
                   // color: Colors.amber,
                   color: ThemeNotifier.isDark
-                      ? Theme.of(context).colorScheme.tertiaryContainer
+                      ? Theme.of(context).colorScheme.background
                       : Theme.of(context).colorScheme.background,
                   width: size.width / 1.1,
                   height: size.height / 3.5,
@@ -84,7 +84,7 @@ class LandingPage extends StatelessWidget {
                     fontFamily: 'SFCompactRounded',
                     fontWeight: FontWeight.w900,
                     fontSize: size.height / 25,
-                    color: Theme.of(context).colorScheme.primaryContainer,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
               ),
@@ -98,7 +98,7 @@ class LandingPage extends StatelessWidget {
                           // letterSpacing: 1,
                           fontWeight: FontWeight.w900,
                           fontSize: size.height / 25,
-                          color: Theme.of(context).colorScheme.primaryContainer,
+                          color: Theme.of(context).colorScheme.primary,
                         ))
                     .animate()
                     .fade(delay: Duration(milliseconds: 100))

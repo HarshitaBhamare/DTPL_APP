@@ -61,8 +61,8 @@ class _MyAppState extends State<MyApp> {
       // theme: ,
       theme: context.watch<ThemeNotifier>().currentTheme,
       home: Scaffold(
-        // body: SpecifiedMenuBar(),
-        body: HomePage(),
+        body: LandingPage(),
+        // body: HomePage(),
         // body: MenuPage(),
         // body: ListOfItems(),
         // body: SpecifiedMenuBar(),
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
       //     return const Scaffold(
       //       body: Center(child: CircularProgressIndicator()),
       //     );
-      // },
+      //   },
       // ),
     );
   }

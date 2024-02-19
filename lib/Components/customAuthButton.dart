@@ -52,8 +52,8 @@ class _AuthButtonsState extends State<AuthButtons> {
             color: currentid == widget.id
                 ? isclick
                     ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.secondary
-                : Theme.of(context).colorScheme.secondary,
+                    : Theme.of(context).colorScheme.onBackground
+                : Theme.of(context).colorScheme.onBackground,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Container(
