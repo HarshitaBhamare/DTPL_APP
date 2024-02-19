@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
     });
 
     // Smoothly scroll to the centerIndex.
+    Provider.of<ListViewProvider>(context, listen: false).SetIndex(centerIndex);
     itemScrollController.scrollTo(
       index: centerIndex,
       duration: Duration(milliseconds: 500),
