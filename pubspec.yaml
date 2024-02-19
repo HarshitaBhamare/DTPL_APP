@@ -47,6 +47,7 @@ dependencies:
   flutter_hidden_drawer: ^1.0.1
   crypto: ^3.0.1
   scrollable_positioned_list: ^0.3.8
+  auto_size_text: ^3.0.0
   # provider:
 
 dev_dependencies:
@@ -99,6 +100,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   fonts:
+    - family: Anta
+      fonts:
+        - asset: fonts/Anta-Regular.ttf
     - family: SFCompactRounded
       fonts:
         - asset: fonts/SFCompactRounded.ttf

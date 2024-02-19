@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dtpl_app/Pages/AuthPages/loadingPage.dart';
 import 'package:dtpl_app/Pages/AuthPages/loginPage.dart';
 import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
@@ -44,20 +45,73 @@ class LandingPage extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                height: size.height / 19,
+                height: size.height / 15,
               ),
-              Center(
-                child: Text(
-                  "Devi Technocraft\nPrivate Limited",
-                  style: TextStyle(
-                    fontFamily: 'SFCompactRounded',
-                    fontWeight: FontWeight.bold,
-                    fontSize: size.height / 18,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
+              Container(
+                alignment: Alignment.topLeft,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: size.width / 30,
+                        ),
+                        Container(
+                          width: size.width / 1.2,
+                          height: size.height / 20,
+                          // color: Colors.green,
+                          alignment: Alignment.centerLeft,
+                          child: AutoSizeText(" Welcome to,",
+                                  textAlign: TextAlign.left,
+                                  maxLines: 3,
+                                  style: TextStyle(
+                                    fontFamily: 'Anta',
+                                    // fontWeight: FontWeight.bold,
+                                    // fontWeight: FontWeight.w200,
+                                    fontSize: size.height / 33,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ))
+                              .animate()
+                              .fade(delay: Duration(milliseconds: 100))
+                              .scale(),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: size.width / 20,
+                        ),
+                        Container(
+                          width: size.width / 1.2,
+                          height: size.height / 10,
+                          // color: Colors.green,
+                          alignment: Alignment.centerLeft,
+                          child:
+                              AutoSizeText("Devi Technocraft Private Limited",
+                                      textAlign: TextAlign.left,
+                                      maxLines: 3,
+                                      style: TextStyle(
+                                        fontFamily: 'Anta',
+                                        // fontWeight: FontWeight.bold,
+                                        // fontWeight: FontWeight.w200,
+                                        fontSize: size.height / 30,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      ))
+                                  .animate()
+                                  .fade(delay: Duration(milliseconds: 100))
+                                  .scale(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(height: size.height / 90),
+              // SizedBox(height: size.height / 90),
+              // SizedBox(height: size.height / 90),
               ClipOval(
                 child: Container(
                   // color: Colors.amber,
@@ -79,41 +133,31 @@ class LandingPage extends StatelessWidget {
               SizedBox(height: size.height / 20),
               Center(
                 child: Text(
-                  "Welcome to",
+                  "Premium Soft Serve Solutions with Style and Efficiency",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'SFCompactRounded',
-                    fontWeight: FontWeight.w900,
-                    fontSize: size.height / 25,
+                    fontWeight: FontWeight.w100,
+                    fontSize: size.height / 50,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                ).animate().fade(delay: Duration(milliseconds: 100)).scale(),
-              ),
-              // .animate()
-              // .fade(delay: Duration(milliseconds: 500))
-              // .slideY(),
-              Center(
-                child: Text('DTPL',
-                        style: TextStyle(
-                          fontFamily: 'SFCompactRounded',
-                          // letterSpacing: 1,
-                          fontWeight: FontWeight.w900,
-                          fontSize: size.height / 25,
-                          color: Theme.of(context).colorScheme.primary,
-                        ))
+                )
                     .animate()
                     .fade(delay: Duration(milliseconds: 100))
-                    .scale(),
+                    .scale()
+                    .animate()
+                    .fade(delay: Duration(milliseconds: 500))
+                    .slideY(),
               ),
-              SizedBox(
-                height: size.height / 30,
-              ),
+              SizedBox(height: size.height / 20),
+
               Provider.of<buttonManager>(context, listen: false)
                   .getWidget('h_login', OnClickLoginPage)
                   .animate()
                   .fade(delay: Duration(milliseconds: 700))
                   .slideY(),
               SizedBox(
-                height: size.height / 27,
+                height: size.height / 20,
               ),
               Provider.of<buttonManager>(context, listen: false)
                   .getWidget('h_register', OnClickRegisterPage)

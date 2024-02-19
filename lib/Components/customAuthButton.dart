@@ -51,18 +51,28 @@ class _AuthButtonsState extends State<AuthButtons> {
           decoration: BoxDecoration(
             color: currentid == widget.id
                 ? isclick
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.onBackground
-                : Theme.of(context).colorScheme.onBackground,
+                    ? Theme.of(context).colorScheme.background
+                    : Theme.of(context).colorScheme.secondaryContainer
+                : Theme.of(context).colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                    color: Theme.of(context).colorScheme.primary, width: 2)),
-            height: size.height / 12,
-            width: size.width / 1.4,
+                    color: Theme.of(context).colorScheme.onBackground,
+                    width: 2)),
+            height: currentid == widget.id
+                ? isclick
+                    ? size.height / 11
+                    : size.height / 12
+                : size.height / 12,
+            width: currentid == widget.id
+                ? isclick
+                    ? size.width / 1.3
+                    : size.width / 1.4
+                : size.width / 1.4,
             child: Center(
               child: Text(
                 widget.name,
@@ -70,9 +80,9 @@ class _AuthButtonsState extends State<AuthButtons> {
                   fontFamily: 'SFCompactRounded',
                   color: currentid == widget.id
                       ? isclick
-                          ? Theme.of(context).colorScheme.background
-                          : Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.primary,
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.tertiaryContainer
+                      : Theme.of(context).colorScheme.tertiaryContainer,
                   fontSize: size.height / 40,
                   // letterSpacing: 1,
                   fontWeight: FontWeight.w900,

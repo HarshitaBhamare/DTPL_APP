@@ -101,15 +101,18 @@ class FirebaseAuthService {
   Future<UserCredential?> signInWithGoogle(BuildContext context) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    Provider.of<LoadingProvider>(context, listen: false).showLoading();
 
     try {
       // Trigger the authentication flow
-      Provider.of<LoadingProvider>(context, listen: false).showLoading();
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
 
-      // Abort if user cancels the sign in process
-      if (googleSignInAccount == null) return null;
+      // Abort if user cancels the sign-in process and ensure loading is hidden
+      if (googleSignInAccount == null) {
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+        return null;
+      }
 
       // Obtain the auth details from the request
       final GoogleSignInAuthentication googleSignInAuthentication =
@@ -126,29 +129,18 @@ class FirebaseAuthService {
           await firebaseAuth.signInWithCredential(credential);
 
       // Optionally, navigate to the HomePage after a successful sign in
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => HomePage()),
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ),
+          MaterialPageRoute(builder: (context) => HomePage()),
           (route) => false);
 
-      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
-
       return userCredential;
-    } on FirebaseAuthException catch (e) {
-      // Handle Firebase authentication errors
-      print("Firebase Auth Error: ${e.message}");
-      return null;
     } catch (e) {
-      // Handle other errors
-      print("Error signing in with Google: $e");
-      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
-
+      print("Error during Google sign-in: $e");
       return null;
+    } finally {
+      // Ensure loading screen is always hidden at the end of the process
+      Provider.of<LoadingProvider>(context, listen: false).hideLoading();
     }
   }
 

@@ -107,9 +107,9 @@ class _LoginPageState extends State<LoginPage>
                 child: Text('Welcome back! Glad\nto see you, Again!',
                         style: TextStyle(
                           fontFamily: 'SFCompactRounded',
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w500,
                           fontSize: size.height / 28,
-                          color: Theme.of(context).colorScheme.primaryContainer,
+                          color: Theme.of(context).colorScheme.primary,
                         ))
                     .animate()
                     .fade(delay: Duration(milliseconds: 100))
@@ -222,6 +222,7 @@ class _LoginPageState extends State<LoginPage>
                     style: TextStyle(
                         fontFamily: 'SFCompactRounded',
                         color: Theme.of(context).colorScheme.tertiary,
+                        // fontSize: size.height / 50,
                         fontWeight: FontWeight.w900),
                   ).animate().fade(delay: Duration(milliseconds: 800)).slideY(),
                   Expanded(

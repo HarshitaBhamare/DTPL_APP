@@ -139,10 +139,9 @@ class _RegisterPageState extends State<RegisterPage>
                   child: Text('Hello! Register to get\nstarted',
                           style: TextStyle(
                             fontFamily: 'SFCompactRounded',
-                            fontWeight: FontWeight.w900,
+                            fontWeight: FontWeight.w500,
                             fontSize: size.height / 30,
-                            color:
-                                Theme.of(context).colorScheme.primaryContainer,
+                            color: Theme.of(context).colorScheme.primary,
                           ))
                       .animate()
                       .fade(delay: Duration(milliseconds: 100))

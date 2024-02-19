@@ -38,6 +38,7 @@ class _MyTextFieldState extends State<MyTextField> {
           controller: widget.textEditingController,
           style: TextStyle(
             fontSize: size.height / 60,
+            fontFamily: 'SFCompactRounded',
             color: Theme.of(context).colorScheme.primary,
           ),
           obscureText: widget.isPasswordField ? !widget.show : false,
@@ -66,13 +67,13 @@ class _MyTextFieldState extends State<MyTextField> {
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onBackground,
                   width: 2,
                 )),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.onBackground,
                   width: 2,
                 )),
             fillColor: Theme.of(context).colorScheme.secondaryContainer,
