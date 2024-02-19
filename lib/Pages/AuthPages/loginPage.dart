@@ -242,7 +242,8 @@ class _LoginPageState extends State<LoginPage>
                   children: [
                     InkWell(
                       onTap: () {
-                        FirebaseAuthService().signInWithGoogle(context);
+                        FirebaseAuthService()
+                            .signInWithGoogle(context, _animationController!);
                       },
                       child: SquareTile(imagePath: 'assets/images/google.png')
                           .animate()

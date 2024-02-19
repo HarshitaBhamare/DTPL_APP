@@ -11,7 +11,9 @@ class MsgBoxProvider with ChangeNotifier {
     isShowing = isShow;
     msgText = MsgText;
     context = m_context;
+    // print("Showing the Message Screen");
     notifyListeners();
+
     if (isShowing) {
       WaitTillEnd(animationController);
     }

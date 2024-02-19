@@ -65,7 +65,7 @@ class LandingPage extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                   maxLines: 3,
                                   style: TextStyle(
-                                    fontFamily: 'Anta',
+                                    fontFamily: 'SFCompactRounded',
                                     // fontWeight: FontWeight.bold,
                                     // fontWeight: FontWeight.w200,
                                     fontSize: size.height / 33,
@@ -93,9 +93,9 @@ class LandingPage extends StatelessWidget {
                                       textAlign: TextAlign.left,
                                       maxLines: 3,
                                       style: TextStyle(
-                                        fontFamily: 'Anta',
+                                        fontFamily: 'SFCompactRounded',
                                         // fontWeight: FontWeight.bold,
-                                        // fontWeight: FontWeight.w200,
+                                        fontWeight: FontWeight.w500,
                                         fontSize: size.height / 30,
                                         color: Theme.of(context)
                                             .colorScheme

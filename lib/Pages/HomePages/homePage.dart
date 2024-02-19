@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ui';
 import 'package:dtpl_app/Components/AnimatedItem.dart';
+import 'package:dtpl_app/Components/customMsgBox.dart';
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/FrezzingMaster.dart';
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/Frezzing_FriedMachines.dart';
 import 'package:dtpl_app/Models/FriedMachine_FrezzingMarble/FriedMachine.dart';
@@ -20,12 +21,14 @@ import 'package:dtpl_app/Pages/HomePages/SpecifiedMenuBar.dart';
 import 'package:dtpl_app/Pages/HomePages/customList.dart';
 import 'package:dtpl_app/Providers/listViewProvider.dart';
 import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/msgBoxProvider.dart';
 import 'package:dtpl_app/Providers/themeProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_hidden_drawer/flutter_hidden_drawer.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 // import 'package:flutter/animation.dart';
 import 'dart:math';
@@ -54,10 +57,16 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  double x = 0;
+  double y = 0;
+  double width = 0;
+  double height = 0;
+  AnimationController? _animationController;
+  Animation<double>? _opacityAnimation;
   List<GlobalKey> itemKeys = List.generate(10, (index) => GlobalKey());
   GlobalKey<AnimatedItemState> animatedItemKey = GlobalKey<AnimatedItemState>();
-
   final ItemScrollController itemScrollController = ItemScrollController();
   final ItemPositionsListener itemPositionsListener =
       ItemPositionsListener.create();
@@ -66,12 +75,31 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    _opacityAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
     itemPositionsListener.itemPositions.addListener(() {
       debouncer.run(() {
         if (itemPositionsListener.itemPositions.value.isNotEmpty) {
           centerNearestItem();
         }
       });
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Ensure the context is available and the build process is completed
+      // print("Builded the Whole Widget");
+      _opacityAnimation =
+          Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
+      Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+        true,
+        context,
+        _animationController!,
+        MsgText: "Successful login",
+      );
+      // print("Builded the Whole Widget1");
     });
   }
 
@@ -223,11 +251,6 @@ class _HomePageState extends State<HomePage> {
           .set(frezzingMachines.toJson());
     }
   }
-
-  double x = 0;
-  double y = 0;
-  double width = 0;
-  double height = 0;
 
   void _getWidgetPosition(int id, VoidCallback onPositionRetrieved) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -1021,6 +1044,31 @@ class _HomePageState extends State<HomePage> {
             delay: Duration(milliseconds: 1700),
             duration: Duration(milliseconds: 500)),
       ),
+      Consumer<MsgBoxProvider>(
+        builder: (context, value, child) {
+          return AnimatedBuilder(
+            animation: _animationController!,
+            builder: (context, child) => value.isShowing
+                ? Opacity(
+                    opacity: _opacityAnimation!.value,
+                    // opacity: 1,
+                    child: MsgBox(
+                      animationController: _animationController!,
+                    ), // Your MsgBox or the wrapped version
+                  )
+                : SizedBox(),
+          ).animate().fadeOut(duration: Duration(seconds: 10));
+        },
+      ),
+      // Center(
+      //   child: FloatingActionButton(
+      //     onPressed: () {
+      //       Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+      //           true, context, _animationController!,
+      //           MsgText: "Successfull login");
+      //     },
+      //   ),
+      // ),
       isLoading ? LoadingPage() : SizedBox()
     ]);
   }

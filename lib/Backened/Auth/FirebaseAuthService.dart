@@ -56,6 +56,7 @@ class FirebaseAuthService {
           MaterialPageRoute(
             builder: (context) => HomePage(),
           ));
+
       return userCredential;
     } on FirebaseAuthException catch (e) {
       // Handle exceptions
@@ -98,7 +99,8 @@ class FirebaseAuthService {
     }
   }
 
-  Future<UserCredential?> signInWithGoogle(BuildContext context) async {
+  Future<UserCredential?> signInWithGoogle(
+      BuildContext context, AnimationController animationController) async {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     Provider.of<LoadingProvider>(context, listen: false).showLoading();
@@ -107,7 +109,6 @@ class FirebaseAuthService {
       // Trigger the authentication flow
       final GoogleSignInAccount? googleSignInAccount =
           await googleSignIn.signIn();
-
       // Abort if user cancels the sign-in process and ensure loading is hidden
       if (googleSignInAccount == null) {
         Provider.of<LoadingProvider>(context, listen: false).hideLoading();
@@ -127,12 +128,14 @@ class FirebaseAuthService {
       // Once signed in, return the UserCredential
       UserCredential userCredential =
           await firebaseAuth.signInWithCredential(credential);
-
       // Optionally, navigate to the HomePage after a successful sign in
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => HomePage()),
           (route) => false);
+      // Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+      // true, context, animationController,
+      // MsgText: "Successfull login");
 
       return userCredential;
     } catch (e) {
