@@ -37,6 +37,10 @@ class _RegisterPageState extends State<RegisterPage>
     );
     _opacityAnimation =
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      Provider.of<MsgBoxProvider>(context, listen: false)
+          .ShowHide(false, false, context, _animationController!);
+    });
   }
 
   @override
