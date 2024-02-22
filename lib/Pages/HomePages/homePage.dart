@@ -435,16 +435,16 @@ class _HomePageState extends State<HomePage>
               ),
               ListTile(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SpecifiedMenuBar(
-                          xPosi: x,
-                          yPosi: y,
-                          width: width, // Pass width
-                          height: height,
-                        ),
-                      ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => SpecifiedMenuBar(
+                  //         xPosi: x,
+                  //         yPosi: y,
+                  //         width: width, // Pass width
+                  //         height: height,
+                  //       ),
+                  //     ));
                 },
                 leading: SizedBox(
                     width: size.width / 9,
@@ -859,83 +859,102 @@ class _HomePageState extends State<HomePage>
                                                       .colorScheme
                                                       .secondaryContainer),
                                               child: InkWell(
-                                                onTap: () {},
-                                                child: SizedBox(
-                                                  height: size.height / 11.9,
-                                                  child: Center(
-                                                    child: ListTile(
-                                                        leading: Container(
-                                                          width: size.width / 7,
-                                                          height:
-                                                              size.height / 5,
-                                                          // color: Colors.amber,
-                                                          child: Center(
-                                                            child:
-                                                                Image.network(
-                                                              machine
-                                                                  .machineImage!
-                                                                  .first,
-                                                              fit: BoxFit.cover,
-                                                              loadingBuilder:
-                                                                  (context,
-                                                                      child,
-                                                                      loadingProgress) {
-                                                                if (loadingProgress ==
-                                                                    null) {
-                                                                  return child; // image is fully loaded
-                                                                } else {
-                                                                  return Center(
-                                                                    child:
-                                                                        CircularProgressIndicator(
-                                                                      color: Theme.of(
-                                                                              context)
-                                                                          .colorScheme
-                                                                          .secondary,
-                                                                      value: loadingProgress.expectedTotalBytes !=
-                                                                              null
-                                                                          ? loadingProgress.cumulativeBytesLoaded /
-                                                                              loadingProgress.expectedTotalBytes!
-                                                                          : null,
-                                                                    ),
-                                                                  );
-                                                                }
-                                                              },
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            SpecifiedMenuBar(
+                                                                xPosi: x,
+                                                                yPosi: y,
+                                                                width:
+                                                                    width, // Pass width
+                                                                height: height,
+                                                                heroTag:
+                                                                    'machine'),
+                                                      ));
+                                                },
+                                                child: Hero(
+                                                  tag: 'machine',
+                                                  child: SizedBox(
+                                                    height: size.height / 11.9,
+                                                    child: Center(
+                                                      child: ListTile(
+                                                          leading: Container(
+                                                            width:
+                                                                size.width / 7,
+                                                            height:
+                                                                size.height / 5,
+                                                            // color: Colors.amber,
+                                                            child: Center(
+                                                              child:
+                                                                  Image.network(
+                                                                machine
+                                                                    .machineImage!
+                                                                    .first,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                                loadingBuilder:
+                                                                    (context,
+                                                                        child,
+                                                                        loadingProgress) {
+                                                                  if (loadingProgress ==
+                                                                      null) {
+                                                                    return child; // image is fully loaded
+                                                                  } else {
+                                                                    return Center(
+                                                                      child:
+                                                                          CircularProgressIndicator(
+                                                                        color: Theme.of(context)
+                                                                            .colorScheme
+                                                                            .secondary,
+                                                                        value: loadingProgress.expectedTotalBytes !=
+                                                                                null
+                                                                            ? loadingProgress.cumulativeBytesLoaded /
+                                                                                loadingProgress.expectedTotalBytes!
+                                                                            : null,
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                },
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        // leading: Image.asset(),
-                                                        title: Text(
-                                                            machine
-                                                                .machineName!,
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    'SFCompactRounded',
-                                                                fontWeight: FontWeight
-                                                                    .w700,
-                                                                fontSize: size.height /
-                                                                    42.5,
-                                                                // color: Theme.of(context)
-                                                                //     .colorScheme
-                                                                //     .primaryContainer,
-                                                                color: Theme.of(context)
-                                                                    .colorScheme
-                                                                    .primaryContainer)),
-                                                        trailing: Text(
-                                                            machine.machinePrice!
-                                                                .toString(),
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    'SFCompactRounded',
-                                                                fontSize: size.height /
-                                                                    50,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w100,
-                                                                fontStyle: FontStyle
-                                                                    .italic,
-                                                                color: Theme.of(context)
-                                                                    .colorScheme
-                                                                    .tertiary))),
+                                                          // leading: Image.asset(),
+                                                          title: Text(
+                                                              machine
+                                                                  .machineName!,
+                                                              style: TextStyle(
+                                                                  fontFamily:
+                                                                      'SFCompactRounded',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  fontSize:
+                                                                      size.height /
+                                                                          42.5,
+                                                                  // color: Theme.of(context)
+                                                                  //     .colorScheme
+                                                                  //     .primaryContainer,
+                                                                  color: Theme.of(context)
+                                                                      .colorScheme
+                                                                      .primaryContainer)),
+                                                          trailing: Text(
+                                                              machine.machinePrice!
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontFamily:
+                                                                      'SFCompactRounded',
+                                                                  fontSize:
+                                                                      size.height /
+                                                                          50,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w100,
+                                                                  fontStyle:
+                                                                      FontStyle.italic,
+                                                                  color: Theme.of(context).colorScheme.tertiary))),
+                                                    ),
                                                   ),
                                                 ),
                                               ),

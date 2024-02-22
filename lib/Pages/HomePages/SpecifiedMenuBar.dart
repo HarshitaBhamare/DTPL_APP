@@ -1,4 +1,5 @@
 import 'package:dtpl_app/Components/txtSpecificMenu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -8,12 +9,14 @@ class SpecifiedMenuBar extends StatefulWidget {
   final double yPosi;
   final double width;
   final double height;
+  final String heroTag;
   const SpecifiedMenuBar({
     Key? key,
     required this.xPosi,
     required this.yPosi,
     required this.width,
     required this.height,
+    required this.heroTag,
   }) : super(key: key);
 
   @override
@@ -48,15 +51,18 @@ class _SpecifiedMenuBarState extends State<SpecifiedMenuBar> {
                 duration: Duration(milliseconds: 1000),
                 left: _moveToTopRight ? size.width / 2 - 100 : widget.xPosi,
                 top: _moveToTopRight ? 100 : widget.yPosi,
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: 1000),
-                  width: _moveToTopRight ? 200 : widget.width,
-                  height: _moveToTopRight ? 200 : widget.height,
-                  // child: Image.asset('assets/images/google.png'),
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(_moveToTopRight ? 100 : 0),
-                    color: Colors.green,
+                child: Hero(
+                  tag: widget.heroTag,
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 1000),
+                    width: _moveToTopRight ? 200 : widget.width,
+                    height: _moveToTopRight ? 200 : widget.height,
+                    // child: Image.asset('assets/images/google.png'),
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(_moveToTopRight ? 100 : 0),
+                      color: Colors.green,
+                    ),
                   ),
                 ),
               ),

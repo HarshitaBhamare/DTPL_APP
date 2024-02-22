@@ -1,7 +1,12 @@
 import 'package:dtpl_app/Components/customtextField.dart';
 import 'package:dtpl_app/Pages/AuthPages/registerPage.dart';
 import 'package:dtpl_app/Providers/buttonManager.dart';
+import 'package:dtpl_app/Providers/loadingProvider.dart';
+import 'package:dtpl_app/Providers/msgBoxProvider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:email_otp/email_otp.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -12,13 +17,50 @@ class ForgetPassword extends StatefulWidget {
   State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
+class _ForgetPasswordState extends State<ForgetPassword>
+    with SingleTickerProviderStateMixin {
+  AnimationController? _animationController;
+  Animation<double>? _opacityAnimation;
   TextEditingController emailIDController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    EmailOTP myAuth = EmailOTP();
+    TextEditingController email = TextEditingController();
+    @override
+    void initState() {
+      super.initState();
+      _animationController = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200),
+      );
+      _opacityAnimation =
+          Tween<double>(begin: 0.0, end: 1.0).animate(_animationController!);
+    }
 
-    void OnClickResetPassword() {}
+    @override
+    void dispose() {
+      _animationController?.dispose();
+      email.dispose();
+      super.dispose();
+    }
+
+    Future OnClickResetPassword() async {
+      try {
+        await FirebaseAuth.instance
+            .sendPasswordResetEmail(email: email.text.trim());
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+        Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+            true, false, context, _animationController!,
+            MsgText: "Check Your mail");
+      } on FirebaseAuthException catch (e) {
+        // print("$e");
+        Provider.of<LoadingProvider>(context, listen: false).hideLoading();
+        Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+            true, false, context, _animationController!,
+            MsgText: "$e");
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
