@@ -112,6 +112,9 @@ class FirebaseAuthService {
           await googleSignIn.signIn();
       // Abort if user cancels the sign-in process and ensure loading is hidden
       if (googleSignInAccount == null) {
+        Provider.of<MsgBoxProvider>(context, listen: false).ShowHide(
+            true, false, context, animationController,
+            MsgText: 'Google Signed in Cancelled by user.');
         Provider.of<LoadingProvider>(context, listen: false).hideLoading();
         return null;
       }

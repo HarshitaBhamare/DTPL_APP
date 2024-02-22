@@ -63,8 +63,29 @@ class _LandingPageState extends State<LandingPage> {
               SizedBox(
                 height: size.height / 15,
               ),
+
+              // SizedBox(height: size.height / 90),
+              // SizedBox(height: size.height / 90),
+              ClipOval(
+                child: Container(
+                  // color: Colors.amber,
+                  // color: Colors.amber,
+                  color: ThemeNotifier.isDark
+                      ? Theme.of(context).colorScheme.background
+                      : Theme.of(context).colorScheme.background,
+                  width: size.width / 1.1,
+                  height: size.height / 3.5,
+                  child: Image.asset(
+                    'assets/images/logodtpl.png',
+                    fit: BoxFit.fitHeight,
+                  )
+                      .animate()
+                      .fadeIn(delay: Duration(milliseconds: 100))
+                      .scale(),
+                ),
+              ),
               Container(
-                alignment: Alignment.topLeft,
+                alignment: Alignment.center,
                 child: Column(
                   children: [
                     Row(
@@ -76,7 +97,7 @@ class _LandingPageState extends State<LandingPage> {
                           width: size.width / 1.2,
                           height: size.height / 20,
                           // color: Colors.green,
-                          alignment: Alignment.centerLeft,
+                          alignment: Alignment.center,
                           child: AutoSizeText(" Welcome to,",
                                   textAlign: TextAlign.left,
                                   maxLines: 3,
@@ -103,10 +124,10 @@ class _LandingPageState extends State<LandingPage> {
                           width: size.width / 1.2,
                           height: size.height / 10,
                           // color: Colors.green,
-                          alignment: Alignment.centerLeft,
+                          alignment: Alignment.center,
                           child:
                               AutoSizeText("Devi Technocraft Private Limited",
-                                      textAlign: TextAlign.left,
+                                      textAlign: TextAlign.center,
                                       maxLines: 3,
                                       style: TextStyle(
                                         fontFamily: 'SFCompactRounded',
@@ -124,26 +145,6 @@ class _LandingPageState extends State<LandingPage> {
                       ],
                     ),
                   ],
-                ),
-              ),
-              // SizedBox(height: size.height / 90),
-              // SizedBox(height: size.height / 90),
-              ClipOval(
-                child: Container(
-                  // color: Colors.amber,
-                  // color: Colors.amber,
-                  color: ThemeNotifier.isDark
-                      ? Theme.of(context).colorScheme.background
-                      : Theme.of(context).colorScheme.background,
-                  width: size.width / 1.1,
-                  height: size.height / 3.5,
-                  child: Image.asset(
-                    'assets/images/logodtpl.png',
-                    fit: BoxFit.fitHeight,
-                  )
-                      .animate()
-                      .fadeIn(delay: Duration(milliseconds: 100))
-                      .scale(),
                 ),
               ),
               SizedBox(height: size.height / 20),

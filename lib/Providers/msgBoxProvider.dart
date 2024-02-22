@@ -12,7 +12,10 @@ class MsgBoxProvider with ChangeNotifier {
       AnimationController animationController,
       {String MsgText = ""}) {
     if (isShowing) {
+      isShowing = false;
+      notifyListeners();
       print("Currently showing");
+      return;
     }
     isShowing = isShow;
     msgText = MsgText;
@@ -29,8 +32,17 @@ class MsgBoxProvider with ChangeNotifier {
   Future<void> WaitTillEnd(
       AnimationController myAnimationController, bool isSuccess) async {
     await Future.delayed(Duration(seconds: 2));
-    await myAnimationController.reverse().orCancel;
-    Provider.of<MsgBoxProvider>(context, listen: false)
-        .ShowHide(false, isSuccess, context, myAnimationController);
+    // if(myAnimationController.)
+    if (myAnimationController != null && myAnimationController.isAnimating) {
+      try {
+        await myAnimationController.reverse().orCancel;
+      } on TickerCanceled {}
+    }
+    try {
+      await myAnimationController.reverse().orCancel;
+
+      Provider.of<MsgBoxProvider>(context, listen: false)
+          .ShowHide(false, isSuccess, context, myAnimationController);
+    } catch (e) {}
   }
 }
