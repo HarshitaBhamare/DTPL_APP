@@ -15,6 +15,8 @@ class SoftyMachine {
   String? machineOverrun;
   int? regularFlavour;
   int? mixFlavour;
+  int? rippleSyrupFlavours;
+  String? refrigerant;
   int? compressor;
   int? motor;
   String? powerSupply;
@@ -35,6 +37,8 @@ class SoftyMachine {
     this.machineOverrun,
     this.regularFlavour,
     this.mixFlavour,
+    this.rippleSyrupFlavours,
+    this.refrigerant,
     this.compressor,
     this.motor,
     this.powerSupply,
@@ -57,6 +61,8 @@ class SoftyMachine {
       machineOverrun: json['machineOverrun'],
       regularFlavour: json['regularFlavour'],
       mixFlavour: json['mixFlavour'],
+      rippleSyrupFlavours: json['rippleSyrupFlavours'],
+      refrigerant: json['refrigerant'],
       compressor: json['compressor'],
       motor: json['motor'],
       powerSupply: json['powerSupply'],
@@ -80,6 +86,8 @@ class SoftyMachine {
       'machineOverrun': machineOverrun,
       'regularFlavour': regularFlavour,
       'mixFlavour': mixFlavour,
+      'rippleSyrupFlavours': rippleSyrupFlavours,
+      'refrigerant': refrigerant,
       'compressor': compressor,
       'motor': motor,
       'powerSupply': powerSupply,

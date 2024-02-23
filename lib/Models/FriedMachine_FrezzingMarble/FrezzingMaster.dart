@@ -14,10 +14,12 @@ class FrezzingMaster {
   String? corianThickness;
   String? normalContainer;
   String? coldContainer;
+  String? hotContainer;
   String? bottle;
   String? coolingStorage;
   int? compressor;
   String? powerSupply;
+  List<int>? dimension;
   int? GST;
   bool? isPackingIncl;
   bool? isTransportationIncl;
@@ -33,10 +35,12 @@ class FrezzingMaster {
     this.corianThickness,
     this.normalContainer,
     this.coldContainer,
+    this.hotContainer,
     this.bottle,
     this.coolingStorage,
     this.compressor,
     this.powerSupply,
+    this.dimension,
     this.GST,
     this.isPackingIncl,
     this.isTransportationIncl,
@@ -54,10 +58,12 @@ class FrezzingMaster {
       corianThickness: json['corianThickness'],
       normalContainer: json['normalContainer'],
       coldContainer: json['coldContainer'],
+      hotContainer: json['hotContainer'],
       bottle: json['bottle'],
       coolingStorage: json['coolingStorage'],
       compressor: json['compressor'],
       powerSupply: json['powerSupply'],
+      dimension: List<int>.from(json['dimension']),
       GST: json['GST'],
       isPackingIncl: json['isPackingIncl'],
       isTransportationIncl: json['isTransportationIncl'],
@@ -76,10 +82,12 @@ class FrezzingMaster {
       'corianThickness': corianThickness,
       'normalContainer': normalContainer,
       'coldContainer': coldContainer,
+      'hotContainer': hotContainer,
       'bottle': bottle,
       'coolingStorage': coolingStorage,
       'compressor': compressor,
       'powerSupply': powerSupply,
+      'dimension': dimension,
       'GST': GST,
       'isPackingIncl': isPackingIncl,
       'isTransportationIncl': isTransportationIncl,

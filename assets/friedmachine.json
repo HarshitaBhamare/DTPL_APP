@@ -1,24 +1,23 @@
 [
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Frying",
-        "machineName": "Deluxe Fryer 5000",
-        "machineId": 102,
-        "machinePrice": 3200.5,
-        "panSize": "45x45 cm",
-        "panTemp": "180\u00b0C",
-        "defrostPedal": true,
-        "machineContains": "Oil filtration system, Safety lock",
-        "coolingStorage": "Yes, up to 5 liters",
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 1B / C",
+        "machineId": 101,
+        "machinePrice": 180000.00,
+        "panSize": "24 Diameter / Available 24 x 24 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "Yes",
+        "machineContains": "5 No.s Cool & 5 No.s Normal Poly Carbonate Container",
+        "coolingStorage": "10'C Temperature",
         "compressor": 2,
-        "powerSupply": "220V, 60Hz",
+        "powerSupply": "",
         "dimension": [
-            700,
-            550,
-            1200
+            780,
+            1380,
+            840
         ],
         "GST": 18,
         "isPackingIncl": false,
@@ -26,24 +25,167 @@
     },
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Frying",
-        "machineName": "Deluxe Fryer 5000",
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 1 / B",
         "machineId": 102,
-        "machinePrice": 3200.5,
-        "panSize": "45x45 cm",
-        "panTemp": "180\u00b0C",
-        "defrostPedal": true,
-        "machineContains": "Oil filtration system, Safety lock",
-        "coolingStorage": "Yes, up to 5 liters",
-        "compressor": 2,
-        "powerSupply": "220V, 60Hz",
+        "machinePrice": 95000.00,
+        "panSize": "24 Diameter / Available 24 x 24 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "Yes",
+        "machineContains": "",
+        "coolingStorage": "",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 1.2",
         "dimension": [
-            700,
-            550,
-            1200
+            740,
+            740,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 1 / C",
+        "machineId": 103,
+        "machinePrice": 162000.00,
+        "panSize": "18 Diameter / Available 18 x 18 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "No",
+        "machineContains": "5 No.s Cool & 5 No.s Normal Poly Carbonate Container",
+        "coolingStorage": "10'C Temperature",
+        "compressor": 2,
+        "powerSupply": "",
+        "dimension": [
+            780,
+            1245,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 1B / ST",
+        "machineId": 104,
+        "machinePrice": 100000.00,
+        "panSize": "24 Diameter / Available 24 x 24 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "Yes",
+        "machineContains": "10 No.s Poly Carbonate Container",
+        "coolingStorage": "",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 1.2",
+        "dimension": [
+            740,
+            1140,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 1 / ST",
+        "machineId": 105,
+        "machinePrice": 90000.00,
+        "panSize": "18 Diameter / Available 18 x 18 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "No",
+        "machineContains": "10 No.s Poly Carbonate Container",
+        "coolingStorage": "",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 1.0",
+        "dimension": [
+            590,
+            990,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 1",
+        "machineId": 106,
+        "machinePrice": 85000.00,
+        "panSize": "18 Diameter / Available 18 x 18 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "No",
+        "machineContains": "",
+        "coolingStorage": "",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 1.0",
+        "dimension": [
+            590,
+            590,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 2 / D",
+        "machineId": 107,
+        "machinePrice": 150000.00,
+        "panSize": "18 Diameter / Available 18 x 18 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "No",
+        "machineContains": "10 No.s Poly Carbonate Container",
+        "coolingStorage": "",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 2.0",
+        "dimension": [
+            680,
+            1410,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": true
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Fried Ice Cream Machine",
+        "machineName": "FIP - 2B / D",
+        "machineId": 108,
+        "machinePrice": 170000.00,
+        "panSize": "24 Diameter / Available 24 x 24 Square Also",
+        "panTemp": "-15'C to -25'C",
+        "defrostPedal": "Yes",
+        "machineContains": "10 No.s Poly Carbonate Container",
+        "coolingStorage": "",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 2.2",
+        "dimension": [
+            680,
+            1410,
+            840
         ],
         "GST": 18,
         "isPackingIncl": false,

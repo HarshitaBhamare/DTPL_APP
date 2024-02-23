@@ -10,7 +10,7 @@ class ThickShakeMachine {
   int? machineId;
   double? machinePrice;
   int? tankCapacity;
-  int? hourlyConeOutput;
+  String? hourlyOutput;
   String? freezingCylinderCapacity;
   String? machineOverrun;
   String? flavour;
@@ -30,7 +30,7 @@ class ThickShakeMachine {
     this.machineId,
     this.machinePrice,
     this.tankCapacity,
-    this.hourlyConeOutput,
+    this.hourlyOutput,
     this.freezingCylinderCapacity,
     this.machineOverrun,
     this.flavour,
@@ -53,7 +53,7 @@ class ThickShakeMachine {
       machinePrice: json['machinePrice']?.toDouble(),
       tankCapacity: json['tankCapacity'],
       freezingCylinderCapacity: json['freezingCylinderCapacity'],
-      hourlyConeOutput: json['hourlyConeOutput'],
+      hourlyOutput: json['hourlyOutput'],
       machineOverrun: json['machineOverrun'],
       flavour: json['flavour'],
       machineRefrigent: json['machineRefrigent'],
@@ -76,7 +76,7 @@ class ThickShakeMachine {
       'machinePrice': machinePrice,
       'tankCapacity': tankCapacity,
       'freezingCylinderCapacity': freezingCylinderCapacity,
-      'hourlyConeOutput': hourlyConeOutput,
+      'hourlyOutput': hourlyOutput,
       'machineOverrun': machineOverrun,
       'flavour': flavour,
       'machineRefrigent': machineRefrigent,

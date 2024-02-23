@@ -1,52 +1,62 @@
 [
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Freezing",
-        "machineName": "FreezePro Elite",
-        "machineId": 203,
-        "machinePrice": 5200.75,
+        "machineType": "Freezing Marble Machine",
+        "machineName": "Freezing Marble Machine",
+        "machineId": 101,
+        "machinePrice": 198000.00,
         "marbleSize": [
-            1200,
-            800
+            330,
+            610
         ],
-        "marbleTemp": "-20\u00b0C",
-        "corianThickness": "40mm",
-        "normalContainer": "5L",
-        "coldContainer": "10L",
-        "bottle": "2L",
-        "coolingStorage": "Yes",
+        "marbleTemp": "10'C  to 15'C",
+        "corianThickness": "Top 12mm Thickness",
+        "normalContainer": "08 nos / Size 1 / 9(S.S or Poly Carbonate)",
+        "coldContainer": "07 nos / Size 1 / 9(S.S or Poly Carbonate)",
+        "hotContainer": "04 nos / Size 1 / 6(S.S)",
+        "bottle": "1 Hole / 2 Rectangle Space (Cold & Normal)",
+        "coolingStorage": "0'C to +10'C Temperature",
         "compressor": 2,
-        "powerSupply": "220V, 60Hz",
+        "powerSupply": "230 / 50 / 1",
+        "dimension":[
+            940,
+            1250,
+            840
+        ],
         "GST": 18,
-        "isPackingIncl": true,
-        "isTransportationIncl": true
+        "isPackingIncl": false,
+        "isTransportationIncl": false
     },
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Freezing",
-        "machineName": "FreezePro Elite",
-        "machineId": 203,
-        "machinePrice": 5200.75,
+        "machineType": "Freezing Marble Machine",
+        "machineName": "Freezing Marble Machine",
+        "machineId": 102,
+        "machinePrice": 230000.00,
         "marbleSize": [
-            1200,
-            800
+            330,
+            1066
         ],
-        "marbleTemp": "-20\u00b0C",
-        "corianThickness": "40mm",
-        "normalContainer": "5L",
-        "coldContainer": "10L",
-        "bottle": "2L",
-        "coolingStorage": "Yes",
-        "compressor": 2,
-        "powerSupply": "220V, 60Hz",
+        "marbleTemp": "10'C  to 15'C",
+        "corianThickness": "Top 12mm Thickness",
+        "normalContainer": "16 nos / Size 1 / 9(S.S or Poly Carbonate)",
+        "coldContainer": "08 nos / Size 1 / 9(S.S or Poly Carbonate)",
+        "hotContainer": "06 nos / Size 1 / 6(S.S)",
+        "bottle": "2 Hole / 2 Rectangle Space (Cold)",
+        "coolingStorage": "0'C to +10'C Temperature",
+        "compressor": 3,
+        "powerSupply": "230 / 50 / 1",
+        "dimension":[
+            915,
+            1825,
+            840
+        ],
         "GST": 18,
-        "isPackingIncl": true,
-        "isTransportationIncl": true
+        "isPackingIncl": false,
+        "isTransportationIncl": false
     }
 ]

@@ -1,56 +1,132 @@
 [
     {
         "machineImage": [
-            "url1",
-            "url2"
+            ""
         ],
-        "machineType": "Soft Serve",
-        "machineName": "Model X1",
+        "machineType": "Thick Shake Machine",
+        "machineName": "Shake Master / PF",
         "machineId": 101,
-        "machinePrice": 4500.00,
-        "tankCapacity": 10,
-        "hourlyConeOutput": 300,
-        "freezingCylinderCapacity": "2 Litres",
-        "machineOverrun": "85%",
-        "flavour": "Vanilla",
-        "machineRefrigent": "R404A",
+        "machinePrice": 285000.00,
+        "tankCapacity": 18,
+        "hourlyOutput": "34 Kg. / Hr",
+        "freezingCylinderCapacity": "6 Litres",
+        "machineOverrun": "Geared Pump",
+        "flavour": "Single Base Flavour",
+        "machineRefrigent": "R - 22 or R - 404a",
         "compressor": 1,
         "motor": 1,
-        "powerSupply": "220V, 50Hz",
+        "powerSupply": "400 / 50 / 3 Kw. : 2.3",
         "dimension": [
-            600,
-            400,
-            850
+            950,
+            460,
+            1435
         ],
         "GST": 18,
-        "isPackingIncl": true,
+        "isPackingIncl": false,
         "isTransportationIncl": false
     },
     {
         "machineImage": [
-            "url1",
-            "url2"
+            ""
         ],
-        "machineType": "Soft Serve",
-        "machineName": "Model X1",
-        "machineId": 101,
-        "machinePrice": 4500.00,
-        "tankCapacity": 10,
-        "hourlyConeOutput": 300,
-        "freezingCylinderCapacity": "2 Litres",
-        "machineOverrun": "85%",
-        "flavour": "Vanilla",
-        "machineRefrigent": "R404A",
+        "machineType": "Thick Shake Machine",
+        "machineName": "Shake Master",
+        "machineId": 102,
+        "machinePrice": 155000.00,
+        "tankCapacity": 8,
+        "hourlyOutput": "22 Kg. / Hr",
+        "freezingCylinderCapacity": "6 Litres",
+        "machineOverrun": "Gravity Feeding",
+        "flavour": "Single Base Flavour",
+        "machineRefrigent": "R - 22 or R - 404a",
         "compressor": 1,
         "motor": 1,
-        "powerSupply": "220V, 50Hz",
+        "powerSupply": "220 / 50 / 1 Kw. : 1.5",
         "dimension": [
-            600,
-            400,
-            850
+            785,
+            465,
+            815
         ],
         "GST": 18,
-        "isPackingIncl": true,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Thick Shake Machine",
+        "machineName": "Shake Master / SPF / D",
+        "machineId": 103,
+        "machinePrice": 480000.00,
+        "tankCapacity": 16,
+        "hourlyOutput": "52 Kg. / Hr",
+        "freezingCylinderCapacity": "7.0 Litres",
+        "machineOverrun": "Geared Pump",
+        "flavour": "Any Two Base Flavour",
+        "machineRefrigent": "R - 22 or R - 404a",
+        "compressor": 2,
+        "motor": 2,
+        "powerSupply": "400 / 50 / 3 Kw. : 4.6",
+        "dimension": [
+            840,
+            610,
+            1445
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Thick Shake Machine",
+        "machineName": "Shake Master / S",
+        "machineId": 104,
+        "machinePrice": 125000.00,
+        "tankCapacity": 6,
+        "hourlyOutput": "12 Kg. / Hr",
+        "freezingCylinderCapacity": "3.5 Litres",
+        "machineOverrun": "Gravity Feeding",
+        "flavour": "Single Base Flavour",
+        "machineRefrigent": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220 / 50 / 1 Kw. : 1.0",
+        "dimension": [
+            725,
+            405,
+            725
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Thick Shake Machine",
+        "machineName": "Shake Master / S / PF",
+        "machineId": 105,
+        "machinePrice": 250000.00,
+        "tankCapacity": 8,
+        "hourlyOutput": "26 Kg. / Hr",
+        "freezingCylinderCapacity": "3.5 Litres",
+        "machineOverrun": "Geared Pump",
+        "flavour": "Single Base Flavour",
+        "machineRefrigent": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220 / 50 / 1 Kw. : 1.0",
+        "dimension": [
+            900,
+            400,
+            970
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
         "isTransportationIncl": false
     }
 ]

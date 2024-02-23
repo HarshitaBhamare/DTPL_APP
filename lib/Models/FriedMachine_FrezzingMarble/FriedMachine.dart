@@ -10,7 +10,7 @@ class FriedMachine {
   double? machinePrice;
   String? panSize;
   String? panTemp;
-  bool? defrostPedal;
+  String? defrostPedal;
   String? machineContains;
   String? coolingStorage;
   int? compressor;
@@ -80,12 +80,12 @@ class FriedMachine {
       'isTransportationIncl': isTransportationIncl,
     };
   }
-  Future<List<FriedMachine>> loadThickShakeMachineData() async {
-  String data = await rootBundle.loadString('assets/friedmachine.json');
-  final jsonResult = json.decode(data) as List;
-  return jsonResult.map((json) => FriedMachine.fromJson(json)).toList();
-}
 
+  Future<List<FriedMachine>> loadThickShakeMachineData() async {
+    String data = await rootBundle.loadString('assets/friedmachine.json');
+    final jsonResult = json.decode(data) as List;
+    return jsonResult.map((json) => FriedMachine.fromJson(json)).toList();
+  }
 }
 
 Future<void> uploadFriedMachine(FriedMachine machine) async {

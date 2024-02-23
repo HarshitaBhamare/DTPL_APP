@@ -3,87 +3,9 @@
     "machineImage": [
       ""
     ],
-    "machineName": "Soft 103 / GT",
-    "machineType": "Softy Machine",
-    "machineId": 101,
-    "machinePrice": 185000.00,
-    "tankCapacity": 16,
-    "freezingCylinderCapacity": "2.4 Liters",
-    "hourlyConeOutput": 160,
-    "machineOverrun": "Gravity Feeding",
-    "regularFlavour": 2,
-    "mixFlavour": 1,
-    "compressor": 1,
-    "motor": 1,
-    "powerSupply": "230 / 50 / 1 or 400 / 50 / 3 Kw. : 2.9",
-    "dimension": [
-      840,
-      520,
-      875
-    ],
-    "GST": 18,
-    "isPackingIncl": false,
-    "isTransportationIncl": false
-  },
-  {
-    "machineImage": [
-      ""
-    ],
-    "machineName": "Soft 103 / JB",
-    "machineType": "Softy Machine",
-    "machineId": 102,
-    "machinePrice": 345000.00,
-    "tankCapacity": 16,
-    "freezingCylinderCapacity": "3.6 Liters",
-    "hourlyConeOutput": 450,
-    "machineOverrun": "Geared Pump",
-    "regularFlavour": 2,
-    "mixFlavour": 1,
-    "compressor": 1,
-    "motor": 1,
-    "powerSupply": "400 / 50 / 3",
-    "dimension": [
-      860,
-      580,
-      1420
-    ],
-    "GST": 18,
-    "isPackingIncl": false,
-    "isTransportationIncl": false
-  },
-  {
-    "machineImage": [
-      ""
-    ],
-    "machineName": "Soft 103 / PT",
-    "machineType": "Softy Machine",
-    "machineId": 103,
-    "machinePrice": 250000.00,
-    "tankCapacity": 16,
-    "freezingCylinderCapacity": "2.4 Liters",
-    "hourlyConeOutput": 300,
-    "machineOverrun": "Geared Pump",
-    "regularFlavour": 2,
-    "mixFlavour": 1,
-    "compressor": 1,
-    "motor": 1,
-    "powerSupply": "230 / 50 / 1 or 400 / 50 / 3 Kw. : 3.1",
-    "dimension": [
-      880,
-      520,
-      880
-    ],
-    "GST": 18,
-    "isPackingIncl": false,
-    "isTransportationIncl": false
-  },
-  {
-    "machineImage": [
-      ""
-    ],
     "machineName": "Soft 103",
     "machineType": "Softy Machine",
-    "machineId": 104,
+    "machineId": 101,
     "machinePrice": 275000.00,
     "tankCapacity": 16,
     "freezingCylinderCapacity": "2.4 Liters",
@@ -91,6 +13,8 @@
     "machineOverrun": "Geared Pump",
     "regularFlavour": 2,
     "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
     "compressor": 1,
     "motor": 1,
     "powerSupply": "230 / 50 / 1 or 400 / 50 / 3 Kw. : 3.3",
@@ -107,9 +31,65 @@
     "machineImage": [
       ""
     ],
+    "machineName": "Soft 103 / PT",
+    "machineType": "Softy Machine",
+    "machineId": 102,
+    "machinePrice": 250000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "2.4 Liters",
+    "hourlyConeOutput": 300,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "230 / 50 / 1 or 400 / 50 / 3 Kw. : 3.1",
+    "dimension": [
+      880,
+      520,
+      880
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 103 / JB",
+    "machineType": "Softy Machine",
+    "machineId": 103,
+    "machinePrice": 345000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "3.6 Liters",
+    "hourlyConeOutput": 450,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "400 / 50 / 3",
+    "dimension": [
+      860,
+      580,
+      1420
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
     "machineName": "Soft 103 / D",
     "machineType": "Softy Machine",
-    "machineId": 105,
+    "machineId": 104,
     "machinePrice": 350000.00,
     "tankCapacity": 16,
     "freezingCylinderCapacity": "2.4 Liters",
@@ -117,6 +97,8 @@
     "machineOverrun": "Pump",
     "regularFlavour": 2,
     "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
     "compressor": 2,
     "motor": 2,
     "powerSupply": "220 / 50 / 1 or 400 / 50 / 3 Kw. : 5.5",
@@ -135,7 +117,7 @@
     ],
     "machineName": "Soft 103 / B",
     "machineType": "Softy Machine",
-    "machineId": 106,
+    "machineId": 105,
     "machinePrice": 470000.00,
     "tankCapacity": 24,
     "freezingCylinderCapacity": "3.6 Liters",
@@ -143,6 +125,8 @@
     "machineOverrun": "Pump",
     "regularFlavour": 2,
     "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
     "compressor": 2,
     "motor": 2,
     "powerSupply": "400 / 50 / 3 Kw. : 6.4",
@@ -150,6 +134,370 @@
       815,
       655,
       1565
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 101 /PT",
+    "machineType": "Softy Machine",
+    "machineId": 106,
+    "machinePrice": 160000.00,
+    "tankCapacity": 8,
+    "freezingCylinderCapacity": "1.2 Liters",
+    "hourlyConeOutput": 190,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 1, 
+    "mixFlavour": 0,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "220 / 50 / 1 Kw. : 2.0",
+    "dimension": [
+      830,
+      465,
+      860
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 101 / B / PT",
+    "machineType": "Softy Machine",
+    "machineId": 107,
+    "machinePrice": 260000.00,
+    "tankCapacity": 12,
+    "freezingCylinderCapacity": "1.8 Liters",
+    "hourlyConeOutput": 410,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 1,
+    "mixFlavour": 0,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "400 / 50 / 3 Kw. : 3.2",
+    "dimension": [
+      900,
+      465,
+      860
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 101 / ST",
+    "machineType": "Softy Machine",
+    "machineId": 108,
+    "machinePrice": 1050000.00,
+    "tankCapacity": 6,
+    "freezingCylinderCapacity": "0.8 Liters",
+    "hourlyConeOutput": 90,
+    "machineOverrun": "Gravity Feeding",
+    "regularFlavour": 1,
+    "mixFlavour": 0,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "230 / 50 / 1 Kw. : 1.8",
+    "dimension": [
+      790,
+      355,
+      790
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 103 / GT",
+    "machineType": "Softy Machine",
+    "machineId": 109,
+    "machinePrice": 185000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "2.4 Liters",
+    "hourlyConeOutput": 160,
+    "machineOverrun": "Gravity Feeding",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "230 / 50 / 1 or 400 / 50 / 3 Kw. : 2.9",
+    "dimension": [
+      840,
+      520,
+      875
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 101 / PF",
+    "machineType": "Softy Machine",
+    "machineId": 110,
+    "machinePrice": 290000.00,
+    "tankCapacity": 12,
+    "freezingCylinderCapacity": "1.8 Liters",
+    "hourlyConeOutput": 410,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 1,
+    "mixFlavour": 0,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "400 / 50 / 3 Kw. : 3.2",
+    "dimension": [
+      860,
+      465,
+      1510
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 104",
+    "machineType": "Softy Machine",
+    "machineId": 111,
+    "machinePrice": 325000.00,
+    "tankCapacity": 12,
+    "freezingCylinderCapacity": "1.8 Liters",
+    "hourlyConeOutput": 410,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 1,
+    "mixFlavour": 0,
+    "rippleSyrupFlavours" :3,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "400 / 50 / 3 Kw. : 2.9",
+    "dimension": [
+      860,
+      465,
+      1510
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 106",
+    "machineType": "Softy Machine",
+    "machineId": 112,
+    "machinePrice": 350000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "2.4 Liters",
+    "hourlyConeOutput": 380,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :3,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "220 / 50 / 1 or 400 / 50 / 3 Kw. : 3.4",
+    "dimension": [
+      895,
+      520,
+      1420
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 106 / D / color",
+    "machineType": "Softy Machine",
+    "machineId": 113,
+    "machinePrice": 440000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "2.4 Liters",
+    "hourlyConeOutput": 380,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :3,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 2,
+    "motor": 2,
+    "powerSupply": "400 / 50 / 3 Kw. : 3.9",
+    "dimension": [
+      910,
+      555,
+      1490
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 106 / B / Color",
+    "machineType": "Softy Machine",
+    "machineId": 114,
+    "machinePrice": 535000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "3.6 Liters",
+    "hourlyConeOutput": 850,
+    "machineOverrun": "Geared Pump",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :3,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 2,
+    "motor": 2,
+    "powerSupply": "400 / 50 / 3 Kw. : 6.5",
+    "dimension": [
+      995,
+      655,
+      1565
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 103 / BM  / GF",
+    "machineType": "Softy Machine",
+    "machineId": 115,
+    "machinePrice": 395000.00,
+    "tankCapacity": 24,
+    "freezingCylinderCapacity": "4.4 Liters",
+    "hourlyConeOutput": 345,
+    "machineOverrun": "Gravity Feeding",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 2,
+    "motor": 2,
+    "powerSupply": "400 / 50 / 3 Kw. : 4.2",
+    "dimension": [
+      800,
+      520,
+      1510
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 103 / GF",
+    "machineType": "Softy Machine",
+    "machineId": 116,
+    "machinePrice": 230000.00,
+    "tankCapacity": 16,
+    "freezingCylinderCapacity": "2.4 Liters",
+    "hourlyConeOutput": 200,
+    "machineOverrun": "Gravity Feeding",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "230 / 50 / 1 or 400 / 50 / 3 Kw. : 3.0",
+    "dimension": [
+      710,
+      520,
+      1420
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 103 / ST",
+    "machineType": "Softy Machine",
+    "machineId": 117,
+    "machinePrice": 170000.00,
+    "tankCapacity": 12,
+    "freezingCylinderCapacity": "1.6 Liters",
+    "hourlyConeOutput": 100,
+    "machineOverrun": "Gravity Feeding",
+    "regularFlavour": 2,
+    "mixFlavour": 1,
+    "rippleSyrupFlavours" :0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "230 / 50 / 1 Kw. : 1.9",
+    "dimension": [
+      490,
+      470,
+      790
+    ],
+    "GST": 18,
+    "isPackingIncl": false,
+    "isTransportationIncl": false
+  },
+  {
+    "machineImage": [
+      ""
+    ],
+    "machineName": "Soft 101 / GT",
+    "machineType": "Softy Machine",
+    "machineId": 118,
+    "machinePrice": 145000.00,
+    "tankCapacity": 8,
+    "freezingCylinderCapacity": "1.2 Liters",
+    "hourlyConeOutput": 120,
+    "machineOverrun": "Gravity Feeding",
+    "regularFlavour": 1,
+    "mixFlavour": 0,
+    "rippleSyrupFlavours": 0,
+    "refrigerant": "R - 22 or R - 404a",
+    "compressor": 1,
+    "motor": 1,
+    "powerSupply": "230 / 50 / 1 Kw. : 1.9",
+    "dimension": [
+      830,
+      465,
+      860
     ],
     "GST": 18,
     "isPackingIncl": false,
