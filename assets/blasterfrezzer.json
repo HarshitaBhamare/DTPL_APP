@@ -1,30 +1,83 @@
 [
     {
         "machineImage": [
-            "image1.png",
-            "image2.png"
+            ""
         ],
-        "machineType": "Type A",
-        "machineName": "Frezzer 3000",
-        "machineId": 1,
-        "machinePrice": 2500.0,
-        "machineCapacity": "500L",
-        "machineChillingCapacity": "100L/h",
-        "machineFreezingCapacity": "50L/h",
-        "compressor": 2,
-        "powerSupply": "220V",
+        "machineType": "Blaster Frezzer",
+        "machineName": "Blaster Frezzer 3",
+        "machineId": 101,
+        "machinePrice": 145000.00,
+        "machineCapacity": "+3'C 10Kg / -18'C 6Kg / 3 Tray",
+        "machineChillingCapacity": "+70'C Down to +3'C / 10Kg",
+        "machineFreezingCapacity": "+70'C Down to -18'C / 6Kg",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 1.2",
         "innerDimension": [
-            100,
-            50,
-            50
+            320,
+            435,
+            435
         ],
         "outerDimension": [
-            120,
-            70,
-            70
+            655,
+            800,
+            630
         ],
         "GST": 18,
-        "isPackingIncl": true,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Blaster Frezzer",
+        "machineName": "Blaster Frezzer 6",
+        "machineId": 102,
+        "machinePrice": 190000.00,
+        "machineCapacity": "+3'C 10Kg / -18'C 6Kg / 6 Tray",
+        "machineChillingCapacity": "+70'C Down to +3'C / 20Kg",
+        "machineFreezingCapacity": "+70'C Down to -18'C / 12Kg",
+        "compressor": 1,
+        "powerSupply": "230 / 50 / 1 Kw. : 1.35",
+        "innerDimension": [
+            500,
+            700,
+            460
+        ],
+        "outerDimension": [
+            720,
+            810,
+            1150
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Blaster Frezzer",
+        "machineName": "Blaster Frezzer 6",
+        "machineId": 103,
+        "machinePrice": 355000.00,
+        "machineCapacity": "+3'C 10Kg / -18'C 6Kg / 15 Tray",
+        "machineChillingCapacity": "+70'C Down to +3'C / 30Kg",
+        "machineFreezingCapacity": "+70'C Down to -18'C / 24Kg",
+        "compressor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 4.8",
+        "innerDimension": [
+            650,
+            590,
+            990
+        ],
+        "outerDimension": [
+            850,
+            985,
+            1770
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
         "isTransportationIncl": false
     }
 ]

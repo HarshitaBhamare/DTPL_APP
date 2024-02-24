@@ -9,10 +9,10 @@ class HardeeMachine {
   String? machineName;
   int? machineId;
   double? machinePrice;
-  int? cyclinderCapacity;
-  int? hourlyOutput;
+  String? cyclinderCapacity;
+  String? hourlyOutput;
   String? flavour;
-  int? batchCapacity;
+  String? batchCapacity;
   String? machineOverrun;
   String? machineRerigerant;
   int? compressor;

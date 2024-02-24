@@ -15,9 +15,9 @@ class PastoMagicMachine {
   String? machineHeater;
   int? starrierRPM;
   int? compressor;
+  int? motor;
   String? powerSupply;
-  List<int>? innerDimension;
-  List<int>? outerDimension;
+  List<int>? dimension;
   int? GST;
   bool? isPackingIncl;
   bool? isTransportationIncl;
@@ -34,9 +34,9 @@ class PastoMagicMachine {
     this.machineHeater,
     this.starrierRPM,
     this.compressor,
+    this.motor,
     this.powerSupply,
-    this.innerDimension,
-    this.outerDimension,
+    this.dimension,
     this.GST,
     this.isPackingIncl,
     this.isTransportationIncl,
@@ -55,9 +55,9 @@ class PastoMagicMachine {
       machineHeater: json['machineHeater'],
       starrierRPM: json['starrierRPM'],
       compressor: json['compressor'],
+      motor: json['motor'],
       powerSupply: json['powerSupply'],
-      innerDimension: List<int>.from(json['innerDimension']),
-      outerDimension: List<int>.from(json['outerDimension']),
+      dimension: List<int>.from(json['dimension']),
       GST: json['GST'],
       isPackingIncl: json['isPackingIncl'],
       isTransportationIncl: json['isTransportationIncl'],
@@ -77,9 +77,9 @@ class PastoMagicMachine {
       'machineHeater': machineHeater,
       'starrierRPM': starrierRPM,
       'compressor': compressor,
+      'motor': motor,
       'powerSupply': powerSupply,
-      'innerDimension': innerDimension,
-      'outerDimension': outerDimension,
+      'innerDimension': dimension,
       'GST': GST,
       'isPackingIncl': isPackingIncl,
       'isTransportationIncl': isTransportationIncl,

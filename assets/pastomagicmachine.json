@@ -1,62 +1,127 @@
 [
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Pasta Cooker",
-        "machineName": "PastoMagic 500",
-        "machineId": 508,
-        "machinePrice": 9500.0,
-        "machineTankCapacity": "20L",
-        "heatingRange": "50\u00b0C to 100\u00b0C",
-        "coolingRange": "0\u00b0C to 10\u00b0C",
-        "machineHeater": "Electric, 3000W",
-        "starrierRPM": 1500,
+        "machineType": "Pasta Magic Machine",
+        "machineName": "Pasto Magic 40",
+        "machineId": 101,
+        "machinePrice": 155000.0,
+        "machineTankCapacity": "40 Liter",
+        "heatingRange": "+5\u00b0C to +90\u00b0C",
+        "coolingRange": "+5\u00b0C to +10\u00b0C",
+        "machineHeater": "10 No.s / 600W / Per",
+        "starrierRPM": 960,
         "compressor": 1,
-        "powerSupply": "220V, 60Hz",
-        "innerDimension": [
-            400,
-            400,
-            500
-        ],
-        "outerDimension": [
-            600,
-            600,
-            800
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 6.75",
+        "dimension": [
+            990,
+            475,
+            1250
         ],
         "GST": 18,
-        "isPackingIncl": true,
+        "isPackingIncl": false,
         "isTransportationIncl": false
     },
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Pasta Cooker",
-        "machineName": "PastoMagic 500",
-        "machineId": 509,
-        "machinePrice": 9500.0,
-        "machineTankCapacity": "20L",
-        "heatingRange": "50\u00b0C to 100\u00b0C",
-        "coolingRange": "0\u00b0C to 10\u00b0C",
-        "machineHeater": "Electric, 3000W",
-        "starrierRPM": 1500,
+        "machineType": "Pasta Magic Machine",
+        "machineName": "Pasto Magic 40",
+        "machineId": 101,
+        "machinePrice": 155000.00,
+        "machineTankCapacity": "40 Liter",
+        "heatingRange": "+50\u00b0C to +90\u00b0C",
+        "coolingRange": "+5\u00b0C to +10\u00b0C",
+        "machineHeater": "10 No.s / 600W / Per",
+        "starrierRPM": 960,
         "compressor": 1,
-        "powerSupply": "220V, 60Hz",
-        "innerDimension": [
-            400,
-            400,
-            500
-        ],
-        "outerDimension": [
-            600,
-            600,
-            800
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 6.75",
+        "dimension": [
+            990,
+            475,
+            1250
         ],
         "GST": 18,
-        "isPackingIncl": true,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Pasta Magic Machine",
+        "machineName": "Pasto Magic 80",
+        "machineId": 102,
+        "machinePrice": 220000.00,
+        "machineTankCapacity": "80 Liter",
+        "heatingRange": "+50\u00b0C to +90\u00b0C",
+        "coolingRange": "+5\u00b0C to +10\u00b0C",
+        "machineHeater": "10 No.s / 600W / Per",
+        "starrierRPM": 960,
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 7.65",
+        "dimension": [
+            1130,
+            475,
+            1255
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Pasta Magic Machine",
+        "machineName": "Pasto Magic 60",
+        "machineId": 103,
+        "machinePrice": 190000.00,
+        "machineTankCapacity": "80 Liter",
+        "heatingRange": "+50\u00b0C to +90\u00b0C",
+        "coolingRange": "+5\u00b0C to +10\u00b0C",
+        "machineHeater": "10 No.s / 600W / Per",
+        "starrierRPM": 960,
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 6.95",
+        "dimension": [
+            1070,
+            475,
+            1325
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "Pasta Magic Machine",
+        "machineName": "Pasto Magic 120",
+        "machineId": 104,
+        "machinePrice": 375000.00,
+        "machineTankCapacity": "120 Liter",
+        "heatingRange": "+50\u00b0C to +90\u00b0C",
+        "coolingRange": "+5\u00b0C to +10\u00b0C",
+        "machineHeater": "20 No.s / 600W / Per",
+        "starrierRPM": 960,
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 13.50",
+        "dimension": [
+            1130,
+            1020,
+            1255
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
         "isTransportationIncl": false
     }
 ]

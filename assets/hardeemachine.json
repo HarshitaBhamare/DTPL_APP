@@ -1,29 +1,288 @@
 [
     {
         "machineImage": [
-            "image_url1",
-            "image_url2"
+            ""
         ],
-        "machineType": "Ice Cream Maker",
-        "machineName": "HardeeMaster 3000",
-        "machineId": 406,
-        "machinePrice": 8200.0,
-        "cyclinderCapacity": 2,
-        "hourlyOutput": 150,
-        "flavour": "Vanilla, Chocolate",
-        "batchCapacity": 5,
-        "machineOverrun": "70%",
-        "machineRerigerant": "R404A",
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 1X",
+        "machineId": 101,
+        "machinePrice": 105000.00,
+        "cyclinderCapacity": "6 Liter",
+        "hourlyOutput": "10 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "2.5 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
         "compressor": 1,
         "motor": 1,
-        "powerSupply": "220V, 50Hz",
+        "powerSupply": "220 / 50 / 1 Kw. : 1.1",
         "dimension": [
-            700,
-            550,
-            1500
+            340,
+            580,
+            840
         ],
         "GST": 18,
-        "isPackingIncl": true,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 2X",
+        "machineId": 102,
+        "machinePrice": 200000.00,
+        "cyclinderCapacity": "12 Liter",
+        "hourlyOutput": "20 Liter/Hr",
+        "flavour": "Any Two Flavour",
+        "batchCapacity": "5.0 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 2,
+        "motor": 2,
+        "powerSupply": "220 / 50 / 1 Kw. : 2.2",
+        "dimension": [
+            680,
+            750,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 3X",
+        "machineId": 103,
+        "machinePrice": 315000.00,
+        "cyclinderCapacity": "18 Liter",
+        "hourlyOutput": "30 Liter/Hr",
+        "flavour": "Any Three Flavour",
+        "batchCapacity": "7.5 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 3,
+        "motor": 3,
+        "powerSupply": "220 / 50 / 1 Kw. : 3.3",
+        "dimension": [
+            680,
+            1175,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 3",
+        "machineId": 104,
+        "machinePrice": 165000.00,
+        "cyclinderCapacity": "3 Liter",
+        "hourlyOutput": "8 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "1.5 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "220 / 50 / 1 Kw. : 1.5",
+        "dimension": [
+            700,
+            400,
+            650
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 4X",
+        "machineId": 105,
+        "machinePrice": 410000.00,
+        "cyclinderCapacity": "24 Liter",
+        "hourlyOutput": "40 Liter/Hr",
+        "flavour": "Any Four Flavour",
+        "batchCapacity": "10.0 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 4,
+        "motor": 4,
+        "powerSupply": "220 / 50 / 1 Kw. : 4.4",
+        "dimension": [
+            680,
+            1630,
+            840
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 5",
+        "machineId": 106,
+        "machinePrice": 260000.00,
+        "cyclinderCapacity": "7 Liter",
+        "hourlyOutput": "16 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "2.5 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 3.5",
+        "dimension": [
+            1025,
+            500,
+            1395
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 8 V",
+        "machineId": 107,
+        "machinePrice": 300000.00,
+        "cyclinderCapacity": "16 Liter",
+        "hourlyOutput": "26 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "6 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 4.5",
+        "dimension": [
+            1055,
+            520,
+            1085
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 10 H",
+        "machineId": 108,
+        "machinePrice": 425000.00,
+        "cyclinderCapacity": "22 Liter",
+        "hourlyOutput": "48 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "10 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 3.6",
+        "dimension": [
+            1025,
+            650,
+            1520
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 10 H",
+        "machineId": 108,
+        "machinePrice": 425000.00,
+        "cyclinderCapacity": "22 Liter",
+        "hourlyOutput": "48 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "10 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 3.6",
+        "dimension": [
+            1025,
+            650,
+            1520
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 12 H",
+        "machineId": 109,
+        "machinePrice": 470000.00,
+        "cyclinderCapacity": "26 Liter",
+        "hourlyOutput": "48 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "12 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 6.0",
+        "dimension": [
+            1275,
+            610,
+            1425
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
+        "isTransportationIncl": false
+    },
+    {
+        "machineImage": [
+            ""
+        ],
+        "machineType": "HardeeMaster",
+        "machineName": "Hardee 12 V",
+        "machineId": 110    ,
+        "machinePrice": 350000.00,
+        "cyclinderCapacity": "24 Liter",
+        "hourlyOutput": "42 Liter/Hr",
+        "flavour": "Any Single Flavour",
+        "batchCapacity": "12 Liter / Batch",
+        "machineOverrun": "Gravity Base",
+        "machineRerigerant": "R - 22 or R - 404a",
+        "compressor": 1,
+        "motor": 1,
+        "powerSupply": "400 / 50 / 3 Kw. : 6.0",
+        "dimension": [
+            1210,
+            555,
+            1135
+        ],
+        "GST": 18,
+        "isPackingIncl": false,
         "isTransportationIncl": false
     }
 ]
