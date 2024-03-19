@@ -63,7 +63,7 @@ class FrezzingMaster {
       coolingStorage: json['coolingStorage'],
       compressor: json['compressor'],
       powerSupply: json['powerSupply'],
-      dimension: List<int>.from(json['dimension']),
+      dimension: List<int>.from(json['marbleSize']),
       GST: json['GST'],
       isPackingIncl: json['isPackingIncl'],
       isTransportationIncl: json['isTransportationIncl'],
