@@ -49,6 +49,7 @@ dependencies:
   scrollable_positioned_list: ^0.3.8
   auto_size_text: ^3.0.0
   email_otp: ^2.1.2
+  textfield_datepicker: ^0.2.0
   # provider:
 
 dev_dependencies:
